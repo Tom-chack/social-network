@@ -2,7 +2,7 @@ import api from '../../helpers/api';
 import {userLogin, userError} from '../redux/ducks/userDuck';
 
 
-export default login = () => (dispatch) => {
+const login = () => (dispatch) => {
     fetch(`${api}/users`)
     .then(res => res.json())
     .then(res => {
@@ -10,6 +10,8 @@ export default login = () => (dispatch) => {
         dispatch( userLogin( res ) );
     })
     .catch(err => {
-        dispatch( userError( res ) );
+        dispatch( userError( err.message ) );
     })
 }
+
+export default login;
