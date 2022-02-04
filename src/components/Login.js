@@ -7,7 +7,7 @@ import login from "../services/login";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, users } = useSelector((state) => state.userDuck);
+  const { user } = useSelector((state) => state.userDuck);
   const defaultInputValues = { username: "", password: "" };
   const {
     register,

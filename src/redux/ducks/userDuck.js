@@ -20,6 +20,7 @@ const initialState = {
 const userDuck = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_LOGIN:
+      localStorage.setItem("_user", JSON.stringify(payload));
       return {
         ...state,
         errors: [],
