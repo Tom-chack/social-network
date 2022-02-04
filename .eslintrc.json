@@ -8,7 +8,6 @@
         "prettier"
     ],
     "plugins": [
-        "babel",
         "react",
         "import",
         "prettier"
@@ -21,14 +20,15 @@
     },
     "rules": {
         "prettier/prettier": [
-            "error",
+            "warn",
             {
-                "printWidth": 80,
+                "printWidth": 100,
                 "trailingComma": "es5",
                 "semi": true,
                 "jsxSingleQuote": true,
                 "singleQuote": true,
-                "useTabs": true
+                "useTabs": false,
+                "jsxBracketSameLine": false
             }
         ]
     }
