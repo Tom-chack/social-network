@@ -1,8 +1,8 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import userDuck from "./ducks/userDuck";
 
 const reducers = combineReducers({
-    userDuck
-})
+  userDuck,
+});
 
-export default reducers
+export default reducers;

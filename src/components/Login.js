@@ -32,7 +32,7 @@ function Login() {
         setformMessage("Login Failed!");
       }
     }
-  }, [isSubmitSuccessful, user]);
+  }, [isSubmitSuccessful, user, navigate]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

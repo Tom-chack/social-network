@@ -22,7 +22,7 @@
         "prettier/prettier": [
             "warn",
             {
-                "printWidth": 100,
+                "printWidth": 150,
                 "trailingComma": "es5",
                 "semi": true,
                 "jsxSingleQuote": true,
