@@ -2,7 +2,6 @@ import api from "../helpers/api";
 import { userLogin, userError } from "../redux/ducks/userDuck";
 
 const login = (data) => (dispatch) => {
-  console.log(data);
   fetch(`${api}/users`)
     .then((res) => res.json())
     .then((res) => {

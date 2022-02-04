@@ -1,75 +1,115 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import login from "../services/login";
 
-function Login() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.userDuck);
-  const defaultInputValues = { username: "", password: "" };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitSuccessful },
-  } = useForm({ defaultValues: defaultInputValues });
+import { Form, Input, Button, Checkbox, Row, Col, Divider, Typography } from "antd";
+const { Title } = Typography;
 
+function Login() {
+  //Using navigate to redirect to home page after successfuly login
+  const navigate = useNavigate();
+
+  //Local state to handle login result messages
+  const [formMessage, setFormMessage] = useState("");
+
+  //Redux functions
+  const dispatch = useDispatch();
+  const { user, loggedIn, errorsUser } = useSelector((state) => state.userDuck);
+
+  //Authorize username/password in asynchronous login() function
   const onSubmit = (data) => {
     dispatch(login(data));
   };
 
-  const [formMessage, setformMessage] = useState("");
-
+  //Handle login form submission, if login successes, show success message and redirect, otherwise show error message from redux errorsUser
   useEffect(() => {
-    if (isSubmitSuccessful) {
-      if (user.loggedIn) {
-        setformMessage("Login Succeed...");
-        setTimeout(() => {
-          navigate("/", { replace: true });
-        }, 500);
-      } else {
-        setformMessage("Login Failed!");
-      }
+    if (loggedIn) {
+      setFormMessage("Login Succeed...");
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 500);
+    } else {
+      setFormMessage(errorsUser);
     }
-  }, [isSubmitSuccessful, user, navigate]);
+  }, [user, navigate, loggedIn, errorsUser]);
 
+  //Create login form based on Ant Design { Form, Input, Button, Checkbox }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h5>Login</h5>
-      <hr />
-      <div style={{ fontWeight: "bold", textAlign: "center" }}>{formMessage}</div>
-      <div className='form-group'>
-        <input
-          type='text'
-          {...register("username", {
-            required: "This field is required.",
-            maxLength: 100,
-          })}
-          placeholder='Username'
-          className={"form-control " + (errors.username ? "is-invalid" : "")}
-        />
-        <div className='invalid-feedback'>{errors.username?.message}</div>
-      </div>
-      <div className='form-group'>
-        <input
-          type='password'
-          {...register("password", {
-            required: "This field is required.",
-            min: {
-              value: 3,
-              message: "Password minimum length must be at least 3 characters",
-            },
-          })}
-          placeholder='Password'
-          className={"form-control " + (errors.password ? "is-invalid" : "")}
-        />
-        <div className='invalid-feedback'>{errors.password?.message}</div>
-      </div>
-      <div className='form-group form-bottom'>
-        <input type='submit' name='Login' value='Login' className='btn btn-primary' />
-      </div>
-    </form>
+    <div>
+      <Row>
+        <Col span={8}></Col>
+        <Col span={8}>
+          <Title level={3} align='center'>
+            Login
+          </Title>
+
+          <Divider plain>{formMessage}</Divider>
+
+          <Form
+            name='login'
+            labelCol={{ span: 8 }}
+            wrapperCol={{
+              span: 16,
+            }}
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onSubmit}
+            autoComplete='off'
+          >
+            <Form.Item
+              label='Username'
+              name='username'
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your username!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label='Password'
+              name='password'
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your password!",
+                },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
+
+            <Form.Item
+              name='remember'
+              valuePropName='checked'
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            >
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
+
+            <Form.Item
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            >
+              <Button type='primary' htmlType='submit'>
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+        <Col span={8}></Col>
+      </Row>
+    </div>
   );
 }
 

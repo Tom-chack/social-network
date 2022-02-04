@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userInit } from "./redux/ducks/userDuck";
 
 import Structure from "./components/Structure";
 import Home from "./components/Home";
@@ -7,6 +9,10 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 function App() {
+  //Check if there is a user information in localStorage and authorize current visitor
+  const dispatch = useDispatch();
+  dispatch(userInit());
+
   return (
     <Routes>
       <Route path='/' element={<Structure />}>
