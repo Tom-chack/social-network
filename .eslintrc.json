@@ -26,7 +26,7 @@
                 "trailingComma": "es5",
                 "semi": true,
                 "jsxSingleQuote": true,
-                "singleQuote": true,
+                "singleQuote": false,
                 "useTabs": false,
                 "jsxBracketSameLine": false
             }

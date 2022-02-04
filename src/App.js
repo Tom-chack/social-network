@@ -1,10 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import Structure from './components/Structure';
-import Home from './components/Home';
-import Members from './components/Members';
-import Login from './components/Login';
-import Register from './components/Register';
+import Structure from "./components/Structure";
+import Home from "./components/Home";
+import Members from "./components/Members";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
