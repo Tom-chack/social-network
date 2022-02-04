@@ -7,7 +7,7 @@ export const userLogin = (payload) => ({ type: USER_LOGIN, payload });
 export const userError = (payload) => ({ type: USER_ERROR, payload });
 
 // Initial State of the userDuck
-const currentuser = JSON.parse(localStorage.getItem("_user"));
+const currentuser = JSON.parse(localStorage.getItem("_user")) || {};
 
 const initialState = {
   user: { username: "", email: "", password: "" },

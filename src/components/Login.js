@@ -69,14 +69,6 @@ function Login() {
       <div className='form-group form-bottom'>
         <input type='submit' name='Login' value='Login' className='btn btn-primary' />
       </div>
-      <div className='users'>
-        Users in the Database (user/pass): &nbsp;{" "}
-        {users.map((user) => (
-          <strong key={user.username}>
-            {user.username} / {user.password} &nbsp;&nbsp;|&nbsp;&nbsp;
-          </strong>
-        ))}
-      </div>
     </form>
   );
 }
