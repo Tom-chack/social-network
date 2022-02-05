@@ -7,6 +7,13 @@ import {
   HeartOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+
+import Activity from "./profile/Activity";
+import About from "./profile/About";
+import Account from "./profile/Account";
+import Favored from "./profile/Favored";
+import Friends from "./profile/Friends";
+
 const { TabPane } = Tabs;
 const { Title } = Typography;
 
@@ -50,7 +57,7 @@ function Profile() {
             }
             key='1'
           >
-            Activity Content
+            <Activity />
           </TabPane>
 
           <TabPane
@@ -62,7 +69,7 @@ function Profile() {
             }
             key='2'
           >
-            About Content
+            <About />
           </TabPane>
 
           <TabPane
@@ -74,7 +81,7 @@ function Profile() {
             }
             key='3'
           >
-            Friends Content
+            <Friends />
           </TabPane>
           <TabPane
             tab={
@@ -85,7 +92,7 @@ function Profile() {
             }
             key='4'
           >
-            Favored Content
+            <Favored />
           </TabPane>
           <TabPane
             tab={
@@ -96,7 +103,7 @@ function Profile() {
             }
             key='5'
           >
-            Account Settings
+            <Account />
           </TabPane>
         </Tabs>
       </div>
