@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userRegistered } from "../redux/ducks/userDuck";
 import login from "../services/login";
 
 import { Form, Input, Button, Checkbox, Row, Col, Divider, Typography } from "antd";
@@ -22,21 +23,25 @@ function Login() {
     dispatch(login(data));
   };
 
-  //Handle login form submission, if login successes, show success message and redirect, otherwise show error message from redux errorsUser
+  //Handle login form submission, if login successes, shows success message and redirects, otherwise shows error message from redux errorsUser
   useEffect(() => {
     if (loggedIn) {
       setFormMessage("Login Succeed...");
       setTimeout(() => {
         navigate("/", { replace: true });
-      }, 500);
+      }, 1000);
     } else {
       setFormMessage(errorsUser);
     }
   }, [user, navigate, loggedIn, errorsUser]);
 
+  useEffect(() => {
+    dispatch(userRegistered());
+  }, [dispatch]);
+
   //Create login form based on Ant Design { Form, Input, Button, Checkbox }
   return (
-    <div>
+    <div className='login-page'>
       <Row>
         <Col span={8}></Col>
         <Col span={8}>
@@ -102,7 +107,7 @@ function Login() {
               }}
             >
               <Button type='primary' htmlType='submit'>
-                Submit
+                Login
               </Button>
             </Form.Item>
           </Form>

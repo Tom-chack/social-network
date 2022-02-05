@@ -1,7 +1,14 @@
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
+.ant-layout-content{
+  width:1360px
+}
+.ant-layout {
   background: #fff;
+}
+.site-layout-content {
+  min-height: 80vh;
+  padding: 24px;
+  background: #F0F2F5;
+  box-sizing: border-box;
 }
 #components-layout-demo-top .logo {
   float: left;
@@ -13,4 +20,22 @@
 .ant-row-rtl #components-layout-demo-top .logo {
   float: right;
   margin: 16px 0 16px 24px;
+}
+
+/* Login Page */
+.login-page .ant-divider-horizontal.ant-divider-with-text,
+.register-page .ant-divider-horizontal.ant-divider-with-text{
+  margin: 30px 0;
+}
+
+/* Mobile */
+@media screen and (max-width: 1400px) {
+  .ant-layout-content{
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .ant-layout-content{
+    max-width: 100%;
+  }
 }
