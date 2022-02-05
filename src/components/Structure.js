@@ -20,11 +20,16 @@ function Structure() {
             </Link>
           </Menu.Item>
           <Menu.Item key='3'>
+            <Link to='/profile'>
+              <span>Profile</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key='4'>
             <Link to='/login'>
               <span>Login</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key='4'>
+          <Menu.Item key='5'>
             <Link to='/register'>
               <span>Register</span>
             </Link>
