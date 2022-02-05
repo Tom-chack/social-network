@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+
 import { Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 
@@ -36,12 +37,13 @@ function Structure() {
           </Menu.Item>
         </Menu>
       </Header>
+
       <Content style={{ padding: "0 50px", margin: "0 auto" }}>
         <div className='site-layout-content'>
           <Outlet />
         </div>
-        <Footer style={{ textAlign: "center" }}>Social Network by Group 3</Footer>
       </Content>
+      <Footer style={{ textAlign: "center" }}>Social Network by Group 3</Footer>
     </Layout>
   );
 }
