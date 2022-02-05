@@ -5,6 +5,7 @@ import { userInit } from "./redux/ducks/userDuck";
 import Structure from "./components/Structure";
 import Home from "./components/Home";
 import Members from "./components/Members";
+import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
@@ -18,6 +19,7 @@ function App() {
       <Route path='/' element={<Structure />}>
         <Route index element={<Home />} />
         <Route path='/members' element={<Members />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Route>
