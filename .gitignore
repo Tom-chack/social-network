@@ -24,3 +24,4 @@ yarn-error.log*
 
 # json-server
 db.json
+package-lock.json
