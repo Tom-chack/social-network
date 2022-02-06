@@ -3,7 +3,7 @@ import React from "react";
 function Activity() {
   return (
     <div>
-      <span>Activit Component</span>
+      <span>Activit Component 2</span>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 // Action Types
+const USER_SET = "user/USER_SET";
 const USER_INIT = "user/USER_INIT";
 const USER_LOGIN = "user/USER_LOGIN";
 const USER_REGISTER = "user/USER_REGISTER";
@@ -7,6 +8,7 @@ const USER_ERROR = "user/USER_ERROR";
 const LOAD_USERS = "user/LOAD_USERS";
 
 // Actions
+export const userSet = (payload) => ({ type: USER_SET, payload });
 export const userInit = (payload) => ({ type: USER_INIT, payload });
 export const userLogin = (payload) => ({ type: USER_LOGIN, payload });
 export const userRegister = (payload) => ({ type: USER_REGISTER, payload });
@@ -27,6 +29,13 @@ const initialState = {
 // userDuck Reducer
 const userDuck = (state = initialState, { type, payload }) => {
   switch (type) {
+    case USER_SET:
+      return {
+        ...state,
+        user: payload,
+        loggedIn: true,
+        errorsUser: "",
+      };
     case USER_INIT:
       const currentUser = JSON.parse(localStorage.getItem("_user")) || {};
       return {
