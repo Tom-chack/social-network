@@ -6,7 +6,7 @@ const register = (data) => (dispatch) => {
     username: "",
     email: "",
     password: "",
-    date: new Date().toLocaleDateString(),
+    date: Date.now(),
     about: "",
     remember: false,
   };
