@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { userSet, userInit } from "./redux/ducks/userDuck";
+import { useDispatch } from "react-redux";
+import { userInit } from "./redux/ducks/userDuck";
 
 import Structure from "./components/Structure";
 import Home from "./components/Home";
