@@ -1,3 +1,5 @@
+import { userSchema } from "../../helpers/schemas";
+
 // Action Types
 const USER_INIT = "user/USER_INIT";
 const USER_LOGIN = "user/USER_LOGIN";
@@ -15,18 +17,22 @@ export const userError = (payload) => ({ type: USER_ERROR, payload });
 export const loadUsers = (payload) => ({ type: LOAD_USERS, payload });
 
 // Initial State of the userDuck
-
 const initialState = {
-  user: { id: 0, username: "", email: "", password: "", date: "", about: "", remember: false },
+  user: { ...userSchema, id: 0 },
   users: [],
   loggedIn: false,
-  sinedUp: false,
+  signedUp: false,
   errorsUser: "",
 };
 
 // userDuck Reducer
 const userDuck = (state = initialState, { type, payload }) => {
   switch (type) {
+    case LOAD_USERS:
+      return {
+        ...state,
+        users: payload,
+      };
     case USER_INIT:
       const currentUser = JSON.parse(localStorage.getItem("_user")) || {};
       return {
@@ -56,11 +62,6 @@ const userDuck = (state = initialState, { type, payload }) => {
       return {
         ...state,
         signedUp: false,
-      };
-    case LOAD_USERS:
-      return {
-        ...state,
-        users: payload,
       };
     case USER_ERROR:
       return {

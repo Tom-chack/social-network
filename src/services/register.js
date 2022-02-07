@@ -1,16 +1,8 @@
 import api from "../helpers/api";
 import { userRegister, userError } from "../redux/ducks/userDuck";
+import { userSchema } from "../helpers/schemas";
 
 const register = (data) => (dispatch) => {
-  const userSchema = {
-    username: "",
-    email: "",
-    password: "",
-    date: new Date().toLocaleDateString(),
-    about: "",
-    remember: false,
-  };
-
   const userData = { ...userSchema, ...data };
 
   fetch(`${api}/users`, {
