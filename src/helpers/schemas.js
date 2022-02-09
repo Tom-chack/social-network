@@ -15,11 +15,12 @@ export const userSchema = {
   vib: "",
   wapp: "",
   friends: [],
+  avatar: "",
+  cover: "",
 };
 
 export const postSchema = {
-  content:
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  content: "",
   userid: 1,
   image: "",
   likes: 0,
@@ -30,7 +31,7 @@ export const commentSchema = {
   id: 1,
   postid: 1,
   userid: 2,
-  content: "Nisl nisi scelerisque eu ultrices vitae.",
+  content: "",
   date: Date.now(),
   likes: 0,
 };
