@@ -21,7 +21,7 @@ export const userSchema = {
 
 export const postSchema = {
   content: "",
-  userid: 1,
+  userid: 0,
   image: "",
   likes: 0,
   date: Date.now(),

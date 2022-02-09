@@ -40,7 +40,7 @@ function Profile() {
 
   //Fetch user object by profile user id
   useEffect(() => {
-    if (+id > 0) {
+    if (id) {
       dispatch(getProfile(id));
     } else {
       navigate("/", { replace: true });
