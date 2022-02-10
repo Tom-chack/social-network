@@ -105,3 +105,19 @@
     max-width: 100%;
   }
 }
+.activityCard{
+border: 1px solid rgb(183, 181, 185);
+border-radius: 5px;
+width: 700px;
+margin-bottom: 5px;
+}
+.likesComments{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction:row;
+  justify-content: space-between;
+  color:lightslategray;
+  font-size:17px;
+  font-family:sans-serif;
+  margin-right:20px;
+}
