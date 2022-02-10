@@ -3,7 +3,7 @@ import { HeartOutlined,MessageOutlined }from  '@ant-design/icons';
 
 function ActivityCard({date,image,id,content,likes}) {
     const Avatar = () => {
-    return <Image width={150} src={image}  />;
+    return <Image src={image} className='activityAvatar'  />;
     
     };
     const Like=()=>{
