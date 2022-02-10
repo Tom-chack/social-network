@@ -4,7 +4,7 @@ const post=[
     "id": 1,
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non consectetur a erat nam at lectus.",
     "userid": 1,
-    "image": "ggg",
+    "image": "https://avatars.githubusercontent.com/u/28024000?v=4",
     "likes": 0,
     "date": 1519211809934
   },
@@ -12,7 +12,7 @@ const post=[
     "id": 2,
     "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "userid": 1,
-    "image": "jjjj",
+    "image": "https://avatars.githubusercontent.com/u/7843281?v=4",
     "likes": 0,
     "date": 1519213809934
   }
@@ -126,18 +126,24 @@ const  users= [
 const name=()=>{users.map((user)=>user.username)}
 function Activity() {
   return (
-    <div>
-    {post.map(({id,date,image,content,likes})=>
-    <ActivityCard classname="activityCard"
-           name={name} 
-           key={id} 
-           date={date} 
-           image={image} 
-           id={id} 
-           content={content} 
-           likes={likes}
-       />)}
-    </div>
+    <div  className="activityMain">
+           <div className="updateButton">
+                  <input placeholder="Update your status..." type="text"></input>
+                  <button>Update</button>
+            </div>
+            <div >
+                 {post.map(({id,date,image,content,likes})=>
+                       <ActivityCard classname="activityCard"
+                       name={name} 
+                       key={id} 
+                        date={date} 
+                        image={image} 
+                        id={id} 
+                        content={content} 
+                        likes={likes}
+                  />)}
+            </div>
+  </div>
   );
 }
 export default Activity

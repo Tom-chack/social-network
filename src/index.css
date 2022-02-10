@@ -105,6 +105,12 @@
     max-width: 100%;
   }
 }
+/*Activity design*/
+.activityMain{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
 .activityCard{
 border: 1px solid rgb(183, 181, 185);
 border-radius: 5px;
@@ -115,15 +121,58 @@ margin-bottom: 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction:row;
-  justify-content: space-between;
-  color:lightslategray;
+  justify-content:space-between;
   font-size:17px;
-  font-family:sans-serif;
-  margin-right:20px;
+  font-family:'Times New Roman', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin:10px;
 }
 .activityAvatar{
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 70px;
+  border-radius:70%;
+  margin:10px
+}
+.activityPosts {
+  margin:10px;
+}
+.avatarUserName {
+   display: flex;
+   flex-direction: row;
+}
+.userName h3{
+  color: rgb(2, 2, 12);
+  text-shadow: 0 0 3px #1b49e2;
+}
+.updateButton {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  height: 30px;
+  width: 700px;
+  margin-bottom: 50px;
+}
+.updateButton input {
+  width:570px;
+  height:50px;
+  margin-right: 15px;
+  border-radius: 3%;
+  font-size: 20px;
+}
+.updateButton button {
+  width: 115px;
+  height: 50px;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #3c58f7;
+  transition-duration: 0.4s;
+  border-radius: 10%;
+  
+}
 
+.updateButton button:hover {
+  background-color: #78b0f1; 
+  color: rgb(173, 211, 211);
+}
+::placeholder{
+  color: rgb(165, 182, 238);
 }

@@ -1,30 +1,47 @@
 import { Image } from "antd";
-import { HeartOutlined,MessageOutlined }from  '@ant-design/icons';
-
+import { MessageOutlined }from  '@ant-design/icons';
+import LikeHrart from "./LikeHeart";
 function ActivityCard({date,image,id,content,likes}) {
     const Avatar = () => {
     return <Image src={image} className='activityAvatar'  />;
     
     };
-    const Like=()=>{
-        return <HeartOutlined  width={20}/>;
-    }
     const Comment=()=>{
         return  <MessageOutlined/>
     }
     return (
+        <>
          <div className="activityCard">
-           <Avatar/>
+                 <div className="avatarUserName">
+                         <div>
+                             <Avatar/>
+                         </div>
+                         <div className="userName">
+                             <h3> 
+                                 UserName{id}
+                             </h3>
+                             <h6 className="date">
+                                 {date}
+                             </h6>
+                         </div>     
+                 </div>
            
-            {id}<br/>
-            {date}<br/>
-            {content}<br/>
-               <div className="likesComments">
-                     <h5><Like/> likes{likes} </h5>  
-                     <h5><Comment/>comments 0 </h5>
-               </div>
+                 <div className="activityPosts">
+                         <h3>{content}</h3>
+                 </div>
+           
+                 <div className="likesComments">
+                    
+                             <LikeHrart/> 
+                             likes{likes} 
+                         
+                             <Comment/>
+                             comments 0 
+                         
+                 </div>
            
          </div>
+    </>
 );
     
 }
