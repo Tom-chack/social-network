@@ -36,20 +36,23 @@ function Members() {
 
         </div>
 
-        <div className="users-container">
+        {
+          users.map(item=>(
+            
+            <div className="users-container" key={item.id}>
 
           <div className="background-part">
             <img 
-              src="https://images.unsplash.com/photo-1547989453-11e67ffb3885?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
-              alt="bg-img"
+              src={item.covers}
+              alt="cover-img"
             />
             
             <div className="img-container">
 
               <img
                alt="avatar"
-               src="https://qph.fs.quoracdn.net/main-thumb-1278318002-200-ydzfegagslcexelzgsnplcklfkienzfr.jpeg"
-              />   
+               src={item.avatar}
+               />   
 
             </div>
 
@@ -59,17 +62,20 @@ function Members() {
 
             <div>
 
-              <Link to={'/'}>
-                <span>Clara Tomson</span>
+              <Link to={`/profile/${item.id}`}>
+                <span>{item.name}</span>
               </Link>
 
-              <span style={{color: "grey"}}>{`Joined ${getDate(1519211809934)}`}</span>
+              <span style={{color: "grey"}}>{`Joined ${getDate(item.date)}`}</span>
 
             </div>
 
           </div>
 
         </div>
+
+          ))
+        }
 
       </div>
 
