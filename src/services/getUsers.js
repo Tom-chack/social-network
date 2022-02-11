@@ -7,6 +7,7 @@ const getUsers =
     fetch(`${api}/users${query}`)
       .then((res) => res.json())
       .then((res) => {
+        console.log(res)
         dispatch(loadUsers(res));
       })
       .catch((err) => {
