@@ -8,22 +8,24 @@ import './members.css'
 
 
 function Members() {
-
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.userDuck);
+  
 
-
-  const [filteredUsers, setFilteredUsers] = useState(users)
+  const [filteredUsers, setFilteredUsers] = useState([])
   const [inputValue, setInputValue] = useState('')
-
+  
 
   useEffect(() => {
-      dispatch(getUsers());
+    dispatch(getUsers());
   }, [dispatch])
 
   useEffect(()=>{
+    setFilteredUsers(users)
+  },[users])
+
+  useEffect(()=>{
     searchUsers()
-    console.log(filteredUsers)
   },[inputValue])
 
   const getDate = (sec) =>{
@@ -31,11 +33,20 @@ function Members() {
   }
 
   const searchUsers = () =>{
-    setFilteredUsers(filteredUsers.filter((item) => {
-      if(item.name.toLowerCase().includes(inputValue.toLowerCase)){
-        return item
-      }
-    }))
+
+    let searchedUsers = [] ;
+
+    if (inputValue === ''){
+      searchedUsers = users;
+    }
+    else{
+      searchedUsers = users.filter((item)=>{
+        if (item.name?.toLowerCase().includes(inputValue.toLowerCase())){
+          return item;
+        }
+      })
+    }
+    setFilteredUsers(searchedUsers)
   }
 
   return (
@@ -49,7 +60,7 @@ function Members() {
           
           <input 
             onChange={(e)=>setInputValue(e.target.value)}
-            type={'text'} 
+            type={'text'}
             placeholder={'Search . . .'}
           />
 
