@@ -1,6 +1,7 @@
 import { Image } from "antd";
 import LikeHrart from "./LikeHeart";
 import Comment from "./Comments";
+import Time from "./UpdateTime";
 function ActivityCard({date,image,id,content,likes}) {
     const Avatar = () => {
     return <Image src={image} className='activityAvatar'  />;
@@ -18,7 +19,7 @@ function ActivityCard({date,image,id,content,likes}) {
                                  UserName{id}
                              </h3>
                              <h6 className="date">
-                                 {date}
+                                 Posted an update <Time date={date}/>minutes ago
                              </h6>
                          </div>     
                  </div>
