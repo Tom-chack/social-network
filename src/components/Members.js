@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import getUsers from '../services/getUsers'
+import './members.css'
 
 
 function Members() {
@@ -13,7 +14,27 @@ function Members() {
   }, [dispatch])
 
   return (
-    <div className="member-container">
+    <div className="members-container">
+      
+      <div className="members-content">
+        
+        <div className="search-div">
+          
+          <span>Members</span>
+          
+          <input 
+            type={'text'} 
+            placeholder={'Search . . .'}
+          />
+
+        </div>
+
+      </div>
+
+      <div className="widgets-content">
+
+      </div>
+
     </div>
   )
 }

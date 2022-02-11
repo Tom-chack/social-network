@@ -1,0 +1,43 @@
+.members-container{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+}
+
+.members-content{
+    width: 70%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.widgets-content{
+    width: 30%;
+    height: 20vh;
+}
+
+.search-div{
+    width: 90%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #bebebe;
+    margin-top: 20px;
+}
+
+.search-div span{
+    color:grey;
+    font-size: large;
+}
+
+.search-div input{
+    width: 35%;
+    height: 5vh;
+    border: 1px solid #bebebe;
+    border-radius: 5px;
+    color: black;
+    background-color: #ebebebd0;
+    padding: 0 5px;
+}
