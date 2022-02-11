@@ -8,6 +8,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 
+
 import Activity from "./profile/Activity";
 import About from "./profile/About";
 import Account from "./profile/Account";
