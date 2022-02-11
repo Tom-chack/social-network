@@ -1,38 +1,35 @@
 .members-container{
     width: 100%;
-    height: 50vh;
     display: flex;
 }
 
 .members-content{
-    width: 70%;
-    height: 20vh;
+    width: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .widgets-content{
-    width: 30%;
-    height: 20vh;
+    width: 35%;
 }
 
-.search-div{
+.search-container{
     width: 90%;
     height: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border: 1px solid #bebebe;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.search-div span{
+.search-container span{
     color:grey;
     font-size: large;
 }
 
-.search-div input{
+.search-container input{
     width: 35%;
     height: 5vh;
     border: 1px solid #bebebe;
@@ -40,4 +37,68 @@
     color: black;
     background-color: #ebebebd0;
     padding: 0 5px;
+}
+
+.users-container{
+    width: 90%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #bebebe;
+    margin-top: 30px;
+}
+
+.background-part{
+    width: 100%;
+    height: 50%;
+}
+
+.info-part{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-container{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(20px, -50px);
+}
+
+.img-container img{
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+}
+
+.background-part img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-part div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: 80%;
+    height: 70%;
+}
+
+.info-part div a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+.info-part div a :hover{
+    color: #1890ff
 }
