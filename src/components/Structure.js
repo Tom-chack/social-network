@@ -7,7 +7,7 @@ const { Header, Content, Footer } = Layout;
 
 function Structure() {
   const { user } = useSelector((state) => state.userDuck);
-
+  
   return (
     <Layout className='layout'>
       <Header>
