@@ -5,7 +5,7 @@ export default function LikeHrart({likes}) {
   const [isClick, setClick] = useState(false);
   const [isLike, setLike] = useState(likes);
   return (
-    <div className="heart">
+<>
     <div className="likeHeart">
       <Heart isLike={isLike} isClick={isClick} onClick={() => 
           {  
@@ -21,12 +21,12 @@ export default function LikeHrart({likes}) {
                   console.log(likes)
                 }
                 
-          }} />
+          }} /> 
      </div>
       <div className="likeCount">
-               likes: {isLike}
+             Likes: {isLike}
       </div> 
-     </div>
+     </>
   );
   
 }

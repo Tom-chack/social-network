@@ -118,12 +118,10 @@ width: 700px;
 margin-bottom: 5px;
 }
 .likesComments{
-  display: flex;
+  position: relative;
   flex-direction:row;
-  justify-content:space-between;
-  font-size:17px;
+  font-size:15px;
   font-family:'Times New Roman', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  margin:10px;
 }
 .activityAvatar{
   width: 70px;
@@ -175,16 +173,18 @@ margin-bottom: 5px;
 ::placeholder{
   color: rgb(165, 182, 238);
 }
-.heart{
-  display: flex;
-  flex-direction:row;
-}
 .likeCount{
-  padding-top: 30px;
-  margin-right: 400px;
+  position: absolute;
+  top: 30%;
+  left:10%;
 }
 .likeHart{
-  display: flex;
-  align-items: flex-start;
+  position:absolute;
+  top:10px
 
+}
+.comment{
+  position: absolute;
+  left: 70%;
+  top: 30%;
 }

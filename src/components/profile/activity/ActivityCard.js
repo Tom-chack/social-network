@@ -1,14 +1,11 @@
 import { Image } from "antd";
-import { MessageOutlined }from  '@ant-design/icons';
 import LikeHrart from "./LikeHeart";
+import Comment from "./Comments";
 function ActivityCard({date,image,id,content,likes}) {
     const Avatar = () => {
     return <Image src={image} className='activityAvatar'  />;
     
     };
-    const Comment=()=>{
-        return  <MessageOutlined/>
-    }
     return (
         <>
          <div className="activityCard">
@@ -35,7 +32,7 @@ function ActivityCard({date,image,id,content,likes}) {
                              <LikeHrart likes={likes}/> 
                          
                              <Comment/>
-                             comments 0 
+                             
                          
                  </div>
            
