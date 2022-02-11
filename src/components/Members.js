@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom'
 import { dateToLocalFormat } from 'date-format-ms';
@@ -8,16 +8,34 @@ import './members.css'
 
 
 function Members() {
+
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.userDuck);
+
+
+  const [filteredUsers, setFilteredUsers] = useState(users)
+  const [inputValue, setInputValue] = useState('')
+
 
   useEffect(() => {
       dispatch(getUsers());
   }, [dispatch])
 
+  useEffect(()=>{
+    searchUsers()
+    console.log(filteredUsers)
+  },[inputValue])
 
   const getDate = (sec) =>{
    return dateToLocalFormat(new Date(sec), 'd.m.Y')
+  }
+
+  const searchUsers = () =>{
+    setFilteredUsers(filteredUsers.filter((item) => {
+      if(item.name.toLowerCase().includes(inputValue.toLowerCase)){
+        return item
+      }
+    }))
   }
 
   return (
@@ -30,6 +48,7 @@ function Members() {
           <span>Members</span>
           
           <input 
+            onChange={(e)=>setInputValue(e.target.value)}
             type={'text'} 
             placeholder={'Search . . .'}
           />
@@ -37,7 +56,7 @@ function Members() {
         </div>
 
         {
-          users.map(item=>(
+          filteredUsers.map(item=>(
             
             <div className="users-container" key={item.id}>
 

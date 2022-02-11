@@ -51,6 +51,7 @@
 .background-part{
     width: 100%;
     height: 50%;
+    border-bottom: 1px solid #bebebe ;
     position: relative;
 }
 
@@ -73,6 +74,7 @@
     position: absolute;
     top: 50%;
     left: 20px;
+    border: 1px solid #bebebe;
 }
 
 .img-container img{
