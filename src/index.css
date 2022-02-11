@@ -124,19 +124,15 @@
 .icons {
   width: 4%;
   padding-right: 1%;
-  margin-bottom: 0.9%;
+  margin-bottom: 1.5%;
+  margin-top: 2%;
 }
 
 .social-network-links {
   border-bottom: 1px dashed rgb(168, 165, 165);
-  margin: 1%;
-}
-
-.icons-container {
-  border: 1px solid rgb(241, 237, 237);
-  margin: 1%;
+  margin: 0.5%;
 }
 
 h2 {
-  color:rgb(168, 165, 165);
+  color:rgb(182, 181, 181);
 }

@@ -40,14 +40,14 @@ function About() {
           <h2>Social Network</h2>
           <Col span={24}>
                 <>
-                  <div className={profile.fb ? "icons-container" : ""}>
+                  <div >
                     {profile.fb ? <>
                               <img className="icons" src={fb}/> 
                               <a className="social-network-links" href={profile.fb} target="_blank" rel="noreferrer">{profile.fb}</a>
                             </> : ""
                     } 
                   </div>
-                  <div className={profile.tw ? "icons-container" : ""}> 
+                  <div> 
                     {
                       profile.tw ?
                       <><img className="icons" src={twit}/> 
@@ -56,28 +56,28 @@ function About() {
                     }
                     
                   </div>
-                  <div className={profile.lin ? "icons-container" : ""}>
+                  <div>
                     {
                       profile.lin ? <><img className="icons" src={lin}/> 
                                     <a className="social-network-links" href={profile.lin} target="_blank" rel="noreferrer">{profile.lin}</a>
                                   </> : ""
                     }
                   </div>
-                  <div className={profile.git ? "icons-container" : ""}>
+                  <div>
                     {
                       profile.git ?  <> <img className="icons" src={git}/> 
                                       <a className="social-network-links" href={profile.git} target="_blank" rel="noreferrer">{profile.git}</a>
                                   </> : ""
                     }
                   </div>
-                  <div className={profile.vib ? "icons-container" : ""}>
+                  <div>
                     {
                       profile. vib ? <><img className="icons" src={viber}/> 
                                     <a className="social-network-links" href={profile.vib} target="_blank" rel="noreferrer">{profile.vib}</a>
                                   </>: ""
                     }
                   </div>
-                  <div className={profile.wapp ? "icons-container" : ""}>
+                  <div>
                     {
                       profile.wapp ? <><img className="icons" src={whap}/> 
                                     <a className="social-network-links" href={profile.wapp} target="_blank" rel="noreferrer">{profile.wapp}</a>
@@ -85,7 +85,6 @@ function About() {
                     }
                   </div>
                 </>
-              )
           </Col>
         </Row>
     </div>
