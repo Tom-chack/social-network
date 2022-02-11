@@ -1,3 +1,7 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 .ant-layout-content{
   width:1200px
 }
@@ -139,8 +143,31 @@ h2 {
 
 .friends-list-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   flex-wrap: wrap;
-  width: 70%;
+  justify-content: left;
+}
+
+.friends-list-avatars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin: 0 2.38em 3em 0;
+  padding: 1em;
+}
+
+.cover {
+  width: 105%;
+}
+
+.avatar {
+  width: 30%;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-top: -20%;
+  margin-left: 38%;
+}
+
+.username {
+  text-align: center;
 }

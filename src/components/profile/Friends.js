@@ -12,13 +12,20 @@ function Friends() {
     .then (res => setUsers(res))
   }, [])
 
-  console.log("users=",users);
-  console.log ("profile=",profile.friends)
   return (
     <div className="friends-list-container">
       {profile.friends.map((item) => {
         return users?.map (el => {
-          return (el.id === item ? <span key = {el.id}>{el.username}</span> : "")})
+          return (el.id === item ? 
+            <div className="friends-list-avatars" key = {el.id}>
+              <div>
+                <img className="cover" src={el.cover} alt="cover pic can't be uploaded"/>
+              </div>
+              <div>  
+                <img className="avatar" src={el.avatar} alt="profile pic can't be uploaded"/>
+              </div>  
+              <div className="username">{el.name}</div>
+            </div> : "")})
       })}
     </div>
   )
