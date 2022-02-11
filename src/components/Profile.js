@@ -1,4 +1,20 @@
-import React from "react";
+// React
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+//Redux
+import { useDispatch, useSelector } from "react-redux";
+import getProfile from "../services/getProfile";
+
+//Components
+import Activity from "./profile/Activity";
+import About from "./profile/About";
+import Account from "./profile/Account";
+import Favored from "./profile/Favored";
+import Friends from "./profile/Friends";
+
+//Ant Design
 import { Tabs, Image, Typography } from "antd";
 import {
   CoffeeOutlined,
@@ -8,6 +24,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 
+<<<<<<< HEAD
 
 import Activity from "./profile/Activity";
 import About from "./profile/About";
@@ -15,35 +32,57 @@ import Account from "./profile/Account";
 import Favored from "./profile/Favored";
 import Friends from "./profile/Friends";
 
+=======
+>>>>>>> 971cc28b5e47572b42adf54f020bbdf88403b8a2
 const { TabPane } = Tabs;
 const { Title } = Typography;
 
 function Profile() {
+  //Using navigate to redirect to home page after successfully login
+  const navigate = useNavigate();
+
+  //Get current profile user id
+  const { id } = useParams();
+
+  //Redux functions, get current profile owner (user object)
+  const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.userDuck);
+
+  //Fetch user object by profile user id
+  useEffect(() => {
+    if (id) {
+      dispatch(getProfile(id));
+    } else {
+      navigate("/", { replace: true });
+    }
+  }, [id, dispatch, navigate]);
+
+  //Create user avatar component
   const Avatar = () => {
-    return <Image width={200} src='./images/a2.jpg' alt='Sara' />;
+    return <Image width={200} src={profile.avatar} alt='Sara' />;
   };
 
   return (
     <div className='profile'>
-      <div className='profile-head' style={{ backgroundImage: "url(./images/3.jpg)" }}></div>
+      <div className='profile-head' style={{ backgroundImage: `url(${profile.cover})` }}></div>
       <div className='profile-panel'>
         <div className='profile-panel-left'>
           <Avatar className='profile-avatar' alt='Sara' />
         </div>
         <div className='profile-panel-center'>
           <div>
-            <Title level={3}>Sara Pike</Title>
+            <Title level={3}>{profile.name || profile.username}</Title>
             <div className='profile-joined'>Member since 2018</div>
           </div>
         </div>
         <div className='profile-panel-right'>
           <div className='profile-stat-box'>
             <span>posts</span>
-            <span>18</span>
+            <span>{profile.posts}</span>
           </div>
           <div className='profile-stat-box'>
             <span>comments</span>
-            <span>25</span>
+            <span>{profile.comments}</span>
           </div>
         </div>
       </div>
