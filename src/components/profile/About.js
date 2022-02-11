@@ -13,17 +13,7 @@ import 'antd/dist/antd.css';
 
 
 function About() {
-  
-  const { profile } = useSelector((state) => state.userDuck)
-  console.log("username of profile",profile.username)
-  console.log("profile content",profile)
-
-  //fetching from db.json
-  // useEffect (() => {
-  //   fetch(`${api}/users`)
-  //   .then((res) => res.json())
-  //   .then((res) => setAbout(res))
-  // }, []);
+  const { user } = useSelector((state) => state.userDuck)
 
   return (
     <>
@@ -32,7 +22,7 @@ function About() {
           <h2>About Me</h2>
           <Col span={24}> 
           {
-            profile.about
+            user.about
           }
           </Col>
         </Row>
@@ -41,46 +31,46 @@ function About() {
           <Col span={24}>
                 <>
                   <div >
-                    {profile.fb ? <>
+                    {user.fb ? <>
                               <img className="icons" src={fb}/> 
-                              <a className="social-network-links" href={profile.fb} target="_blank" rel="noreferrer">{profile.fb}</a>
+                              <a className="social-network-links" href={user.fb} target="_blank" rel="noreferrer">{user.fb}</a>
                             </> : ""
                     } 
                   </div>
                   <div> 
                     {
-                      profile.tw ?
+                      user.tw ?
                       <><img className="icons" src={twit}/> 
-                      <a className="social-network-links" href={profile.tw} target="_blank" rel="noreferrer">{profile.tw}</a>
+                      <a className="social-network-links" href={user.tw} target="_blank" rel="noreferrer">{user.tw}</a>
                       </> : ""
                     }
                     
                   </div>
                   <div>
                     {
-                      profile.lin ? <><img className="icons" src={lin}/> 
-                                    <a className="social-network-links" href={profile.lin} target="_blank" rel="noreferrer">{profile.lin}</a>
+                      user.lin ? <><img className="icons" src={lin}/> 
+                                    <a className="social-network-links" href={user.lin} target="_blank" rel="noreferrer">{user.lin}</a>
                                   </> : ""
                     }
                   </div>
                   <div>
                     {
-                      profile.git ?  <> <img className="icons" src={git}/> 
-                                      <a className="social-network-links" href={profile.git} target="_blank" rel="noreferrer">{profile.git}</a>
+                      user.git ?  <> <img className="icons" src={git}/> 
+                                      <a className="social-network-links" href={user.git} target="_blank" rel="noreferrer">{user.git}</a>
                                   </> : ""
                     }
                   </div>
                   <div>
                     {
-                      profile. vib ? <><img className="icons" src={viber}/> 
-                                    <a className="social-network-links" href={profile.vib} target="_blank" rel="noreferrer">{profile.vib}</a>
+                      user. vib ? <><img className="icons" src={viber}/> 
+                                    <a className="social-network-links" href={user.vib} target="_blank" rel="noreferrer">{user.vib}</a>
                                   </>: ""
                     }
                   </div>
                   <div>
                     {
-                      profile.wapp ? <><img className="icons" src={whap}/> 
-                                    <a className="social-network-links" href={profile.wapp} target="_blank" rel="noreferrer">{profile.wapp}</a>
+                      user.wapp ? <><img className="icons" src={whap}/> 
+                                    <a className="social-network-links" href={user.wapp} target="_blank" rel="noreferrer">{user.wapp}</a>
                                   </> : ""
                     }
                   </div>
