@@ -32,8 +32,7 @@ function ActivityCard({date,image,id,content,likes}) {
            
                  <div className="likesComments">
                     
-                             <LikeHrart/> 
-                             likes{likes} 
+                             <LikeHrart likes={likes}/> 
                          
                              <Comment/>
                              comments 0 

@@ -119,7 +119,6 @@ margin-bottom: 5px;
 }
 .likesComments{
   display: flex;
-  flex-wrap: wrap;
   flex-direction:row;
   justify-content:space-between;
   font-size:17px;
@@ -175,4 +174,17 @@ margin-bottom: 5px;
 }
 ::placeholder{
   color: rgb(165, 182, 238);
+}
+.heart{
+  display: flex;
+  flex-direction:row;
+}
+.likeCount{
+  padding-top: 30px;
+  margin-right: 400px;
+}
+.likeHart{
+  display: flex;
+  align-items: flex-start;
+
 }
