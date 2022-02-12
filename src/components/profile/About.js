@@ -10,11 +10,8 @@ import whap from "../../images/Whatsapp.png";
 
 import 'antd/dist/antd.css';
 
-
-
 function About() {
   const { profile } = useSelector((state) => state.userDuck)
-  console.log(profile)
 
   return (
     <>
