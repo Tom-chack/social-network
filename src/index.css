@@ -171,6 +171,7 @@ h2 {
 
 .username {
   text-align: center;
+  color:black;
 }
 
 .search-bar-container {
@@ -179,8 +180,18 @@ h2 {
   justify-content: space-between;
   margin: 2%;
 }
- .search-box {
+
+.search-box {
    width: 20%;
    margin-right: 1.2%;
    border-radius: 6px;
- }
+}
+
+.show-more {
+  width: 15%;
+  background-color: aqua;
+  border-radius: 6px;
+  color: white;
+  margin-left: 40% !important;
+  margin-bottom: 5% !important;
+}
