@@ -111,39 +111,43 @@
     border-radius: 50%;
 }
 
-.pagination{
-    display: flex;
-    list-style: none;
-}
 
-.page-item{
-    width: 30px;
-    height: 30px;
+.paginationBttns {
+    list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+  }
+
+  
+  .paginationBttns a {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
     border: 1px solid #bebebe;
-    border-radius: 3px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.page-link{
-    cursor: pointer;
     color: black;
-}
-
-.page-link :active{
-    border:1px solid #1890ff;
-    color: #1890ff;
-}
-
-.page-link :hover{
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
     border: 1px solid #1890ff;
     color: #1890ff;
-}
-
-.page-item-active{
-    color: #1890ff;
+  }
+  
+  .paginationActive a {
     border: 1px solid #1890ff;
-}
+    color: #1890ff;
+  }
+  
+
+  .paginationDisabled a {
+    color: #bebebe;
+    border: 1px solid #bebebe;
+    pointer-events: none;
+  }

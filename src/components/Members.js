@@ -4,45 +4,36 @@ import { Link } from 'react-router-dom';
 import { dateToLocalFormat } from 'date-format-ms';
 import { useEffect } from "react";
 import getUsers from '../services/getUsers';
-import './Members/members.css';
+import './members.css';
 import { Image } from 'antd';
-import Pagination from './Members/Pagination'
+import ReactPaginate from "react-paginate";
 
 
 function Members() {
+
+  //Getting users 
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.userDuck);
   
 
+  //Users
   const [filteredUsers, setFilteredUsers] = useState([])
   const [inputValue, setInputValue] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
   
 
+  //Pagination
+  const [pageNumber, setPageNumber] = useState(0)
   const usersPerPage = 5;
-  const lastIndex = currentPage * usersPerPage
-  const firstIndex = lastIndex - usersPerPage
-  const current = filteredUsers.slice(firstIndex, lastIndex)
-  const total = Math.ceil(filteredUsers.length/usersPerPage)
-  
+  const pagesVisited = pageNumber * usersPerPage
 
-  const paginate = pageNumber => setCurrentPage(pageNumber)
-  const nextPage = () => {
-    setCurrentPage(prev=>{
-      if(prev < total){
-        return prev +1
-      }
-      return prev
-    })
+  const displayUsers = filteredUsers.slice(pagesVisited, pagesVisited + usersPerPage)
+  const pageCount = Math.ceil(filteredUsers.length/usersPerPage)
+
+  const changePage = ({selected}) =>{
+    setPageNumber(selected)
   }
-  const prevPage = () => {
-    setCurrentPage(prev=> {
-      if(prev > 1){
-        return prev - 1
-      }
-      return prev
-    })
-  }
+ 
+  
 
   useEffect(() => {
     dispatch(getUsers());
@@ -54,12 +45,18 @@ function Members() {
 
   useEffect(()=>{
     searchUsers()
-    setCurrentPage(1)
+    setPageNumber(0)
   },[inputValue])
+
+
+  //Getting date from users
 
   const getDate = (sec) =>{
    return dateToLocalFormat(new Date(sec), 'd.m.Y')
   }
+
+
+  //Searching users by name
 
   const searchUsers = () =>{
 
@@ -77,6 +74,7 @@ function Members() {
     }
     setFilteredUsers(searchedUsers)
   }
+
 
   return (
     <div className="members-container">
@@ -96,7 +94,7 @@ function Members() {
         </div>
 
         {
-          current.map(item=>(
+          displayUsers.map(item=>(
             
             <div className="users-container" key={item.id}>
 
@@ -137,14 +135,18 @@ function Members() {
 
           ))
         }
-
-       <Pagination 
-          usersPerPage={usersPerPage}
-          total={filteredUsers.length}
-          paginate={paginate}
-          nextPage={nextPage}
-          prevPage={prevPage}
-       />
+        <ReactPaginate
+          previousLabel={'<'}
+          nextLabel={'>'}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={'paginationBttns'}
+          previousLinkClassName={'previusBttn'}
+          nextLinkClassName={'nextBttn'}
+          disabledClassName={'paginationDisabled'}
+          activeClassName={'paginationActive'}
+        />
+       
       
         
       </div>
