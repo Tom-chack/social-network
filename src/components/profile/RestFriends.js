@@ -4,7 +4,7 @@ import { Image } from "antd";
 import api from "../../helpers/api";
 
 export default function RestFriends () {
-    const { user } = useSelector((state) => state.userDuck);
+    const { profile } = useSelector((state) => state.userDuck);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function RestFriends () {
     
       let arrayOfFriends = [];
       users?.map((item) => {
-        if (item.id === user.id) {
+        if (item.id === profile.id) {
           return arrayOfFriends.push(item.friends);
         }
       });

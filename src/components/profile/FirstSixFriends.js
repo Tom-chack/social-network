@@ -4,7 +4,7 @@ import { Input, Image } from "antd";
 import api from "../../helpers/api";
 
 function FirstSixFriends () {
-  const { user } = useSelector((state) => state.userDuck);
+  const { profile } = useSelector((state) => state.userDuck);
   const [users, setUsers] = useState([]);
   const [value, setValue] = useState("");
   
@@ -16,7 +16,7 @@ function FirstSixFriends () {
 
   let arrayOfFriends = [];
   users?.map((item) => {
-    if (item.id === user.id) {
+    if (item.id === profile.id) {
       return arrayOfFriends.push(item.friends);
     }
   });
