@@ -22,6 +22,12 @@
   margin: 16px 0 16px 24px;
 }
 
+/* Menu */
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected, 
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: #1890ff;
+}
+
 /* Login / Registration Pages */
 .login-page,
 .register-page{
