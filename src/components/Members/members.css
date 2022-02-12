@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .widgets-content{
@@ -45,7 +46,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #bebebe;
-    margin-top: 30px;
+    margin: 30px 0;
 }
 
 .background-part{
@@ -104,4 +105,45 @@
 
 .info-part div a :hover{
     color: #1890ff
+}
+
+.ant-image-mask{
+    border-radius: 50%;
+}
+
+.pagination{
+    display: flex;
+    list-style: none;
+}
+
+.page-item{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #bebebe;
+    border-radius: 3px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.page-link{
+    cursor: pointer;
+    color: black;
+}
+
+.page-link :active{
+    border:1px solid #1890ff;
+    color: #1890ff;
+}
+
+.page-link :hover{
+    border: 1px solid #1890ff;
+    color: #1890ff;
+}
+
+.page-item-active{
+    color: #1890ff;
+    border: 1px solid #1890ff;
 }
