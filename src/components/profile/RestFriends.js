@@ -44,9 +44,7 @@ export default function RestFriends () {
                   </div>
                   <div className="username">
                     <a
-                      href={`http://localhost:3000/profile/${el.id}`}
-                      target="_blank"
-                      rel="noreferrer"
+                      href={`/profile/${el.id}`}
                       style={{color: "gray"}}
                     >
                       {el.name}

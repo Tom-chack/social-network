@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from "react";
+import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { Input, Image } from "antd";
 import api from "../../helpers/api";
@@ -59,14 +60,12 @@ function FirstSixFriends () {
                     />
                   </div>
                   <div className="username">
-                    <a
-                      href={`http://localhost:3000/profile/${el.id}`}
-                      target="_blank"
-                      rel="noreferrer"
+                    <Link
+                      to={`/profile/${el.id}`}
                       style={{color: "gray"}}
                     >
                       {el.name}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ) : (
