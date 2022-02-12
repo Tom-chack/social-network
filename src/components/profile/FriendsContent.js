@@ -1,39 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Input } from "antd";
-import api from "../../helpers/api";
-import { useSelector } from "react-redux";
+import React, { useState} from "react";
+import FirstSixFriends from "./FirstSixFriends";
 
 function FriendsContent() {
-  const { user } = useSelector((state) => state.userDuck);
-  const [users, setUsers] = useState([]);
-  const [value, setValue] = useState ("");
+  const [btnShown, setBtnShown] = useState(false)
 
-  useEffect(() => {
-    fetch(`${api}/users`)
-      .then((res) => res.json())
-      .then((res) => setUsers(res));
-  }, []);
-
-  const handleInput = (e) => {
-    setValue(e.target.value);
+  const handleBtn = () => {
+    setBtnShown(!btnShown)
   }
-  let arrayOfFriends = [];
-  users?.map(item => {
-    if(item.id === user.id){
-      return arrayOfFriends.push(item.friends);
-    }
-  })
 
-  arrayOfFriends = arrayOfFriends.flat();
-  
   return (
     <>
-      <div className="search-bar-container">
-        <h2>Friends {arrayOfFriends.length}</h2>
-        <Input className="search-box" value={value} type="text" onChange={handleInput} placeholder="Search" />
-      </div>
-      <div className="friends-list-container">
-          {arrayOfFriends.map(item => {
+      <FirstSixFriends />
+        {/* <div className="friends-list-container">
+        {btnShown ? <div className="friends-list-container">
+        {arrayOfFriends.map((item, index) => {
+          if (index >= 6) {
             return users?.map((el) => {
               return el.id === item ? (
                 <div className="friends-list-avatars" key={el.id}>
@@ -56,10 +37,12 @@ function FriendsContent() {
               ) : (
                 ""
               );
-            })
-          })};
-      </div>
-    </> 
+            });
+          }
+        })}
+      </div> : <button key= "btn" style={{margin:"0 10px"}} onClick={handleBtn} >Load more </button> }
+      </div> */}
+    </>
   );
 }
 
