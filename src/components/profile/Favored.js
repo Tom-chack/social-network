@@ -78,7 +78,7 @@ function Favored() {
               </>}
               avatar={<Avatar src={posts.image} />}
               description={<>
-                `Posted ${getDate(post.date)}`
+                Posted {getDate(post.date)}
                 <p>{showMore ? post.content : `${post.content.substring(0, 50)}`}
                   <Button type='link' className="btn" onClick={() => setShowMore(!showMore)} >
                     {showMore ? "[Read less]" : "[Read more]"}
