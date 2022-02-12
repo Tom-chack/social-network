@@ -13,7 +13,7 @@ import 'antd/dist/antd.css';
 
 
 function About() {
-  const { user } = useSelector((state) => state.userDuck)
+  const { profile } = useSelector((state) => state.userDuck)
 
   return (
     <>
@@ -22,7 +22,7 @@ function About() {
           <h2>About Me</h2>
           <Col span={24}> 
           {
-            user.about
+            profile.about
           }
           </Col>
         </Row>
@@ -31,46 +31,46 @@ function About() {
           <Col span={24}>
                 <>
                   <div >
-                    {user.fb ? <>
+                    {profile.fb ? <>
                               <img className="icons" src={fb}/> 
-                              <a className="social-network-links" href={user.fb} target="_blank" rel="noreferrer">{user.fb}</a>
+                              <a className="social-network-links" href={profile.fb} target="_blank" rel="noreferrer">{profile.fb}</a>
                             </> : ""
                     } 
                   </div>
                   <div> 
                     {
-                      user.tw ?
+                      profile.tw ?
                       <><img className="icons" src={twit}/> 
-                      <a className="social-network-links" href={user.tw} target="_blank" rel="noreferrer">{user.tw}</a>
+                      <a className="social-network-links" href={profile.tw} target="_blank" rel="noreferrer">{profile.tw}</a>
                       </> : ""
                     }
                     
                   </div>
                   <div>
                     {
-                      user.lin ? <><img className="icons" src={lin}/> 
-                                    <a className="social-network-links" href={user.lin} target="_blank" rel="noreferrer">{user.lin}</a>
+                      profile.lin ? <><img className="icons" src={lin}/> 
+                                    <a className="social-network-links" href={profile.lin} target="_blank" rel="noreferrer">{profile.lin}</a>
                                   </> : ""
                     }
                   </div>
                   <div>
                     {
-                      user.git ?  <> <img className="icons" src={git}/> 
-                                      <a className="social-network-links" href={user.git} target="_blank" rel="noreferrer">{user.git}</a>
+                      profile.git ?  <> <img className="icons" src={git}/> 
+                                      <a className="social-network-links" href={profile.git} target="_blank" rel="noreferrer">{profile.git}</a>
                                   </> : ""
                     }
                   </div>
                   <div>
                     {
-                      user. vib ? <><img className="icons" src={viber}/> 
-                                    <a className="social-network-links" href={user.vib} target="_blank" rel="noreferrer">{user.vib}</a>
+                      profile. vib ? <><img className="icons" src={viber}/> 
+                                    <a className="social-network-links" href={profile.vib} target="_blank" rel="noreferrer">{profile.vib}</a>
                                   </>: ""
                     }
                   </div>
                   <div>
                     {
-                      user.wapp ? <><img className="icons" src={whap}/> 
-                                    <a className="social-network-links" href={user.wapp} target="_blank" rel="noreferrer">{user.wapp}</a>
+                      profile.wapp ? <><img className="icons" src={whap}/> 
+                                    <a className="social-network-links" href={profile.wapp} target="_blank" rel="noreferrer">{profile.wapp}</a>
                                   </> : ""
                     }
                   </div>
