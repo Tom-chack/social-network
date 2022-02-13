@@ -5,7 +5,7 @@ const post=[
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non consectetur a erat nam at lectus.",
     "userid": 1,
     "image": "https://avatars.githubusercontent.com/u/28024000?v=4",
-    "likes": 0,
+    "likes": 50,
     "date": 1519211809934
   },
   {
@@ -15,6 +15,22 @@ const post=[
     "image": "https://avatars.githubusercontent.com/u/7843281?v=4",
     "likes": 0,
     "date": 1519213809934
+  },
+  {
+    "id": 3,
+    "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "userid": 1,
+    "image": "https://avatars.githubusercontent.com/u/7843281?v=4",
+    "likes": 10,
+    "date": 1519233809994
+  },
+  {
+    "id": 4,
+    "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "userid": 1,
+    "image": "https://avatars.githubusercontent.com/u/7843281?v=4",
+    "likes": 5,
+    "date": 1519213709934
   }
 
 ]
