@@ -8,10 +8,15 @@ function Structure() {
   return (
     <Layout className='layout'>
       <Header>
-        <div className='logo' />
-        <Menus />
+        <div className='headLeft'>
+          <span className='xLogo'>
+            <span style={{ color: "#b5dbf2" }}>REACT</span> / FUNS
+          </span>
+        </div>
+        <div className='headRight'>
+          <Menus />
+        </div>
       </Header>
-
       <Content style={{ padding: "0 50px", margin: "0 auto" }}>
         <div className='site-layout-content'>
           <Outlet />
