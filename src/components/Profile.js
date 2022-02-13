@@ -59,7 +59,7 @@ function Profile() {
 
   //Create user avatar component
   const Avatar = () => {
-    return <Image width={200} src={profile.avatar} alt='Sara' />;
+    return <Image width={200} src={profile.avatar} alt={profile.name || profile.username} />;
   };
 
   return (
@@ -67,7 +67,7 @@ function Profile() {
       <div className='profile-head' style={{ backgroundImage: `url(${profile.cover})` }}></div>
       <div className='profile-panel'>
         <div className='profile-panel-left'>
-          <Avatar className='profile-avatar' alt='Sara' />
+          <Avatar className='profile-avatar' />
         </div>
         <div className='profile-panel-center'>
           <div>
