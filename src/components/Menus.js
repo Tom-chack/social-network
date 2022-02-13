@@ -1,30 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Menu } from "antd";
 import { menus } from "../helpers/menus";
+import { userLogout } from "../redux/ducks/userDuck";
 
 function Menus() {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname);
 
+  const dispatch = useDispatch();
+  const { loggedIn } = useSelector((state) => state.userDuck);
+
   useEffect(() => {
     setCurrentPath(location.pathname);
   }, [currentPath, location]);
 
-  const { user } = useSelector((state) => state.userDuck);
+  const handleMenu = (e) => {
+    if (e.key === "logout") {
+      dispatch(userLogout());
+      window.location.assign("/login");
+    }
+  };
 
-  console.log(currentPath);
+  const trim = (path) => {
+    return path.replace(/^\//, "");
+  };
 
   return (
-    <Menu theme='dark' mode='horizontal' defaultSelectedKeys={[currentPath]}>
-      {menus.map((menu) => (
-        <Menu.Item key={menu.path}>
-          <Link to={menu.path}>
-            <span>{menu.label}</span>
-          </Link>
-        </Menu.Item>
-      ))}
+    <Menu theme='dark' mode='horizontal' defaultSelectedKeys={[trim(currentPath)]}>
+      {menus
+        .filter((menu) => menu.login === loggedIn || menu.logout === !loggedIn)
+        .map((menu) => (
+          <Menu.Item key={trim(menu.path)} onClick={(e) => handleMenu(e)}>
+            {menu.label === "Logout" ? (
+              <span>{menu.label}</span>
+            ) : (
+              <Link to={menu.path}>
+                <span>{menu.label}</span>
+              </Link>
+            )}
+          </Menu.Item>
+        ))}
     </Menu>
   );
 }

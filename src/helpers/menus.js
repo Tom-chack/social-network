@@ -1,8 +1,8 @@
 export const menus = [
-  { label: "Home", path: "/" },
-  { label: "Members", path: "/members" },
-  { label: "Profile", path: "/profile" },
-  { label: "Login", path: "/login" },
-  { label: "Register", path: "/register" },
-  { label: "Logout", path: "/logout" },
+  { label: "Home", path: "/", login: true, logout: true },
+  { label: "Members", path: "/members", login: true, logout: true },
+  { label: "Profile", path: "/profile", login: true, logout: true },
+  { label: "Login", path: "/login", login: false, logout: true },
+  { label: "Register", path: "/register", login: false, logout: true },
+  { label: "Logout", path: "/logout", login: true, logout: false },
 ];

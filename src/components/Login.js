@@ -8,7 +8,7 @@ import { Form, Input, Button, Checkbox, Row, Col, Divider, Typography } from "an
 const { Title } = Typography;
 
 function Login() {
-  //Using navigate to redirect to home page after successfuly login
+  //Using navigate to redirect to home page after successfully login
   const navigate = useNavigate();
 
   //Local state to handle login result messages
