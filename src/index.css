@@ -165,9 +165,6 @@ margin-bottom: 5px;
   background-color: #78b0f1; 
   color: rgb(173, 211, 211);
 }
-::placeholder{
-  color: rgb(165, 182, 238);
-}
 .likeCount{
   position: absolute;
   top: 30%;
