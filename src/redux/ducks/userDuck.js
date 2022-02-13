@@ -37,6 +37,7 @@ const userDuck = (state = initialState, { type, payload }) => {
         users: payload,
       };
     case USER_INIT:
+      // eslint-disable-next-line no-case-declarations
       const currentUser = JSON.parse(localStorage.getItem("_user")) || {};
       return {
         ...state,
