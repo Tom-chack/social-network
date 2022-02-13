@@ -19,7 +19,7 @@ function ActivityCard({date,image,id,content,likes}) {
                                  UserName{id}
                              </h3>
                              <h6 className="date">
-                                 Posted an update <Time date={date}/>minutes ago
+                                 Posted an update <Time date={date}/>
                              </h6>
                          </div>     
                  </div>

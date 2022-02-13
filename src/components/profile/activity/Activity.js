@@ -6,7 +6,7 @@ const post=[
     "userid": 1,
     "image": "https://avatars.githubusercontent.com/u/28024000?v=4",
     "likes": 50,
-    "date": 1519211809934
+    "date": 1644778517168
   },
   {
     "id": 2,
