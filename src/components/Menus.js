@@ -10,7 +10,7 @@ function Menus() {
   const [currentPath, setCurrentPath] = useState(location.pathname);
 
   const dispatch = useDispatch();
-  const { loggedIn } = useSelector((state) => state.userDuck);
+  const { loggedIn, user } = useSelector((state) => state.userDuck);
 
   useEffect(() => {
     setCurrentPath(location.pathname);
@@ -35,6 +35,10 @@ function Menus() {
           <Menu.Item key={trim(menu.path)} onClick={(e) => handleMenu(e)}>
             {menu.label === "Logout" ? (
               <span>{menu.label}</span>
+            ) : menu.label === "Profile" ? (
+              <Link to={menu.path + "/" + user.id}>
+                <span>{menu.label}</span>
+              </Link>
             ) : (
               <Link to={menu.path}>
                 <span>{menu.label}</span>
