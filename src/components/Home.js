@@ -1,12 +1,60 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import getPosts from "../services/getPosts";
+import { Row, Col, Card, Radio } from "antd";
+
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo("en-US");
 
 function Home() {
-  const { user } = useSelector((state) => state.userDuck);
+  //Redux functions
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.postDuck);
+
+  //Local states
+  const [filter, setFilter] = useState("?_sort=date&_order=desc");
+
+  //Fetch user object by profile user id
+  useEffect(() => {
+    dispatch(getPosts(filter));
+  }, [dispatch, filter]);
+
   return (
     <div className='home'>
-      <h1>Home</h1>
-      {user.id && <div>Current User: {user.username}</div>}
+      <Row>
+        <Col flex='1 1 200px' style={{ padding: "20px" }}>
+          <Card style={{ backgroundColor: "#fafafa" }}>
+            <Row>
+              <Col flex={5}>
+                <h2 style={{ margin: 0 }}>News Feed</h2>
+              </Col>
+              <Col flex={1} align='right'>
+                <Radio.Group
+                  defaultValue={filter}
+                  buttonStyle='solid'
+                  size='middle'
+                  onChange={(e) => setFilter(e.target.value)}
+                >
+                  <Radio.Button value='?_sort=date&_order=desc'>Recent</Radio.Button>
+                  <Radio.Button value='?_sort=likes&_order=desc'>Popular</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=asc'>Media</Radio.Button>
+                </Radio.Group>
+              </Col>
+            </Row>
+          </Card>
+          {posts.map((post) => (
+            <Card style={{ backgroundColor: "#fafafa", marginTop: "20px" }}>
+              Date: {timeAgo.format(post.date)} / Likes: {post.likes}
+            </Card>
+          ))}
+        </Col>
+        <Col flex='0 1 300px' style={{ padding: "20px 20px 0 0" }}>
+          <Card style={{ backgroundColor: "#fafafa" }}>www</Card>
+        </Col>
+      </Row>
     </div>
   );
 }
