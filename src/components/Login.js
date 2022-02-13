@@ -28,7 +28,7 @@ function Login() {
     if (loggedIn) {
       setFormMessage("Login Succeed...");
       setTimeout(() => {
-        navigate("/", { replace: true });
+        window.location.assign("/");
       }, 1000);
     } else {
       setFormMessage(errorsUser);
