@@ -46,7 +46,7 @@ function Home() {
             </Row>
           </Card>
           {posts.map((post) => (
-            <Card style={{ backgroundColor: "#fafafa", marginTop: "20px" }}>
+            <Card key={post.id} style={{ backgroundColor: "#fafafa", marginTop: "20px" }}>
               Date: {timeAgo.format(post.date)} / Likes: {post.likes}
             </Card>
           ))}
