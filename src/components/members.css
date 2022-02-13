@@ -1,3 +1,5 @@
+/* Users cards styles */
+
 .members-container{
     width: 100%;
     display: flex;
@@ -11,9 +13,6 @@
     padding-bottom: 30px;
 }
 
-.widgets-content{
-    width: 35%;
-}
 
 .search-container{
     width: 90%;
@@ -112,11 +111,14 @@
 }
 
 
+/* Pagination styles */
+
 .paginationBttns {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
     
   }
 
@@ -151,3 +153,56 @@
     border: 1px solid #bebebe;
     pointer-events: none;
   }
+
+  /* Widgets styles */
+
+  .widgets-content{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+  .post-widget-content{
+      width: 80%;
+      height: 50vh;
+      border: 1px solid #bebebe;
+      margin: 30px;
+  }
+  
+  .header-div{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center
+  }
+
+  .header-content{
+      width: 90%;
+      height: 100%;
+      border-bottom: 1px solid #bebebe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+  }
+
+  .header-content span{
+      color: grey;
+      font-size: large;
+  }
+
+
+
+
+
+
+
+
+
+  .photo-widget-content{
+    width: 80%;
+    height: 50vh;
+    border: 1px solid #bebebe;
+    margin: 20px;
+}
