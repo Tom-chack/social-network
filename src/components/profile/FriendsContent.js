@@ -81,7 +81,6 @@ function FriendsContent() {
               </div>
             );
           })}
-        ;
       </div>
       {!btnShown ? (
         <Button
