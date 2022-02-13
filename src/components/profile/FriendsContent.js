@@ -46,7 +46,7 @@ function FriendsContent() {
           placeholder="Search"
         />
       </div>
-      <div className="friends-list-container">
+      <div className="friends-list-container" key="container">
         {filteredFriends
           .slice(0, loadFriends)
           .filter((item) => {
@@ -58,29 +58,27 @@ function FriendsContent() {
           })
           .map((item) => {
             return (
-              <>
-                <div className="friends-list-avatars" key={item.id}>
-                  <div>
-                    <Image
-                      className="cover"
-                      src={item.cover}
-                      alt="cover pic can't be uploaded"
-                    />
-                  </div>
-                  <div>
-                    <Image
-                      className="avatar"
-                      src={item.avatar}
-                      alt="user pic can't be uploaded"
-                    />
-                  </div>
-                  <div className="username">
-                    <Link to={`/profile/${item.id}`} style={{ color: "gray" }}>
-                      {item.name}
-                    </Link>
-                  </div>
+              <div key={item.id} className="friends-list-avatars">
+                <div>
+                  <Image
+                    className="cover"
+                    src={item.cover}
+                    alt="cover pic can't be uploaded"
+                  />
                 </div>
-              </>
+                <div>
+                  <Image
+                    className="avatar"
+                    src={item.avatar}
+                    alt="user pic can't be uploaded"
+                  />
+                </div>
+                <div className="username">
+                  <Link to={`/profile/${item.id}`} style={{ color: "gray" }}>
+                    {item.name}
+                  </Link>
+                </div>
+              </div>
             );
           })}
         ;
