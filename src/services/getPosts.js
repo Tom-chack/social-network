@@ -6,14 +6,25 @@ const getPosts =
   async (dispatch) => {
     try {
       // Get posts filtered by query
-      const postRes = await fetch(`${api}/posts${query}`);
-      const postData = await postRes.json();
+      let postRes = await fetch(`${api}/posts${query}`);
+      let postData = await postRes.json();
 
       // Get post user, image and comments
       for (let i = 0; i < postData.length; i++) {
         if (user) postData[i].user = await getUser(postData[i], dispatch);
         if (images) postData[i].image = await getImage(postData[i], dispatch);
         if (comments) postData[i].comments = await getComments(postData[i], dispatch);
+      }
+
+      //Favored posts by user id .....................................
+      if (query) {
+        const urlSearchParams = new URLSearchParams(query);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        if ("favoredby" in params) {
+          let likes = await getLikes(params.favoredby);
+          let likedPosts = likes.map((like) => like.postid);
+          postData = postData.filter((post) => likedPosts.includes(post.id));
+        }
       }
 
       // Add posts to store state ....................................
@@ -58,6 +69,20 @@ async function getComments(post, dispatch) {
       let commentRes = await fetch(`${api}/comments?postid=${post.id}`);
       let commentData = await commentRes.json();
       return commentData;
+    } catch (e) {
+      dispatch(postError(e.message));
+    }
+  }
+  return "";
+}
+
+//Function to fetch likes by userid
+async function getLikes(userid, dispatch) {
+  if (userid) {
+    try {
+      let likeRes = await fetch(`${api}/likes?userid=${userid}`);
+      let likeData = await likeRes.json();
+      return likeData;
     } catch (e) {
       dispatch(postError(e.message));
     }
