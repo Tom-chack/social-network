@@ -112,8 +112,7 @@
   margin-top: 30px;
 }
 .activityCard{
-border: 1px solid rgb(183, 181, 185);
-border-radius: 5px;
+border-bottom: 1px solid rgb(183, 181, 185);
 width: 700px;
 margin-bottom: 5px;
 }
@@ -134,10 +133,6 @@ margin-bottom: 5px;
 .avatarUserName {
    display: flex;
    flex-direction: row;
-}
-.userName h3{
-  color: rgb(2, 2, 12);
-  text-shadow: 0 0 3px #1b49e2;
 }
 .updateButton {
   display: flex;
