@@ -5,7 +5,6 @@ const getProfile = (id) => (dispatch) => {
   fetch(`${api}/users/${id}`)
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
       dispatch(profileInit(res));
     })
     .catch((err) => {

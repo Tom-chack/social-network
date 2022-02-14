@@ -24,9 +24,8 @@ function Register() {
 
   //Handle registration form submission, if registration successes, shows success message and redirects, otherwise shows error message from redux errorsUser
   useEffect(() => {
-    console.log(errorsUser, signedUp);
     if (signedUp) {
-      setFormMessage("You have successfuly registered...");
+      setFormMessage("You have successfully registered...");
       setTimeout(() => {
         navigate("/login", { replace: true });
       }, 1000);
