@@ -1,0 +1,58 @@
+.post .ant-card-body{
+    padding: 14px 20px 10px 20px;
+}
+.post-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #eaeaea;
+}
+.post-head .post-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.post-head .post-user img{
+    border-radius: 50%;
+    margin-bottom: -10px;
+    padding: 5px;
+    background-color: #fff;
+}
+.post-head .post-user .ant-image-mask {
+    margin-bottom: -5px;
+    border-radius: 50%;
+    height: 48px;
+}
+.post-head .post-user .post-user-info{
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 12px;
+    padding-bottom: 4px;
+}
+.post-date{
+    font-size:13px;
+    padding-bottom: 6px;
+    text-align: right;
+}
+.post-body{
+    padding: 17px 5px 18px 5px;
+    font-size:14px;
+}
+.post-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    border-top: 1px solid #eaeaea;
+    padding-top: 10px;
+}
+.post-foot .post-likes{
+    display: inline-block;
+    padding: 0 8px;
+}
+.post-foot .post-comments{
+    display: inline-block;
+    padding: 0 8px;
+}

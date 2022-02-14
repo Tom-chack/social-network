@@ -3,11 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import getPosts from "../services/getPosts";
 import { Row, Col, Card, Radio } from "antd";
-
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
-TimeAgo.addDefaultLocale(en);
-const timeAgo = new TimeAgo("en-US");
+import Post from "./Post/Post";
 
 function Home() {
   //Redux functions
@@ -46,8 +42,12 @@ function Home() {
             </Row>
           </Card>
           {posts.map((post) => (
-            <Card key={post.id} style={{ backgroundColor: "#fafafa", marginTop: "20px" }}>
-              Date: {timeAgo.format(post.date)} / Likes: {post.likes}
+            <Card
+              key={post.id}
+              className='post'
+              style={{ backgroundColor: "#fafafa", marginTop: "20px" }}
+            >
+              <Post post={post} />
             </Card>
           ))}
         </Col>
