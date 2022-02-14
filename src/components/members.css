@@ -94,6 +94,7 @@
     padding: 20px;
     width: 80%;
     height: 70%;
+    z-index: 1;
 }
 
 .info-part div a {
@@ -209,12 +210,26 @@
 
   .post-avatar{
       width: 50px;
-      height: 50px;
-      padding: 5px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      
+  }
+
+  .post-avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 
   .post-element a {
       color: black;
+  }
+
+  .post-content{
+      width: 80%;
+      margin: 0 10px;
   }
 
 

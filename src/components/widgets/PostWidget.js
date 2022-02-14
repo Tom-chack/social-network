@@ -1,6 +1,5 @@
 import getPosts from '../../services/getPosts'
-import getUsers from '../../services/getUsers';
-import { useState,useEffect } from "react";
+import {useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 
@@ -9,16 +8,15 @@ const PostWidget = () =>{
   
 const dispatch = useDispatch();
 const { posts } = useSelector((state) => state.postDuck);
-const { users } = useSelector((state) => state.userDuck);
 
 
 useEffect(() => {
     
-    dispatch(getPosts("?_sort=likes&_order=desc&_star=1&_end=5"));
+    dispatch(getPosts("?_sort=likes&_order=desc&_star=1&_end=5", true, true, false));
     
   }, [dispatch]);
   
-
+console.log(posts)
 
 
 
@@ -42,7 +40,9 @@ useEffect(() => {
 
                         <div className='post-avatar'>
 
-                            <img src={''} alt={''}/>
+                            <Link to={`/profile/${post.user.id}`}>
+                                <img src={post.user.avatar} alt={'avatar'}/>
+                            </Link>
 
                         </div>
 
