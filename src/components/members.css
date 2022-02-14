@@ -165,14 +165,14 @@
 }
   .post-widget-content{
       width: 80%;
-      height: 50vh;
+      height: 54vh;
       border: 1px solid #bebebe;
       margin: 30px;
   }
   
   .header-div{
     width: 100%;
-    height: 50px;
+    height: 9vh;
     display: flex;
     justify-content: center
   }
@@ -184,6 +184,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
 
   }
 
@@ -192,8 +193,29 @@
       font-size: large;
   }
 
+  .post-element{
+      width: 100%;
+      height: 9vh;
+      display: flex;
+      border-bottom: 1px solid #bebebe;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
 
+  .post-element:last-child{
+      border: none;
+  }
 
+  .post-avatar{
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+  }
+
+  .post-element a {
+      color: black;
+  }
 
 
 
