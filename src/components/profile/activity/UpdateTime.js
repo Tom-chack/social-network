@@ -22,7 +22,7 @@ export default function Time () {
           console.log(date,Date.now())
         const seconds = Math.floor((Date.now() - date) / 1000);
         const interval = intervals.find(i => i.seconds < seconds);
-        console.log(interval)
+       // console.log(interval)
         const count = Math.floor(seconds / interval.seconds);
         console.log(`${count} ${interval.label}${count !== 1 ? 's' : ''} ago`)
         return(`${count} ${interval.label}${count !== 1 ? 's' : ''} ago`) ;
