@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../services/getPosts";
-import { dateToLocalFormat } from 'date-format-ms';
 import { Card, Avatar } from "antd";
 import { Pagination } from 'antd';
-import { Select } from 'antd';
 import { Icon } from '@iconify/react';
 import { Button } from "antd";
+import { Row, Col, Radio } from "antd";
 
-const { Option } = Select;
+
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo("en-US");
+
+
 const { Meta } = Card;
 
-function onChange(value) {
-  console.log(`selected ${value}`);
-}
-
-function onSearch(val) {
-  console.log('search:', val);
-}
-
-
-function getDate(sec) {
-  return dateToLocalFormat(new Date(sec), 'd.m.Y')
-}
 
 function Favored() {
 
@@ -30,56 +23,65 @@ function Favored() {
   const { profile } = useSelector((state) => state.userDuck);
   const { posts } = useSelector((state) => state.postDuck);
 
+  //Local states
   const [showMore, setShowMore] = useState(false);
+  const [filter, setFilter] = useState('?_sort=date&_order=desc');
+const [page, setPage] = useState(1);
+const [postPerPage, setPostPerPage] = useState(5);
+
+const indexofLastPage = page + postPerPage;
+const indexofFirstPage = indexofLastPage - postPerPage;
+const currentPosts = posts.slice(indexofFirstPage, indexofLastPage);
+
+  //Fetch user object by profile user id
+  useEffect(() => {
+    dispatch(getPosts(filter));
+  }, [dispatch, filter]);
 
   useEffect(() => {
     if (profile.id) {
-      dispatch(getPosts('?userid=' + profile.id));
+      dispatch(getPosts('?favoredby=' + profile.id));
     }
   }, [dispatch, profile]);
-
+  
   return (
     <div>
-      <Pagination defaultCurrent={1} total={50} style={{ display: 'inline-block' }}
+      <Row>
+      <Col flex={5} style={{ margin: 0 }}>
+      <Pagination total={posts.length} current={page} pageSize={postPerPage} onChange={(value) => setPage(value)} defaultCurrent={1} style={{ display: 'inline-block' }}
       />
-      <Select style={{ display: 'inline-block', float: 'right' }}
-        showSearch
-        placeholder="Sort by"
-        optionFilterProp="children"
-        onChange={onChange}
-        onSearch={onSearch}
-        filterOption={(input, option) =>
-          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-        }
-      >
-        <Option value="newest">Newest</Option>
-        <Option value="oldest">Oldest</Option>
-        <Option value="top">Top rated</Option>
-      </Select>
+      </Col>
+      <Col flex={1} align='right'>
+        <Radio.Group
+          defaultValue={filter}
+          size='middle'
+          onChange={(e) => setFilter(e.target.value)}
+        >
+            <Radio.Button value='?_sort=date&_order=desc'>Newest</Radio.Button>
+            <Radio.Button value='?_sort=date&_order=asc'>Oldest</Radio.Button>
+            <Radio.Button value='?_sort=likes&_order=desc'>Top liked</Radio.Button>
+        </Radio.Group>
+      </Col>
+      </Row>
 
-      {posts.map((post) => (
-        <div style={{ margin: '25px 0' }}>
-          <Card key={post.id}
+      
+      {currentPosts.map((post) => (
+        <div key={post.id} style={{ margin: '20px 0' }}>
+          <Card
             hoverable
             style={{ width: '80%', margin: ' 0 auto' }}
-            cover={
-              <img
-                src={post.image}
-                alt={`${profile.username}'s photo here`}
-              />
-            }
           >
             <Meta
               title={<>
-                <span>{profile.username}</span>
+                <span>{post?.user.name}</span>
                 <span style={{ float: 'right' }}>
                   <Icon icon="ant-design:heart-filled" color="pink" inline={true} />
                 </span>
               </>}
-              avatar={<Avatar src={posts.image} />}
+              avatar={<Avatar src={post?.user.avatar} />}
               description={<>
-                Posted {getDate(post.date)}
-                <p>{showMore ? post.content : `${post.content.substring(0, 50)}`}
+                Posted {timeAgo.format(post.date)}
+                <p >{showMore ? post.content : `${post.content.substring(0, 50)}`}
                   <Button type='link' className="btn" onClick={() => setShowMore(!showMore)} >
                     {showMore ? "[Read less]" : "[Read more]"}
                   </Button>
@@ -94,3 +96,5 @@ function Favored() {
 }
 
 export default Favored;
+
+
