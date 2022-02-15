@@ -143,13 +143,14 @@ width: 700px;
 margin-bottom: 5px;
 }
 .likesComments{
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   flex-direction:row;
   font-size:15px;
   font-family:'Times New Roman', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .activityAvatar{
-  width: 70px;
+  width: 50px;
   border-radius:70%;
   margin:10px
 }
@@ -191,22 +192,32 @@ margin-bottom: 5px;
   background-color: #78b0f1; 
   color: rgb(173, 211, 211);
 }
-.likeCount{
-  position: absolute;
-  top: 30%;
-  left:10%;
-}
-.likeHart{
-  position:absolute;
-  top:10px
+.likeHeart{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
 
 }
 .comment{
-  position: absolute;
-  left: 70%;
-  top: 30%;
+ display: flex;
+ flex-direction: row;
+ margin-right: 15px;
+}
+.comment h4{
+  margin-left: 10px;
+}
+.commentBtn{
+  margin-top: 5px;
+}
 @media screen and (max-width: 800px) {
   .headRight{
     min-width:auto;
-  }}
+  }
+}
+.commentCard{
+  border-top: 1px solid rgb(20, 20, 20);
+}
+.postImage{
+ width: 700px;
+ height: 500px;
 }

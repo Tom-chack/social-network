@@ -38,7 +38,7 @@ const getPosts =
 async function getUser(post, dispatch) {
   if (post) {
     try {
-      let userRes = await fetch(`${api}/users?userid=${post.userid}`);
+      let userRes = await fetch(`${api}/users?id=${post.userid}`);
       let userData = await userRes.json();
       return userData[0];
     } catch (e) {

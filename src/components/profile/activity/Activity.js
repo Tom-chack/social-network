@@ -5,27 +5,30 @@ import getPosts from "../../../services/getPosts";
 function Activity() {
   const dispatch=useDispatch();
   const { posts } = useSelector((state) => state.postDuck);
+  const { profile } = useSelector((state) => state.userDuck); 
   console.log(posts)
-  useEffect(()=>{
-      dispatch(getPosts());
-  
-  },[dispatch])
+  useEffect(() => {
+      if (profile.id) {
+        dispatch(getPosts('?userid=' + profile.id));
+      }
+    }, [dispatch, profile]);
   return (
     <div  className="activityMain">
            <div className="updateButton">
-                  <input placeholder="Update your status..." type="text"></input>
+                  <input placeholder="Update your status..." type="text"/>
                   <button>Update</button>
             </div>
             <div >
-                 {posts.map(({id,date,image,content,likes})=>
+                 {posts.map(({user,id,date,content,likes,image})=>
                        <ActivityCard classname="activityCard"
-      
+                        user={user.name}
                         key={id} 
                         date={date} 
-                        image={image} 
+                        avatars={user.avatar} 
                         id={id} 
                         content={content} 
                         likes={likes}
+                        image={image}
                   />)}
             </div>
   </div>

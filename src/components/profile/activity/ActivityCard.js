@@ -2,10 +2,9 @@ import { Image } from "antd";
 import LikeHrart from "./LikeHeart";
 import Comment from "./Comments";
 import Time from "./UpdateTime";
-function ActivityCard({date,image,id,content,likes}) {
+function ActivityCard({user,date,avatars,content,likes,image}) {
     const Avatar = () => {
-    return <Image src={image} className='activityAvatar'  />;
-    
+    return <Image src={avatars} className='activityAvatar'  />;
     };
     return (
         <>
@@ -16,7 +15,7 @@ function ActivityCard({date,image,id,content,likes}) {
                          </div>
                          <div className="userName">
                              <h3> 
-                                 UserName{id}
+                                 {user}
                              </h3>
                              <h6 className="date">
                                  Posted an update <Time date={date}/>
@@ -26,6 +25,7 @@ function ActivityCard({date,image,id,content,likes}) {
            
                  <div className="activityPosts">
                          <h3>{content}</h3>
+                         <img src={image} className="postImage"/>
                  </div>
            
                  <div className="likesComments">
@@ -33,7 +33,6 @@ function ActivityCard({date,image,id,content,likes}) {
                              <LikeHrart likes={likes}/> 
                          
                              <Comment/>
-                             
                          
                  </div>
            
