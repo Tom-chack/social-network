@@ -38,7 +38,8 @@
 }
 .post-body{
     padding: 17px 5px 18px 5px;
-    font-size:14px;
+    font-size:16px;
+    line-height: 23px;
 }
 .post-foot{
     display: flex;
@@ -51,8 +52,21 @@
 .post-foot .post-likes{
     display: inline-block;
     padding: 0 8px;
+    cursor:default;
 }
-.post-foot .post-comments{
+.post-foot .post-comments-button{
     display: inline-block;
     padding: 0 8px;
+}
+.post-comments{
+    margin-top: 11px;
+    border-top: 7px solid #eaeaea;
+    padding-top: 12px;
+    padding-left: 30px;
+    margin-left: 0;
+    padding-right: 10px;
+  }
+.post-foot span,
+.post-foot svg {
+    cursor: pointer;
 }

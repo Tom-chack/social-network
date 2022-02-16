@@ -11,7 +11,7 @@ const getPosts =
 
       // Get post user, image and comments
       for (let i = 0; i < postData.length; i++) {
-        if (user) postData[i].user = await getUser(postData[i], dispatch);
+        if (user) postData[i].user = await getUser(postData[i].userid, dispatch);
         if (images) postData[i].image = await getImage(postData[i], dispatch);
         if (comments) postData[i].comments = await getComments(postData[i], dispatch);
       }
@@ -35,10 +35,10 @@ const getPosts =
   };
 
 //Function to fetch post user by post userid
-async function getUser(post, dispatch) {
-  if (post) {
+async function getUser(userid, dispatch) {
+  if (userid) {
     try {
-      let userRes = await fetch(`${api}/users?id=${post.userid}`);
+      let userRes = await fetch(`${api}/users?id=${userid}`);
       let userData = await userRes.json();
       return userData[0];
     } catch (e) {
@@ -68,6 +68,10 @@ async function getComments(post, dispatch) {
     try {
       let commentRes = await fetch(`${api}/comments?postid=${post.id}`);
       let commentData = await commentRes.json();
+      // Get post user
+      for (let i = 0; i < commentData.length; i++) {
+        commentData[i].user = await getUser(commentData[i].userid, dispatch);
+      }
       return commentData;
     } catch (e) {
       dispatch(postError(e.message));
