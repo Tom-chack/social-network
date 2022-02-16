@@ -1,0 +1,70 @@
+.comment{
+    border-bottom: 1px dashed #ccc;
+    margin-bottom:20px;
+    padding-bottom: 10px;
+}
+.comment .ant-card-body{
+    padding: 14px 20px 10px 20px;
+}
+.comment-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.comment-head .comment-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.comment-head .comment-user .ant-image{
+    margin-right: 10px;
+}
+.comment-head .comment-user img{
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 2px;
+}
+.comment-head .comment-user .ant-image-mask {
+    border-radius: 50%;
+    height: 30px;
+}
+.comment-head .comment-user .comment-user-info{
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+.comment-date{
+    font-size:13px;
+    padding-bottom: 4px;
+    text-align: right;
+    margin-left: 10px;
+}
+.comment-body{
+    padding: 7px 0 7px;
+    font-size: 14px;
+}
+.comment-foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    padding-top: 1px;
+    font-size: 13px;
+}
+.comment svg{
+    font-size: 12px;
+}
+.comment-foot .comment-likes{
+    display: inline-block;
+    padding: 0 8px;
+}
+.comment-foot .comment-comments{
+    display: inline-block;
+    padding: 0 8px;
+}
+.comment-foot span,
+.comment-foot svg {
+    cursor: pointer;
+}

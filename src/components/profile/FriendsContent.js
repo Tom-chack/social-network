@@ -1,4 +1,5 @@
 import { Button, Image, Input } from "antd";
+<<<<<<< HEAD
 import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,6 +12,19 @@ function FriendsContent() {
   const [value, setValue] = useState("");
   const { users } = useSelector((state) => state.userDuck);
   const countToBeLoaded = 6;
+=======
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import getUsers from "../../services/getUsers";
+
+function FriendsContent() {
+  const dispatch = useDispatch();
+  const [btnShown, setBtnShown] = useState(false);
+  const { profile } = useSelector((state) => state.userDuck);
+  const [value, setValue] = useState("");
+  const { users } = useSelector((state) => state.userDuck);
+>>>>>>> main
   const [loadFriends, setLoadFriends] = useState(6);
 
   //fetchings users
@@ -25,6 +39,7 @@ function FriendsContent() {
 
   filteredFriends = filteredFriends.flat();
 
+<<<<<<< HEAD
   if (value !== ""){
     filteredFriends = filteredFriends
     .filter((item) => {
@@ -60,18 +75,50 @@ function FriendsContent() {
 
   return (
     <div className="card-container">
+=======
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
+
+  //loading more friends when clicking to show more button
+  const handleBtn = () => {
+    setLoadFriends(filteredFriends.length);
+    setBtnShown(!btnShown);
+  };
+
+  return (
+    <>
+>>>>>>> main
       <div className="search-bar-container">
         <h2>Friends {profile.friends.length}</h2>
         <Input
           className="search-box"
+<<<<<<< HEAD
           type="text"
           onChange={debouncedResults}
+=======
+          value={value}
+          type="text"
+          onChange={handleInput}
+>>>>>>> main
           placeholder="Search"
         />
       </div>
       <div className="friends-list-container" key="container">
+<<<<<<< HEAD
         {value && filteredFriends.length === 0 ? <span>No members found ...</span> : filteredFriends
           .slice(0, loadFriends)
+=======
+        {filteredFriends
+          .slice(0, loadFriends)
+          .filter((item) => {
+            if (value === "") {
+              return item;
+            } else if (item.name.toLowerCase().includes(value.toLowerCase())) {
+              return item;
+            }
+          })
+>>>>>>> main
           .map((item) => {
             return (
               <div key={item.id} className="friends-list-avatars">
@@ -98,9 +145,15 @@ function FriendsContent() {
             );
           })}
       </div>
+<<<<<<< HEAD
       {loadFriends <= filteredFriends.length ? (
         <Button
           className={value ? "hidden" : "show-more"}
+=======
+      {!btnShown ? (
+        <Button
+          className="show-more"
+>>>>>>> main
           key="btn"
           style={{ margin: "0 10px" }}
           onClick={handleBtn}
@@ -110,7 +163,11 @@ function FriendsContent() {
       ) : (
         ""
       )}
+<<<<<<< HEAD
     </div>
+=======
+    </>
+>>>>>>> main
   );
 }
 
