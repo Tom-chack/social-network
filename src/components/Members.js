@@ -13,12 +13,11 @@ import PhotoWidget from './widgets/PhotoWidget.js'
 
 function Members() {
 
-  //Getting users 
+  //Users 
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.userDuck);
 
 
-  //Users
   const [filteredUsers, setFilteredUsers] = useState([])
   const [inputValue, setInputValue] = useState('')
 
@@ -36,19 +35,22 @@ function Members() {
   }
 
 
-
+//Getting users
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch])
+
 
   useEffect(() => {
     setFilteredUsers(users)
   }, [users])
 
+  
   useEffect(() => {
     searchUsers()
     setPageNumber(0)
   }, [inputValue])
+
 
 
   //Getting date from users
@@ -76,7 +78,24 @@ function Members() {
     }
     setFilteredUsers(searchedUsers)
   }
+ 
 
+  const inpVal = (e) =>{
+    setInputValue(e.target.value)
+  }
+
+
+  const debounce = (fn, ms) =>{
+    let timeout;
+    return function () {
+      const fnCall = () => {fn.apply(this,arguments)}
+
+      clearTimeout(timeout)
+      setTimeout(fnCall, ms)
+    }
+  }
+
+ 
 
   return (
 
@@ -89,7 +108,7 @@ function Members() {
           <span>Members</span>
 
           <input
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={debounce(inpVal, 1000)}
             type={'text'}
             placeholder={'Search . . .'}
           />
@@ -97,7 +116,7 @@ function Members() {
         </div>
 
         {
-          displayUsers.map(item => (
+          displayUsers.length === 0 ? (<span className="not-found">Not Found</span>) : displayUsers.map(item => (
 
             <div className="users-container" key={item.id}>
 
@@ -139,18 +158,21 @@ function Members() {
           ))
         }
 
-        <ReactPaginate
+        {
+          filteredUsers.length <= 5 ? null : <ReactPaginate
 
-          previousLabel={'<'}
-          nextLabel={'>'}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={'paginationBttns'}
-          previousLinkClassName={'previusBttn'}
-          nextLinkClassName={'nextBttn'}
-          disabledClassName={'paginationDisabled'}
-          activeClassName={'paginationActive'}
-        />
+                                                previousLabel={'<'}
+                                                nextLabel={'>'}
+                                                pageCount={pageCount}
+                                                onPageChange={changePage}
+                                                containerClassName={'paginationBttns'}
+                                                previousLinkClassName={'previusBttn'}
+                                                nextLinkClassName={'nextBttn'}
+                                                disabledClassName={'paginationDisabled'}
+                                                activeClassName={'paginationActive'}
+                                        
+                                                />
+        }
 
       </div>
 

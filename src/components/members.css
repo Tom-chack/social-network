@@ -111,6 +111,11 @@
     border-radius: 50%;
 }
 
+.not-found{
+    color: grey;
+    font-size: 30px;
+    margin-top: 20px;
+}
 
 /* Pagination styles */
 
@@ -153,6 +158,10 @@
     color: #bebebe;
     border: 1px solid #bebebe;
     pointer-events: none;
+  }
+
+  .hidePagination{
+      display: none;
   }
 
   /* Widgets styles */
@@ -221,6 +230,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .post-element a {

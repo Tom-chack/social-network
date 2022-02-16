@@ -16,7 +16,7 @@ useEffect(() => {
     
   }, [dispatch]);
   
-console.log(posts)
+
 
 
 
