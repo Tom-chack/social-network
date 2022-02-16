@@ -3,15 +3,12 @@ import { Image } from "antd";
 
 import "./post.css";
 import { HeartOutlined, MessageOutlined } from "@ant-design/icons";
+import Comment from "../Comment/Comment";
 
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
-TimeAgo.addDefaultLocale(en);
-const timeAgo = new TimeAgo("en-US");
+import timeAgo from "../../helpers/timeAgo";
 
 function Post({ post }) {
-  const { user } = post;
-  const { image } = post;
+  const { user, image, comments } = post;
   return (
     <div className='post'>
       <div className='post-head'>
@@ -35,10 +32,19 @@ function Post({ post }) {
         </div>
         <div className='post-right'>
           <MessageOutlined className='post-comment-icon' />
-          <span className='post-comments'>comments</span>
+          <span className='post-comments-button'>comments</span>
           <span className='post-comments-count'>{post.comments.length}</span>
         </div>
       </div>
+      {comments?.length ? (
+        <div className='post-comments'>
+          {comments.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
