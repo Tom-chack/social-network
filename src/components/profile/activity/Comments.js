@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState} from "react";
 import { Image } from "antd";
 import Time from "./UpdateTime";
+import { TiArrowBack } from "react-icons/ti"
 import LikeHeart from "./LikeHeart";
 function Comments({ comment }) {
     const { user } = comment;
-    //console.log("new",comment,user.avatar)
+    //console.log("new",comment,user.avatar).
+    const FileUploader = () => {
+        return (
+          
+           <div className="fileUploader"> <input type="text" /> <button>Reply</button></div>
+          
+        );
+      };
+    const [isClick, setClick] = useState(false);
+        const onReply=()=>{
+        return    setClick(!isClick)
+
+        }
   return (
        <div className='commentContainer'>
             <div  className="commentsHeaderPart">
@@ -32,11 +45,12 @@ function Comments({ comment }) {
          <div className="commentsFooterBtn">
             <LikeHeart likes={comment.likes}/>
             <div className="commentsthreeBtn">
-               <div><span>Reply</span> |</div> 
+               <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
                 <div><span>Report</span> |</div> 
                 <div><span>Delete</span></div>
             </div> 
           </div>
+          {isClick?<FileUploader/>:null}
         </div>
     
   );
