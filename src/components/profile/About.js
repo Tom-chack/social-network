@@ -7,7 +7,7 @@ import lin from "../../images/linkdin.png";
 import twit from "../../images/twitter.png";
 import viber from "../../images/viber.png";
 import whap from "../../images/Whatsapp.png";
-
+import "./About.css"
 import "antd/dist/antd.css";
 
 function About() {
