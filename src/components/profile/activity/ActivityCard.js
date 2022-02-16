@@ -1,9 +1,9 @@
 import { Image } from "antd";
-import LikeHrart from "./LikeHeart";
-import Comment from "./Comments";
+import LikeHeart from "./LikeHeart";
 import Time from "./UpdateTime";
-import CommentsCard from "./CommentsCard";
-function ActivityCard({user,date,avatars,content,likes,image}) {
+import Comments from "./Comments"
+import CommentIcon from "./IconComment";
+function ActivityCard({user,date,avatars,content,likes,image,comments}) {
     const Avatar = () => {
     return <Image src={avatars} className='activityAvatar'  />;
     };
@@ -19,7 +19,7 @@ function ActivityCard({user,date,avatars,content,likes,image}) {
                                  {user}
                              </h3>
                              <h6 className="date">
-                                 Posted an update <Time date={date}/>
+                                 Posted <Time date={date}/>
                              </h6>
                          </div>     
                  </div>
@@ -31,17 +31,19 @@ function ActivityCard({user,date,avatars,content,likes,image}) {
            
                  <div className="likesComments">
                     
-                             <LikeHrart likes={likes}/> 
-                         
-                             <Comment/>
-                    
+                             <LikeHeart likes={likes}/> 
+                             <CommentIcon/>
+                          
                  </div>
-                 <CommentsCard user={user}
-                              date={date} 
-                             avatars={avatars}
-                              content={content} 
-                             />
+                 
+                  {comments?.length ? (
+                              <div>
+                              {comments.map((comment) => (
+                              <Comments key={comment.id} comment={comment} />))}
+                             </div> ) : ('')}
+                 
          </div>
+       
     </>
 );
     

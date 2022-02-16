@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart} from 'react-icons/fa';
-export default function LikeHrart({likes}) {
+export default function LikeHeart({likes}) {
   //console.log(likes)
   const [isClick, setClick] = useState(false);
   const [isLike, setLike] = useState(likes);
@@ -31,7 +31,8 @@ export default function LikeHrart({likes}) {
     <div className="likeHeart">
     <FaHeart style={{
                      color: color, 
-                     fontSize: '20px'
+                     fontSize: '20px',
+                     cursor:"pointer"
                     }}
                     onClick= {onHandleClick} /> 
                      <h4>Likes: {isLike}</h4>

@@ -138,20 +138,21 @@
   margin-top: 30px;
 }
 .activityCard{
-border-bottom: 1px solid rgb(183, 181, 185);
-width: 700px;
-margin-bottom: 5px;
+border: 1px solid rgba(211, 209, 211, 0.432);
+width: 720px;
+margin-bottom: 20px;
 }
 .likesComments{
   display: flex;
   justify-content: space-between;
   flex-direction:row;
   font-size:15px;
+  border-bottom: 1px solid rgba(194, 192, 192, 0.651);
   font-family:'Times New Roman', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .activityAvatar{
-  width: 50px;
-  border-radius:70%;
+  width: 40px;
+  border-radius:50%;
   margin:10px
 }
 .activityPosts {
@@ -166,18 +167,18 @@ margin-bottom: 5px;
   flex-direction: row;
   justify-content:flex-start;
   height: 30px;
-  width: 700px;
+  width: 720px;
   margin-bottom: 50px;
 }
 .updateButton input {
-  width:570px;
+  width:590px;
   height:50px;
   margin-right: 15px;
   border-radius: 3%;
   font-size: 20px;
 }
 .updateButton button {
-  width: 115px;
+  width: 130px;
   height: 50px;
   font-size: 18px;
   color: #ffffff;
@@ -195,32 +196,73 @@ margin-bottom: 5px;
 .likeHeart{
   display: flex;
   flex-direction: row;
-  margin-left: 15px;
+  margin-top:5px;
+  margin-left: 10px;
 
 }
-.comment{
+.likeHeart h4{
+  margin-left:17px;
+
+}
+.commentContainer{
+  display: flex;
+ flex-direction: column;
+ margin-left:50px;
+}
+commentContainer h4{
+ padding-top:10px;
+}
+.comments{
  display: flex;
  flex-direction: row;
- margin-right: 15px;
+ margin-right: 12px;
 }
-.comment h4{
-  margin-left: 10px;
+.comments h4{
+  margin-left:10px;
 }
 .commentBtn{
   margin-top: 5px;
+  cursor: pointer;
 }
 @media screen and (max-width: 800px) {
   .headRight{
     min-width:auto;
   }
 }
-.commentCard{
-  border-top: 1px solid rgb(185, 185, 185);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 .postImage{
  width: 700px;
  height: 500px;
+}
+.commentsHeaderPart{
+  display: flex;
+  flex-direction: row;
+}
+.commentsDataPart{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.commentsAvatar {
+  width: 30px;
+  border-radius:50%;
+  margin:10px
+}
+.commentsFooterBtn{
+  border-top: 2px dotted rgba(194, 192, 192, 0.651);
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+.commentsthreeBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  margin-right: 10px;
+
+}
+.commentsthreeBtn span{
+  cursor: pointer;
+}
+.line{
+  color: rgba(241, 237, 237, 0.479);
 }
