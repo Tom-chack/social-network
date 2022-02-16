@@ -1,29 +1,38 @@
-import {FaRegCommentDots} from 'react-icons/fa';
+import {FaRegArrowAltCircleDown, FaRegCommentDots} from 'react-icons/fa';
 import { useState,useEffect } from 'react';
 import CommemtsCard from './CommentsCard';
 import { useSelector,useDispatch } from "react-redux";
 import getPosts from "../../../services/getPosts";
 export default function Comment(){
     const dispatch=useDispatch();
-    const { posts } = useSelector((state) => state.postDuck); 
+    const { posts } = useSelector((state) => state.postDuck);  
+    const [showComments, setShowComments] = useState(false);
     console.log(posts)
       useEffect(() => {
           dispatch(getPosts());
         
       }, [dispatch]);
-      const comments=posts.map((item)=>item.comments.id)
-      console.log("here ",comments)
-    const [flag, setFlage] = useState(false);
+     
+      const post=posts.map((item,index)=>{
+        let comment=item.comments
+        const arrOfComments=[]
+        for(let i=0;i<comment.length;i++){
+            arrOfComments.push(comment[i].map(item=>item.content)) 
+         }
+         console.log("zangvaccc",arrOfComments)
+           return arrOfComments
+        })
 
-    function messages(){
-           setFlage(true)
+
+    function onCommentBtnClick(){
+           setShowComments(true)
         
     }
     return (
    <div className='comment'> 
-       <FaRegCommentDots className='commentBtn' onClick={messages}/> 
-       <h4>Comments:{comments.id}</h4>
-   {flag?<div><CommemtsCard/></div> :null}
+       <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
+       <h4>Comments:{post}</h4>
+   {showComments?"hi" :null}
     </div> 
     ) ;
 }
