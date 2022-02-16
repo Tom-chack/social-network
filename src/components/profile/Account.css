@@ -7,11 +7,13 @@ h2 {
 
 .ant-form {
   border: 1px solid rgb(168, 165, 165);
+  padding: 3% !important;
   width: 100%;
-  padding: 1% !important;
   margin-top: 2% !important;
   display: flex;
   flex-direction: column;
+  margin-bottom: 4% !important;
+  background-color: rgb(247, 248, 248);
 }
 
 Input {
@@ -25,15 +27,6 @@ Input {
 .labels {
   padding-bottom: 1%;
   margin-left: 3%;
-}
-
-Button {
-  margin-top: -4.25% !important;
-  margin-left: 83.2% !important;
-  width: 10%;
-  background-color: rgb(235, 229, 229) !important;
-  border-radius: 6px !important;
-  border: 1px solid rgb(80, 78, 78) !important;
 }
 
 Textarea {
