@@ -8,6 +8,7 @@ import twit from "../../images/twitter.png";
 import viber from "../../images/viber.png";
 import whap from "../../images/Whatsapp.png";
 
+import './About.css'
 import 'antd/dist/antd.css';
 
 
@@ -18,7 +19,7 @@ function About() {
   return (
     <>
       <div className="about-me">
-        <Row>
+        <Row className="any-row-about-me">
           <h2>About Me</h2>
           <Col span={24}> 
           {
@@ -29,7 +30,6 @@ function About() {
         <Row className="social-links">
           <h2>Social Network</h2>
           <Col span={24}>
-                <>
                   <div >
                     {profile.fb ? <>
                               <img className="icons" src={fb}/> 
@@ -74,7 +74,6 @@ function About() {
                                   </> : ""
                     }
                   </div>
-                </>
           </Col>
         </Row>
     </div>
