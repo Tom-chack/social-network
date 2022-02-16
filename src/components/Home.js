@@ -6,7 +6,18 @@ import { Row, Col, Card, Radio } from "antd";
 import Post from "./Post/Post";
 
 function Home() {
-  const { user } = useSelector((state) => state.userDuck);
+  //Redux functions
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.postDuck);
+
+  //Local states
+  const [filter, setFilter] = useState("?_sort=date&_order=desc");
+
+  //Fetch user object by profile user id
+  useEffect(() => {
+    dispatch(getPosts(filter));
+  }, [dispatch, filter]);
+
   return (
     <div className='home'>
       <Row>
