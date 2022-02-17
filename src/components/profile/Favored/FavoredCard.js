@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Image } from "antd";
 import { Icon } from '@iconify/react';
 import { Button } from "antd";
@@ -9,7 +9,7 @@ const timeAgo = new TimeAgo("en-US");
 
 
 function FavoredCard({post, changeBackground, changeBack, handleClick, deletePost, showMore, setShowMore }) {
-  const { id, content, user, likes, date} = post;
+  const { id, content, user, likes, date } = post;
   return (
     <div className='post'>
       <div className='post-head'>

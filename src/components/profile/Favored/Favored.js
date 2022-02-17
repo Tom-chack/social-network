@@ -21,9 +21,8 @@ function Favored() {
   const postPerPage = 5;
   const indexofLastPage = page + postPerPage;
   const indexofFirstPage = indexofLastPage - postPerPage;
-  let slicedPosts = posts;
+  let slicedPosts = posts.filter(post => {return (post.likes > 0)} );
   const currentPosts = slicedPosts.slice(indexofFirstPage, indexofLastPage);
-
   //Fetch user object by profile user id and likes by userid
 
   useEffect(() => {
@@ -34,6 +33,7 @@ function Favored() {
 
   // deleting post when like icon is clicked
   const id = posts.map(post => post.id);
+
   const deletePost = (likes) => {
     if (likes !== undefined && id !== undefined) {
       likes = likes - 1;
@@ -59,13 +59,13 @@ function Favored() {
     console.log(e.currentTarget.value);
     setShowMore(!showMore);
   }
-
+console.log(profile.id.likes)
   return (
     <div>
       <Row>
         <Col flex={5} style={{ margin: 0 }}>
           <Pagination
-            total={posts.length}
+            total={slicedPosts.length}
             current={page}
             pageSize={postPerPage}
             onChange={(value) => setPage(value)}
@@ -86,7 +86,8 @@ function Favored() {
         </Col>
       </Row>
       <div >
-        {currentPosts.map((post) =>
+        {
+        currentPosts.map((post) =>
           <Card
             key={post.id}
             className='post'
