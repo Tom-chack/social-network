@@ -34,6 +34,9 @@ function Activity() {
                         comments={comments}
                   />)}
             </div>
+          <div className="loadMore"> 
+                <button >Load more</button>
+         </div> 
   </div>
   );
 }

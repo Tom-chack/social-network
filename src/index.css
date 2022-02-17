@@ -175,23 +175,26 @@ margin-bottom: 20px;
   height:50px;
   margin-right: 15px;
   border-radius: 3%;
+  border-color: rgba(226, 225, 224, 0.493);
   font-size: 20px;
 }
 .updateButton button {
   width: 130px;
   height: 50px;
   font-size: 18px;
-  color: #ffffff;
   font-weight: bold;
-  background-color: #3c58f7;
+  border:1px solid #2f89f0 ;
+  background-color: #2f89f0;
+  color: rgb(238, 227, 227);
   transition-duration: 0.4s;
   border-radius: 10%;
   
 }
 
 .updateButton button:hover {
-  background-color: #78b0f1; 
-  color: rgb(173, 211, 211);
+  background-color: #0751a5; 
+  color: rgb(222, 228, 240);
+  transition-duration: 0.3s;
 }
 .likeHeart{
   display: flex;
@@ -287,6 +290,7 @@ commentContainer h4{
 .fileUploader input{
 width:400px;
   height:30px;
+  border-color: rgba(153, 157, 160, 0.623);
   margin-right:5px;
 
 }
@@ -294,7 +298,34 @@ width:400px;
   width: 130px;
   height: 30px;
   font-size: 14px;
-  color: #ffffff;
-  background-color: #3c58f7;
+  border:1px solid #2f89f0 ;
+  background-color: #2f89f0;
+  color: rgb(238, 227, 227);
+  transition-duration: 0.3s;
+}
+.fileUploader button:hover{
+  width: 130px;
+  height: 30px;
+  font-size: 14px;
+  background-color: #0751a5; 
+  color: rgb(222, 228, 240);
+  transition-duration: 0.3s;
+}
+.loadMore{
+  display: flex;
+  width: 720px;
+  justify-content:space-around ;
+}
+.loadMore button{
+  width: 150px;
+  border-radius: 4%;
+  border:1px solid #2f89f0 ;
+  background-color: #2f89f0;
+  color: rgb(238, 227, 227);
+  font-size: 20px;
+}
+.loadMore button:hover {
+  background-color: #0751a5; 
+  color: rgb(222, 228, 240);
   transition-duration: 0.3s;
 }
