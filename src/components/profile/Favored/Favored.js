@@ -6,7 +6,6 @@ import { postDelete } from "../../../redux/ducks/postDuck";
 import { Pagination } from 'antd';
 import { Row, Col, Radio, Card } from "antd";
 
-
 function Favored() {
   //Redux functions
   const dispatch = useDispatch();
@@ -58,7 +57,6 @@ function Favored() {
 
   function handleClick(e) {
     console.log(e.currentTarget.value);
-    console.log(posts[0]);
     setShowMore(!showMore);
   }
 
@@ -105,9 +103,6 @@ function Favored() {
             />
           </Card>)}
       </div>
-
-      {console.log(posts[0])}
-
     </div>
   );
 }
