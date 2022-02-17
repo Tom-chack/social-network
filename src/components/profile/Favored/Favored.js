@@ -2,19 +2,18 @@ import React, { useEffect, useState } from "react";
 import FavoredCard from "./FavoredCard";
 import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../../services/getPosts";
-import { postDelete } from "../../../redux/ducks/postDuck";
 import { Pagination } from 'antd';
 import { Row, Col, Radio, Card } from "antd";
 
+
 function Favored() {
+
   //Redux functions
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.userDuck);
   const { posts } = useSelector((state) => state.postDuck);
 
   //Local states
- 
-  const [showMore, setShowMore] = useState(false);
   const [filter, setFilter] = useState('?_sort=date&_order=desc');
   const [page, setPage] = useState(1);
 
@@ -24,25 +23,15 @@ function Favored() {
   const indexofFirstPage = indexofLastPage - postPerPage;
   let slicedPosts = posts.filter(post => {return (post.likes > 0)} );
   const currentPosts = slicedPosts.slice(indexofFirstPage, indexofLastPage);
-  //Fetch user object by profile user id and likes by userid
 
+  //Fetch user object by profile user id and likes by userid
   useEffect(() => {
     if (profile.id) {
       dispatch(getPosts(filter, '?favoredby=' + profile.id));
     }
   }, [dispatch, filter, profile]);
 
-  // deleting post when like icon is clicked
-  const id = slicedPosts.map(post => post.id);
-  const deletePost = (likes) => {
-    if (likes !== undefined && id !== undefined) {
-      likes = likes - 1;
-      console.log(id, likes);
-      dispatch(
-        postDelete({ id: id })
-      )
-    }
-  }
+
   // changing heart icon's background while hovering
   function changeBackground(e) {
     e.target.style.background = 'red';
@@ -55,11 +44,6 @@ function Favored() {
     e.target.style.padding = '0px'
   }
 
-  function handleClick(e) {
-    console.log(e.currentTarget.value);
-    setShowMore(!showMore);
-  }
-console.log(profile.id.likes)
   return (
     <div>
       <Row>
@@ -95,12 +79,8 @@ console.log(profile.id.likes)
           >
             <FavoredCard
               post={post}
-              showMore={showMore}
-              setShowMore={setShowMore}
               changeBackground={changeBackground}
               changeBack={changeBack}
-              handleClick={handleClick}
-              deletePost={deletePost}
             />
           </Card>)}
       </div>
