@@ -23,7 +23,7 @@ export const postSchema = {
   content: "",
   userid: 0,
   image: "",
-  likes: 0,
+  likes: [],
   date: Date.now(),
 };
 

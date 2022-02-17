@@ -23,11 +23,11 @@ export const addPost = (data) => (dispatch) => {
 };
 
 // Update post by id ..............................
-export const updatePost = (data) => (dispatch) => {
-  const postData = { ...postSchema, ...data };
+export const updatePost = (postData) => (dispatch) => {
+  //const postData = { ...postSchema, ...data };
   if (postData.id) {
     fetch(`${api}/posts/${postData.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
