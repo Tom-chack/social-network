@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../../services/getPosts";
 import { postDelete } from "../../../redux/ducks/postDuck";
 import { Pagination } from 'antd';
-import { Row, Col, Radio } from "antd";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
-TimeAgo.addLocale(en);
+import { Row, Col, Radio, Card } from "antd";
+
 
 function Favored() {
   //Redux functions
@@ -20,6 +18,7 @@ function Favored() {
   const [filter, setFilter] = useState('?_sort=date&_order=desc');
   const [page, setPage] = useState(1);
 
+  //calculations for pagination
   const postPerPage = 5;
   const indexofLastPage = page + postPerPage;
   const indexofFirstPage = indexofLastPage - postPerPage;
@@ -33,7 +32,6 @@ function Favored() {
       dispatch(getPosts(filter, '?favoredby=' + profile.id));
     }
   }, [dispatch, filter, profile]);
-
 
   // deleting post when like icon is clicked
   const id = posts.map(post => post.id);
@@ -90,22 +88,22 @@ function Favored() {
         </Col>
       </Row>
       <div >
-        {currentPosts.map(({ user, id, date, content, likes }) =>
-          <FavoredCard
-            user={user.name}
-            key={id}
-            date={date}
-            avatar={user.avatar}
-            id={id}
-            content={content}
-            likes={likes}
-            showMore={showMore}
-            setShowMore={setShowMore}
-            changeBackground={changeBackground}
-            changeBack={changeBack}
-            handleClick={handleClick}
-            deletePost={deletePost}
-          />)}
+        {currentPosts.map((post) =>
+          <Card
+            key={post.id}
+            className='post'
+            style={{ backgroundColor: "#fafafa", marginTop: "20px" }}
+          >
+            <FavoredCard
+              post={post}
+              showMore={showMore}
+              setShowMore={setShowMore}
+              changeBackground={changeBackground}
+              changeBack={changeBack}
+              handleClick={handleClick}
+              deletePost={deletePost}
+            />
+          </Card>)}
       </div>
 
       {console.log(posts[0])}
@@ -115,7 +113,3 @@ function Favored() {
 }
 
 export default Favored;
-
-
-
-

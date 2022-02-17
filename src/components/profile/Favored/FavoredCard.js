@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Image } from "antd";
 import { Icon } from '@iconify/react';
 import { Button } from "antd";
 import { Col } from "antd";
@@ -10,45 +10,37 @@ const timeAgo = new TimeAgo("en-US");
 
 const { Meta } = Card;
 
-function FavoredCard({ changeBackground, changeBack, handleClick, deletePost, user, id, date, content, likes, avatar, showMore, setShowMore }) {
-
+function FavoredCard({post, changeBackground, changeBack, handleClick, deletePost, showMore, setShowMore }) {
+  const { id, content, image, user, likes, avatar, date} = post;
   return (
-    <div>
-      <div key={id} id={id} >
-        <Col flex='1 1 200px' style={{ padding: "20px 20px 0 0" }}>
-          <Card className="card"
-            hoverable
-            style={{ backgroundColor: "#fafafa", width: '90%', margin: ' 0 auto' }}
-          >
-            <Meta
-              title={<>
-                <span>{user}</span>
-                <span style={{ float: 'right' }}>
+    <div className='post'>
+      <div className='post-head'>
+        <div className='post-user'>
+        <Image width={48} src={user.avatar} alt={user.name || user.username} />
+          <div className='post-user-info'>{user.name || user.username}</div>
+        </div>
+        
+        <div className='post-date'>{timeAgo.format(post.date)}</div>
+      </div>
+      <div className='post-body'>
+      
+        <div className='post-content'>{post.content}</div>
+        <div className='post-heart'>
+        <span style={{ float: 'right' }}>
                   <Icon icon="ant-design:heart-filled" likes={likes} color="pink" inline={true}
                     onMouseEnter={changeBackground}
                     onMouseLeave={changeBack}
                     onClick={deletePost} />
                 </span>
-              </>}
-              avatar={<Avatar src={avatar} />}
-              description={<>
-                Posted {timeAgo.format(date)}
-                <p >
-                  {showMore ? content : `${content.substring(0, 80)}`}
-                  <Button className="card" type='link' value={id} className="btn" onClick={handleClick} >
-                    {showMore ? "[Read less]" : "[Read more]"}
-                  </Button>
-                </p>
-              </>}
-            />
-          </Card>
-        </Col>
+               
+        </div>
       </div>
     </div>
   );
 }
 
 export default FavoredCard;
+
 
 
 
