@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import ReadMoreReact from 'read-more-react';
 import TimeAgo from "javascript-time-ago";
 import {dislikePost} from "../../../services/like.js";
+import { postDelete } from "../../../redux/ducks/postDuck.js";
 import en from "javascript-time-ago/locale/en.json";
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo("en-US");
@@ -18,6 +19,12 @@ function FavoredCard({ post, changeBackground, changeBack}) {
     dispatch(
       dislikePost({ id }))
   }
+
+  const deletePost = () => {
+    dispatch(
+      postDelete({ id }))
+  }
+  
   return (
     <div className='post'>
       <div className='post-head'>
@@ -32,7 +39,7 @@ function FavoredCard({ post, changeBackground, changeBack}) {
           <Icon icon="ant-design:heart-filled" likes={likes} color="pink" inline={true}
             onMouseEnter={changeBackground}
             onMouseLeave={changeBack}
-            onClick={dislike} />
+            onClick={dislike, deletePost} />
         </span>
         <ReadMoreReact text={content}
           min={80}
@@ -40,7 +47,6 @@ function FavoredCard({ post, changeBackground, changeBack}) {
           max={content.length}
           readMoreText={"Read more ▼"} />
       </div>
-
     </div>
 
   );
