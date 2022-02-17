@@ -4,7 +4,6 @@ import Time from "./UpdateTime";
 import Comments from "./Comments"
 import {useState} from "react"
 import { FaRegCommentDots} from "react-icons/fa"
-
 function ActivityCard({user,date,avatars,content,likes,image,comments}) {
     const [showComments, setShowComments] = useState(false);
    
@@ -42,7 +41,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments}) {
            
                  <div className="activityPosts">
                          <h3>{content}</h3>
-                         <img src={image} className="postImage"/>
+                         {image?<img src={image} className="postImage"/>:""}
                  </div>
            
                  <div className="likesComments">
@@ -50,7 +49,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments}) {
                              <LikeHeart likes={likes}/> 
                              <div className='comments'> 
                              <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
-                              <h4>Comments:1</h4>
+                              <h4>Comments:{comments.length}</h4>
     </div> 
                              
                  </div>

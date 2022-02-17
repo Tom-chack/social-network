@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart} from 'react-icons/fa';
+import { updatePost } from "../../../services/post";
 export default function LikeHeart({likes}) {
   //console.log(likes)
   const [isClick, setClick] = useState(false);
@@ -11,13 +12,15 @@ export default function LikeHeart({likes}) {
                     likes=isLike+1
                     setLike(likes)
                     setColor("red")
-                   // console.log(likes)
+                    console.log(likes)
+                    updatePost(isLike)
           }
           else{
             likes=isLike-1
             setLike(likes)
             setColor("rgba(39, 38, 38, 0.39)")
-            //console.log(likes)
+            console.log(likes)
+            updatePost(isLike)
           }
           
     }

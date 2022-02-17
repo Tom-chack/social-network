@@ -135,7 +135,7 @@
 .activityMain{
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin:auto,10px;
 }
 .activityCard{
 border: 1px solid rgba(211, 209, 211, 0.432);
@@ -207,7 +207,6 @@ margin-bottom: 20px;
 .commentContainer{
   display: flex;
  flex-direction: column;
- margin-left:50px;
 }
 commentContainer h4{
  padding-top:10px;
@@ -241,9 +240,22 @@ commentContainer h4{
   display: flex;
   flex-direction: column;
   font-size: 14px;
+  margin-left: 10px;
 }
 .commentsAvatar {
   width: 30px;
+  border-radius:50%;
+  margin-left:50px;
+  margin-top:10px
+}
+.commentsAvatarReply {
+  width: 30px;
+  border-radius:50%;
+  margin-left:50px;
+  margin-top:10px
+}
+.commentsAvatarReply {
+  width: 20px;
   border-radius:50%;
   margin:10px
 }
@@ -267,10 +279,16 @@ commentContainer h4{
 .line{
   color: rgba(241, 237, 237, 0.479);
 }
+.fileUploader{
+  display: flex;
+  flex-direction: row;
+  margin-left:40px;
+}
 .fileUploader input{
 width:400px;
   height:30px;
-  margin-right: 15px;
+  margin-right:5px;
+
 }
 .fileUploader button{
   width: 130px;
