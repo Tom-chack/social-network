@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { set } from "react-hook-form";
 import { FaHeart} from 'react-icons/fa';
 import { updatePost } from "../../../services/post";
 export default function LikeHeart({likes}) {
@@ -14,6 +15,7 @@ export default function LikeHeart({likes}) {
                     setColor("red")
                     console.log(likes)
                     updatePost(isLike)
+                    console.log(likes)
           }
           else{
             likes=isLike-1
@@ -24,9 +26,9 @@ export default function LikeHeart({likes}) {
           }
           
     }
-
+//
   useEffect(()=>{
-     
+     setLike(likes)
   },[likes])
   
   return (

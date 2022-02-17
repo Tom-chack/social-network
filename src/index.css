@@ -323,6 +323,7 @@ width:400px;
   background-color: #2f89f0;
   color: rgb(238, 227, 227);
   font-size: 20px;
+  cursor: pointer;
 }
 .loadMore button:hover {
   background-color: #0751a5; 
