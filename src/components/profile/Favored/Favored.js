@@ -13,6 +13,7 @@ function Favored() {
   const { posts } = useSelector((state) => state.postDuck);
 
   //Local states
+ 
   const [showMore, setShowMore] = useState(false);
   const [filter, setFilter] = useState('?_sort=date&_order=desc');
   const [page, setPage] = useState(1);
@@ -32,8 +33,7 @@ function Favored() {
   }, [dispatch, filter, profile]);
 
   // deleting post when like icon is clicked
-  const id = posts.map(post => post.id);
-
+  const id = slicedPosts.map(post => post.id);
   const deletePost = (likes) => {
     if (likes !== undefined && id !== undefined) {
       likes = likes - 1;
