@@ -2,8 +2,24 @@ import { Image } from "antd";
 import LikeHeart from "./LikeHeart";
 import Time from "./UpdateTime";
 import Comments from "./Comments"
-import CommentIcon from "./IconComment";
+import {useState} from "react"
+import { FaRegCommentDots} from "react-icons/fa"
+
 function ActivityCard({user,date,avatars,content,likes,image,comments}) {
+    const [showComments, setShowComments] = useState(false);
+   
+    const onCommentBtnClick=()=>{
+      return     setShowComments(!showComments)
+        
+    }
+    const CommentsLoader=()=>{
+      return   (comments?.length ? (
+            <div>
+            {comments.map((comment) => (
+            <Comments key={comment.id} comment={comment} />))}
+           </div> ) : (''));
+    }
+
     const Avatar = () => {
     return <Image src={avatars} className='activityAvatar'  />;
     };
@@ -32,15 +48,14 @@ function ActivityCard({user,date,avatars,content,likes,image,comments}) {
                  <div className="likesComments">
                     
                              <LikeHeart likes={likes}/> 
-                             <CommentIcon/>
-                          
+                             <div className='comments'> 
+                             <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
+                              <h4>Comments:1</h4>
+    </div> 
+                             
                  </div>
+               {showComments?<CommentsLoader/>:null}  
                  
-                  {comments?.length ? (
-                              <div>
-                              {comments.map((comment) => (
-                              <Comments key={comment.id} comment={comment} />))}
-                             </div> ) : ('')}
                  
          </div>
        
