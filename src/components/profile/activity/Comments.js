@@ -3,7 +3,7 @@ import { Image } from "antd";
 import Time from "./UpdateTime";
 import { TiArrowBack } from "react-icons/ti"
 import LikeHeart from "./LikeHeart";
-import { deletePost } from "../../../services/post";
+import {deletePost} from "../../../services/post"
 function Comments({ comment }) {
     const { user } = comment;
     //console.log("new",comment,user.avatar).
@@ -26,7 +26,13 @@ function Comments({ comment }) {
           
         );
       };
-    
+      ///delete comment
+     const deleteComment=()=>{
+         if(window.confirm("Are you sure you want to delete this comment?")){
+          deletePost(user.id)
+            console.log("delete id===",user.id)
+         }
+     }
         const onReply=()=>{
         return    setClick(!isClick)
 
@@ -59,7 +65,7 @@ function Comments({ comment }) {
             <LikeHeart likes={comment.likes}/>
             <div className="commentsthreeBtn">
                <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
-                <div><span onClick={deletePost(1)}>Delete</span></div>
+                <div><span onClick={deleteComment}>Delete</span></div>
             </div> 
           </div>
           {isClick?<FileUploader/>:null}

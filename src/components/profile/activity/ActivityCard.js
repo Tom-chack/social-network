@@ -46,18 +46,15 @@ function ActivityCard({user,date,avatars,content,likes,image,comments}) {
            
                  <div className="likesComments">
                     
-                             <LikeHeart likes={likes}/> 
+                             <LikeHeart likes={likes} /> 
                              <div className='comments'> 
                              <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
                               <h4>Comments:{comments.length}</h4>
     </div> 
                              
                  </div>
-               {showComments?<CommentsLoader/>:null}  
-                 
-                 
-         </div>
-       
+               {showComments?<CommentsLoader/>:null}      
+         </div>      
     </>
 );
     

@@ -7,7 +7,7 @@ function Activity() {
   const { posts } = useSelector((state) => state.postDuck);
   const { profile } = useSelector((state) => state.userDuck); 
   const postLength=posts.length
-  //console.log("llll",posts.length)
+  
   //load more 
   const [data,setData]=useState(posts)
   const [visible,setVisible]=useState(2)
@@ -21,15 +21,15 @@ function Activity() {
                   console.log("no posts found");
                 }
         }, [dispatch, profile]);
-        
         const loadMoreItems=()=>{
           setVisible((previtem)=>previtem+2)
         }
+        
   return (
     <div  className="activityMain">
            <div className="updateButton">
-                  <input placeholder="Update your status..." type="text"/>
-                  <button>Update</button>
+                  <input placeholder="Update your status..." type="text"  />
+                  <button >Update</button>
             </div>
             <div >
                  {data.slice(0,visible).map(({user,id,date,content,likes,image,comments})=>
