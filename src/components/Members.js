@@ -116,7 +116,7 @@ function Members() {
         </div>
 
         {
-          displayUsers.length === 0 ? (<span className="not-found">Not Found</span>) : displayUsers.map(item => (
+          inputValue && displayUsers.length === 0 ? (<span className="not-found">No Members Found</span>) : displayUsers.map(item => (
 
             <div className="users-container" key={item.id}>
 
