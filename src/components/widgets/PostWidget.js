@@ -1,13 +1,19 @@
 import getPosts from '../../services/getPosts'
-import {useEffect } from "react";
+import {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
+import { Modal} from 'antd';
 
 
 const PostWidget = () =>{
   
 const dispatch = useDispatch();
 const { posts } = useSelector((state) => state.postDuck);
+
+
+const [isModalVisible, setIsModalVisible] = useState(false);
+const [modalData, setModalData] = useState(null)
+
 
 
 useEffect(() => {
@@ -17,6 +23,17 @@ useEffect(() => {
   }, [dispatch]);
   
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
 
 
@@ -34,7 +51,7 @@ useEffect(() => {
             </div>
 
             {
-                posts.map(post=>(
+                posts.map((post,index)=>(
 
                     <div key={post.id} className='post-element'>
 
@@ -48,17 +65,49 @@ useEffect(() => {
 
                         <div className='post-content'>
 
-                            <Link to={`/posts/${post.id}`}>
+                            <Link to={''} onClick={()=>{
+                                showModal()
+                                setModalData(posts[index])
+                            }}>
 
                             <span>{post.content.length <= 60 ? post.content : `${post.content.slice(0,60)} . . .`}</span>
 
                             </Link>
+                            
 
                         </div>
-
+                        
                         
                     </div>
+                    
                 ))
+                
+            }
+            {
+                <Modal title="Popular Posts" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <div className='post-content'>
+                    <div className='post-avatar'>
+                        {console.log(modalData)}
+                        <img src={modalData?.user.avatar} alt={'avatar'}/>
+                                    
+                    </div>
+                    <div className='modal-name'>
+                        <Link to={`/profile/${modalData?.user.id}`}>
+                            <span>{modalData?.user.name}</span>
+                        </Link>                
+                    </div>
+                </div>
+                <div>
+                    <p style={{margin: 10}}>
+                        {modalData?.content}
+                    </p>
+                    <div className='modal-div'>
+                        {
+                            !(modalData?.image) ? null : <img className='modal-image' src={modalData?.image} alt={'post-img'} />
+                        }
+                    </div>
+                </div>
+            </Modal> 
             }
 
         </div>

@@ -1,6 +1,5 @@
 import {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
 import getImages from '../../services/getImages';
 import { Image } from 'antd';
 
