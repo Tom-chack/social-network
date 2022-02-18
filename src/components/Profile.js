@@ -77,7 +77,7 @@ function Profile() {
         </div>
       </div>
       <div className='profile-content'>
-        <Tabs defaultActiveKey='2' size='large'>
+        <Tabs defaultActiveKey='1' size='large'>
           <TabPane
             tab={
               <span>
