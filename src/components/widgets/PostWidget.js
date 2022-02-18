@@ -50,7 +50,7 @@ useEffect(() => {
 
                             <Link to={`/posts/${post.id}`}>
 
-                            <span>{`${post.content.slice(0,60)} . . .`}</span>
+                            <span>{post.content.length <= 60 ? post.content : `${post.content.slice(0,60)} . . .`}</span>
 
                             </Link>
 

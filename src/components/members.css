@@ -249,7 +249,39 @@
 
   .photo-widget-content{
     width: 80%;
-    height: 50vh;
     border: 1px solid #bebebe;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.photo-content{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+
+.photo-content-div {
+    display: grid; 
+    grid-template-columns: repeat(3, 85px); 
+    grid-template-rows: repeat(3, 85px); 
+    gap: 5px 5px; 
+    padding: 5px 5px;
+
+}
+
+.photo-element{
+    width: 85px;
+    height: 85px;
+    border: 1px solid #bebebe;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-element img{
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
 }

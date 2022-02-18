@@ -35,3 +35,7 @@ export const commentSchema = {
   date: Date.now(),
   likes: 0,
 };
+export const imageSchema = {
+  postid: 1,
+  url: "",
+}
