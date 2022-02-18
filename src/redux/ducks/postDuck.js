@@ -18,7 +18,8 @@ export const postUpdate = (payload) => ({ type: POST_UPDATE, payload });
 export const postDelete = (payload) => ({ type: POST_DELETE, payload });
 export const postLike = (payload) => ({ type: POST_LIKE, payload });
 export const postDislike = (payload) => ({ type: POST_DISLIKE, payload });
-export const postComment = (payload) => ({ type: POST_COMMENT, payload });
+export const postCommentAdd = (payload) => ({ type: POST_COMMENT_ADD, payload });
+export const postCommentDelete = (payload) => ({ type: POST_COMMENT_DELETE, payload });
 export const postError = (payload) => ({ type: POST_ERROR, payload });
 
 // Initial State of the postDuck
@@ -66,8 +67,12 @@ const postDuck = (state = initialState, { type, payload }) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          //if (post.id === payload.postid) post = { ...post, comments: [...post.comments, payload] };
-          //TO-DO, delete comment
+          if (post.id === payload.postid) {
+            post = {
+              ...post,
+              comments: post.comments.filter((comment) => comment.id !== payload.id),
+            };
+          }
           return post;
         }),
       };
