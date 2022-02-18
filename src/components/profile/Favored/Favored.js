@@ -15,7 +15,7 @@ function Favored() {
 
   //Local states
   const [filter, setFilter] = useState('?_sort=date&_order=desc');
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   //calculations for pagination
   const postPerPage = 5;
@@ -70,12 +70,12 @@ function Favored() {
         </Col>
       </Row>
       <div >
-        {
+        { currentPosts &&
         currentPosts.map((post) =>
           <Card
             key={post.id}
             className='post'
-            style={{ backgroundColor: "#fafafa", marginTop: "20px" }}
+            style={{ backgroundColor: "#fafafa", marginTop: "20px", width: "90%" }}
           >
             <FavoredCard
               post={post}
