@@ -2,6 +2,7 @@ import {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import getImages from '../../services/getImages';
+import { Image } from 'antd';
 
 
 const PhotoWidget = () =>{
@@ -93,9 +94,7 @@ const getRandomImages = () =>{
 
                         <div key={item.id} className={'photo-element'}>
                            
-                            <Link to={`/posts/${item.postId}`}>
-                                <img src={item.url} alt={'random'} />
-                            </Link>
+                            <Image src={item.url} />
 
                         </div>
                     ))
