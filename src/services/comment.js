@@ -1,5 +1,5 @@
 import api from "../helpers/api";
-import { postComment } from "../redux/ducks/postDuck";
+import { postCommentAdd, postCommentDelete } from "../redux/ducks/postDuck";
 import { commentAdd, commentUpdate, commentDelete, commentError } from "../redux/ducks/commentDuck";
 import { commentSchema } from "../helpers/schemas";
 
@@ -17,7 +17,7 @@ export const addComment = (data) => (dispatch) => {
     .then((res) => res.json())
     .then((comment) => {
       dispatch(commentAdd(comment));
-      dispatch(postComment(comment));
+      dispatch(postCommentAdd(comment));
     })
     .catch((err) => {
       dispatch(commentError(err.message));
@@ -48,18 +48,16 @@ export const updateComment = (commentData) => (dispatch) => {
 };
 
 // Delete comment by id .............................
-export const deleteComment = (id) => (dispatch) => {
+export const deleteComment = (comment) => (dispatch) => {
+  const { id } = comment;
   if (id) {
     fetch(`${api}/comments/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {},
     })
       .then((res) => res.json())
-      .then((comment) => {
+      .then((res) => {
         dispatch(commentDelete(id));
+        dispatch(postCommentDelete(comment));
       })
       .catch((err) => {
         dispatch(commentError(err.message));
