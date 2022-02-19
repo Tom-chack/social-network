@@ -13,8 +13,8 @@ const getPosts =
       for (let i = 0; i < postData.length; i++) {
         if (user) postData[i].user = await getUser(postData[i].userid, dispatch);
         if (images) postData[i].image = await getImage(postData[i], dispatch);
-        if (comments) postData[i].comments = await getComments(postData[i], dispatch);
         if (likes) postData[i].liked = await getLikedUsers(postData[i], dispatch);
+        if (comments) postData[i].comments = await getComments(postData[i], dispatch);
       }
 
       //Favored posts by user id .....................................
