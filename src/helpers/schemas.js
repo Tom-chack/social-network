@@ -24,7 +24,6 @@ export const postSchema = {
   userid: 0,
   image: "",
   likes: [],
-  comments: [],
   date: Date.now(),
 };
 

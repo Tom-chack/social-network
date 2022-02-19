@@ -2,7 +2,7 @@ import api from "../helpers/api";
 import { loadPosts, postError } from "../redux/ducks/postDuck";
 
 const getPosts =
-  (query = "", user = true, images = true, comments = true) =>
+  (query = "", user = true, images = true, comments = true, likes = true) =>
   async (dispatch) => {
     try {
       // Get posts filtered by query
@@ -14,6 +14,7 @@ const getPosts =
         if (user) postData[i].user = await getUser(postData[i].userid, dispatch);
         if (images) postData[i].image = await getImage(postData[i], dispatch);
         if (comments) postData[i].comments = await getComments(postData[i], dispatch);
+        if (likes) postData[i].liked = await getLikedUsers(postData[i], dispatch);
       }
 
       //Favored posts by user id .....................................
@@ -87,6 +88,20 @@ async function getLikes(userid, dispatch) {
       let likeRes = await fetch(`${api}/likes?userid=${userid}`);
       let likeData = await likeRes.json();
       return likeData;
+    } catch (e) {
+      dispatch(postError(e.message));
+    }
+  }
+  return "";
+}
+
+//Function to fetch all liked userids of a post by postid
+async function getLikedUsers(post, dispatch) {
+  if (post.id) {
+    try {
+      let likesRes = await fetch(`${api}/likes?postid=${post.id}`);
+      let likesData = await likesRes.json();
+      return likesData.map((like) => like.userid);
     } catch (e) {
       dispatch(postError(e.message));
     }
