@@ -70,3 +70,15 @@
 .post-foot svg {
     cursor: pointer;
 }
+.post-image{
+    display: inline-block;
+    padding: 2px;
+    background: #fff;
+    margin-top: 7px;
+}
+.post-image .ant-image-img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    max-height: 200px;
+  }

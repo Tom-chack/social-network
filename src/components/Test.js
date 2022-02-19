@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import getPosts from "../services/getPosts";
+//import getUsers from "../services/getUsers";
 import { deleteComment } from "../services/comment";
-import Editor from "../components/Editor/postEditor";
+import PostEditor from "../components/Editor/postEditor";
 
 function Test() {
   const dispatch = useDispatch();
@@ -12,11 +13,12 @@ function Test() {
   //Fetch user object by profile user id
   useEffect(() => {
     dispatch(getPosts());
+    //dispatch(getUsers("?_sort=date&_order=desc&_start=1&_end=3"));
   }, [dispatch]);
 
   return (
     <div>
-      {loggedIn && <Editor />}
+      {loggedIn && <PostEditor />}
       <hr />
       {posts.map((post) => (
         <div key={post.id}>
