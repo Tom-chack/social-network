@@ -7,6 +7,7 @@ import Editor from "../components/Editor/postEditor";
 function Test() {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.postDuck);
+  const { loggedIn } = useSelector((state) => state.userDuck);
 
   //Fetch user object by profile user id
   useEffect(() => {
@@ -15,7 +16,7 @@ function Test() {
 
   return (
     <div>
-      <Editor />
+      {loggedIn && <Editor />}
       <hr />
       {posts.map((post) => (
         <div key={post.id}>

@@ -15,8 +15,7 @@ export const addPost = (data) => async (dispatch, getState) => {
     });
 
     let postData = await postRes.json();
-    console.log(postData);
-    dispatch(postAdd({ ...postData, image: data.image }));
+    dispatch(postAdd({ ...postData, user, image: data.image }));
 
     let image = { postid: postData.id, url: data.image };
     await fetch(`${api}/images`, {

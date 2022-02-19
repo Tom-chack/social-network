@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPost } from "../../services/post";
 
 import { Form, Input, Button } from "antd";
@@ -12,7 +12,6 @@ const { TextArea } = Input;
 function PostEditor() {
   //Redux functions
   const dispatch = useDispatch();
-  const { user, loggedIn } = useSelector((state) => state.userDuck);
 
   //File attachments
   const [image, setImage] = useState("");
@@ -25,14 +24,16 @@ function PostEditor() {
   };
 
   //Send submitted data to json-server
+  const [form] = Form.useForm();
   const onSubmit = (data) => {
     dispatch(addPost({ ...data, image }));
+    form.resetFields();
   };
 
   //Post Editor
   return (
     <div className='post-editor'>
-      <Form name='post-editor' onFinish={onSubmit} autoComplete='off'>
+      <Form form={form} name='post-editor' onFinish={onSubmit} autoComplete='off'>
         <Form.Item
           name='content'
           className='post-field-content'
