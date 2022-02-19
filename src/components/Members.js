@@ -7,8 +7,9 @@ import getUsers from '../services/getUsers';
 import './members.css';
 import { Image,Avatar } from 'antd';
 import ReactPaginate from "react-paginate";
-import PostWidget from './widgets/PostWidget.js'
-import PhotoWidget from './widgets/PhotoWidget.js'
+import PostWidget from './widgets/PostsWidget.js'
+import PhotoWidget from './widgets/PhotosWidget.js'
+import {AVATAR, COVER} from '../helpers/constants'
 
 
 function Members() {
@@ -112,14 +113,14 @@ function Members() {
             <div className="users-container" key={item.id}>
               <div className="background-part">
                 <img
-                  src={item.covers?item.covers:`https://free4kwallpapers.com/uploads/wallpaper-cache/gradient-grey-wallpaper-1300x0-MM-100.jpg`}
+                  src={item.covers?item.covers:COVER}
                   alt="cover-img"
                 />
                 <div className="img-container">
                   <Avatar
                     size={92}
                     src={<Image
-                    src={item.avatar?item.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`}
+                    src={item.avatar?item.avatar:AVATAR}
                     style={{
                       width: 92, height: 92
                     }}
@@ -132,7 +133,6 @@ function Members() {
                   <Link to={`/profile/${item.id}`}>
                     <span>{item.name}</span>
                   </Link>
-                  {console.log(item.date)}
                   <span style={{ color: "grey" }}>{`Joined ${getDate(item.date)}`}</span>
                 </div>
               </div>

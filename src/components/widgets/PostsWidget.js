@@ -3,6 +3,7 @@ import {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { Modal} from 'antd';
+import {AVATAR} from '../../helpers/constants'
 
 
 const PostWidget = () =>{
@@ -19,7 +20,7 @@ const [modalData, setModalData] = useState(null)
 
 useEffect(() => {
     
-    dispatch(getPosts("?_sort=likes&_order=desc&_star=1&_end=5", true, true, false));
+    dispatch(getPosts("?_sort=likes&_order=desc&_start=1&_end=6", true, true, false));
     
   }, [dispatch]);
   
@@ -52,7 +53,7 @@ useEffect(() => {
                     <div key={post.id} className='post-element'>
                         <div className='post-avatar'>
                             <Link to={`/profile/${post.user.id}`}>
-                                <img src={post.user.avatar?post.user.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`} alt={'avatar'}/>
+                                <img src={post.user.avatar?post.user.avatar:AVATAR} alt={'avatar'}/>
                             </Link>
                         </div>
                         <div className='post-content'>
@@ -71,7 +72,7 @@ useEffect(() => {
                 <Modal title="Popular Posts" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <div className='post-content'>
                     <div className='post-avatar'>
-                        <img src={modalData?.user.avatar?modalData?.user.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`} alt={'avatar'}/>           
+                        <img src={modalData?.user.avatar?modalData?.user.avatar:AVATAR} alt={'avatar'}/>           
                     </div>
                     <div className='modal-name'>
                         <Link to={`/profile/${modalData?.user.id}`}>

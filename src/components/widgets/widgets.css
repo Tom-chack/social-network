@@ -9,7 +9,6 @@
 }
   .post-widget-content{
       width: 80%;
-      height: 54vh;
       border: 1px solid #bebebe;
       margin: 30px;
   }
@@ -118,6 +117,7 @@
     grid-template-columns: repeat(auto-fill, 85px);
     gap: 10px 10px; 
     padding: 10px 0;
+    justify-content: center;
 
 }
 
@@ -134,5 +134,27 @@
     width: 85px;
     height: 85px;
     object-fit: cover;
+
+}
+
+
+/* Members-Widget */
+
+.members-widget-content{
+    width: 80%;
+    border: 1px solid #bebebe;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.members-content-div {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 50px);
+    gap: 20px 20px; 
+    padding: 20px 0;
+    justify-content: center;
 
 }

@@ -3,6 +3,7 @@ import userDuck from "./ducks/userDuck";
 import postDuck from "./ducks/postDuck";
 import imageDuck from "./ducks/imageDuck";
 import commentDuck from "./ducks/commentDuck";
+import widgetDuck from "./ducks/widgetDuck";
 
 
 const reducers = combineReducers({
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   postDuck,
   imageDuck,
   commentDuck,
+  widgetDuck,
 });
 
 export default reducers;
