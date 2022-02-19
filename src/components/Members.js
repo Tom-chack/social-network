@@ -5,7 +5,7 @@ import { dateToLocalFormat } from 'date-format-ms';
 import { useEffect } from "react";
 import getUsers from '../services/getUsers';
 import './members.css';
-import { Image } from 'antd';
+import { Image,Avatar } from 'antd';
 import ReactPaginate from "react-paginate";
 import PostWidget from './widgets/PostWidget.js'
 import PhotoWidget from './widgets/PhotoWidget.js'
@@ -63,9 +63,7 @@ function Members() {
   //Searching users by name
 
   const searchUsers = () => {
-
     let searchedUsers = [];
-
     if (inputValue === '') {
       searchedUsers = users;
     }
@@ -89,7 +87,6 @@ function Members() {
     let timeout;
     return function () {
       const fnCall = () => {fn.apply(this,arguments)}
-
       clearTimeout(timeout)
       setTimeout(fnCall, ms)
     }
@@ -100,67 +97,51 @@ function Members() {
   return (
 
     <div className="members-container">
-
       <div className="members-content">
-
         <div className="search-container">
-
           <span>Members</span>
-
           <input
             onChange={debounce(inpVal, 1000)}
             type={'text'}
             placeholder={'Search . . .'}
           />
-
         </div>
 
         {
           inputValue && displayUsers.length === 0 ? (<span className="not-found">No Members Found</span>) : displayUsers.map(item => (
-
             <div className="users-container" key={item.id}>
-
               <div className="background-part">
                 <img
-                  src={item.covers}
+                  src={item.covers?item.covers:`https://free4kwallpapers.com/uploads/wallpaper-cache/gradient-grey-wallpaper-1300x0-MM-100.jpg`}
                   alt="cover-img"
                 />
-
                 <div className="img-container">
-
-                  <Image
-                    src={item.avatar}
+                  <Avatar
+                    size={92}
+                    src={<Image
+                    src={item.avatar?item.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`}
                     style={{
                       width: 92, height: 92
                     }}
+                  />} 
                   />
-
                 </div>
-
               </div>
-
               <div className="info-part">
-
                 <div>
-
                   <Link to={`/profile/${item.id}`}>
                     <span>{item.name}</span>
                   </Link>
-
+                  {console.log(item.date)}
                   <span style={{ color: "grey" }}>{`Joined ${getDate(item.date)}`}</span>
-
                 </div>
-
               </div>
-
             </div>
-
           ))
         }
 
         {
           filteredUsers.length <= 5 ? null : <ReactPaginate
-
                                                 previousLabel={'<'}
                                                 nextLabel={'>'}
                                                 pageCount={pageCount}
@@ -170,19 +151,14 @@ function Members() {
                                                 nextLinkClassName={'nextBttn'}
                                                 disabledClassName={'paginationDisabled'}
                                                 activeClassName={'paginationActive'}
-                                        
                                                 />
         }
 
       </div>
-
       <div className="widgets-content">
-
         <PostWidget />
         <PhotoWidget />
-
       </div>
-
     </div>
   )
 }

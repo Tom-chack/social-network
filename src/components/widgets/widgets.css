@@ -1,0 +1,138 @@
+/*Post-Widget*/
+
+.widgets-content{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+  .post-widget-content{
+      width: 80%;
+      height: 54vh;
+      border: 1px solid #bebebe;
+      margin: 30px;
+  }
+  
+  .header-div{
+    width: 100%;
+    height: 9vh;
+    display: flex;
+    justify-content: center
+  }
+
+  .header-content{
+      width: 90%;
+      height: 100%;
+      border-bottom: 1px solid #bebebe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+
+  }
+
+  .header-content span{
+      color: grey;
+      font-size: large;
+  }
+
+  .post-element{
+      width: 100%;
+      height: 9vh;
+      display: flex;
+      border-bottom: 1px solid #bebebe;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
+
+  .post-element:last-child{
+      border: none;
+  }
+
+  .post-avatar{
+      width: 50px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      
+  }
+
+  .post-avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .post-element a {
+      color: black;
+  }
+
+  .post-content{
+      width: 80%;
+      margin: 0 10px;
+      display: flex;
+  }
+
+  .modal-name a{
+    color: black;
+    font-size: larger;
+  }
+
+  .modal-image{
+      width: 90%;
+  }
+
+  .modal-div{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+
+
+
+/*Photo-Widget*/
+
+  .photo-widget-content{
+    width: 80%;
+    border: 1px solid #bebebe;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.photo-content{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: initial;
+    justify-content: center;
+}
+
+.photo-content-div {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 85px);
+    gap: 10px 10px; 
+    padding: 10px 0;
+
+}
+
+.photo-element{
+    width: 85px;
+    height: 85px;
+    border: 1px solid #bebebe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-element img{
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+
+}

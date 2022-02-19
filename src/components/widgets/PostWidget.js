@@ -7,10 +7,11 @@ import { Modal} from 'antd';
 
 const PostWidget = () =>{
   
+//Getting posts
 const dispatch = useDispatch();
 const { posts } = useSelector((state) => state.postDuck);
 
-
+//Some states for Modal window
 const [isModalVisible, setIsModalVisible] = useState(false);
 const [modalData, setModalData] = useState(null)
 
@@ -23,6 +24,7 @@ useEffect(() => {
   }, [dispatch]);
   
 
+//Modal functions
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -39,57 +41,37 @@ useEffect(() => {
 
     return(
         <div className="post-widget-content">
-
             <div className="header-div">
-
                 <div className="header-content">
-
                     <span>Popular Posts</span>
-
                 </div>
 
             </div>
-
             {
                 posts.map((post,index)=>(
-
                     <div key={post.id} className='post-element'>
-
                         <div className='post-avatar'>
-
                             <Link to={`/profile/${post.user.id}`}>
-                                <img src={post.user.avatar} alt={'avatar'}/>
+                                <img src={post.user.avatar?post.user.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`} alt={'avatar'}/>
                             </Link>
-
                         </div>
-
                         <div className='post-content'>
-
                             <Link to={''} onClick={()=>{
                                 showModal()
                                 setModalData(posts[index])
                             }}>
-
                             <span>{post.content.length <= 60 ? post.content : `${post.content.slice(0,60)} . . .`}</span>
-
                             </Link>
-                            
-
                         </div>
-                        
-                        
                     </div>
-                    
                 ))
-                
             }
+
             {
                 <Modal title="Popular Posts" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <div className='post-content'>
                     <div className='post-avatar'>
-                        {console.log(modalData)}
-                        <img src={modalData?.user.avatar} alt={'avatar'}/>
-                                    
+                        <img src={modalData?.user.avatar?modalData?.user.avatar:`https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png`} alt={'avatar'}/>           
                     </div>
                     <div className='modal-name'>
                         <Link to={`/profile/${modalData?.user.id}`}>
@@ -103,13 +85,12 @@ useEffect(() => {
                     </p>
                     <div className='modal-div'>
                         {
-                            !(modalData?.image) ? null : <img className='modal-image' src={modalData?.image} alt={'post-img'} />
+                        !(modalData?.image) ? null : <img className='modal-image' src={modalData?.image} alt={'post-img'} />
                         }
                     </div>
                 </div>
             </Modal> 
             }
-
         </div>
     )
 }
