@@ -36,7 +36,7 @@ function Home() {
                 >
                   <Radio.Button value='?_sort=date&_order=desc'>Recent</Radio.Button>
                   <Radio.Button value='?_sort=likes&_order=desc'>Popular</Radio.Button>
-                  <Radio.Button value='?_sort=date&_order=asc'>Media</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=asc'>Top Rated</Radio.Button>
                 </Radio.Group>
               </Col>
             </Row>

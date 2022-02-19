@@ -4,9 +4,19 @@ import Time from "./UpdateTime";
 import Comments from "./Comments"
 import {useState} from "react"
 import { FaRegCommentDots} from "react-icons/fa"
-function ActivityCard({user,date,avatars,content,likes,image,comments}) {
+import { deletePost } from "../../../services/post";
+import { useDispatch ,useSelector} from "react-redux";
+function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
     const [showComments, setShowComments] = useState(false);
-   
+    const dispatch=useDispatch();
+    const { posts } = useSelector((state) => state.postDuck); 
+   console.log("delete post",id)
+    const onClickDeletePost=(id)=>{
+        if(window.confirm("Are you sure you want to delete this comment?")){
+            dispatch(deletePost({id:id})) 
+           
+        }
+}
     const onCommentBtnClick=()=>{
       return     setShowComments(!showComments)
         
@@ -50,7 +60,10 @@ function ActivityCard({user,date,avatars,content,likes,image,comments}) {
                              <div className='comments'> 
                              <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
                               <h4>Comments:{comments.length}</h4>
-    </div> 
+                            </div> 
+                            <div>
+                                <button onClick={()=>onClickDeletePost(posts.id)}>Delet post</button>
+                            </div>
                              
                  </div>
                {showComments?<CommentsLoader/>:null}      

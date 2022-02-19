@@ -4,6 +4,7 @@ import Time from "./UpdateTime";
 import { TiArrowBack } from "react-icons/ti"
 import {deleteComment} from "../../../services/comment"
 import { useDispatch ,useSelector} from "react-redux";
+import { Link } from 'react-router-dom';
 function Comments({ comment }) {
     const [replyText,setReplyText]=useState()
     const { user } = comment;
@@ -11,9 +12,20 @@ function Comments({ comment }) {
     const dispatch=useDispatch();
     const { comments } = useSelector((state) => state.commentDuck);
     const replyBtnClick=(()=>console.log(replyText))
+        ///delete comment
+        const deleteComments=(comment)=>{
+          if(window.confirm("Are you sure you want to delete this comment?")){
+          dispatch(deleteComment(comment)) 
+         
+          }
+      }
+         const onReply=()=>{
+         return    setClick(!isClick)
+ 
+         }
     const FileUploader = () => {
         return (
-          
+
            <div className="fileUploader">
                  {user?.avatar? <Image
                                        className='commentsAvatarReply' 
@@ -29,33 +41,24 @@ function Comments({ comment }) {
           
         );
       };
-      ///delete comment
-     const deleteComments=(comment)=>{
-         if(window.confirm("Are you sure you want to delete this comment?")){
-         dispatch(deleteComment(comment)) 
-        
-         }
-     }
-        const onReply=()=>{
-        return    setClick(!isClick)
-
-        }
+  
   return (
        <div className='commentContainer'>
             <div  className="commentsHeaderPart">
                  <div>
                      
-                      {user?.avatar ? <Image
+                     <Link to={`/profile/${user.id}`}> {user?.avatar ? <Image
                                        className='commentsAvatar' 
                                        src={user.avatar} 
                                        alt={user.name || user.username} />
                                        :
                                       <Image 
                                       className="commentsAvatar" 
-                                      src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>}
+                                      src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>
+                                     } </Link>
                  </div> 
                  <div className="commentsDataPart">
-                     <h4>{user.name}</h4> 
+                    <Link to={`/profile/${user.id}`}><h4>{user.name}</h4> </Link> 
                       <h6 className="date">
                       Posted <Time date={comment.date}/>
                       </h6> 

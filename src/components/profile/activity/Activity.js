@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import ActivityCard from "./ActivityCard";
 import { useSelector, useDispatch } from "react-redux";
 import getPosts from "../../../services/getPosts";
+import PostEditor from "../../Editor/postEditor";
 function Activity() {
       const dispatch = useDispatch();
       const { posts } = useSelector((state) => state.postDuck);
-      const { profile, loggedIn,user } = useSelector((state) => state.userDuck);
+      const { profile,user } = useSelector((state) => state.userDuck);
       const postLength = posts.length
-
       //load more 
       const [data, setData] = useState(posts)
       const [visible, setVisible] = useState(2)
@@ -27,15 +27,14 @@ function Activity() {
 
       return (
             <div className="activityMain">
-                  <div className="updateButton">
-                        <input placeholder="Update your status..." type="text" />
-                        <button >Update</button>
-                  </div>
+                {(profile.id===user.id)?<PostEditor/>:null }
+               
                   <div >
                         {data.slice(0, visible).map(({ user, id, date, content, likes, image, comments }) =>
                               <ActivityCard classname="activityCard"
                                     user={user.name}
                                     key={id}
+                                    userid={user.id}
                                     date={date}
                                     avatars={user.avatar}
                                     id={id}

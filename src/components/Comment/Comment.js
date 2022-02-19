@@ -1,7 +1,8 @@
 import React from "react";
 import { Image } from "antd";
 import "./comment.css";
-import { HeartOutlined, MessageOutlined } from "@ant-design/icons";
+import { HeartOutlined } from "@ant-design/icons";
+
 import timeAgo from "../../helpers/timeAgo";
 
 function Comment({ comment }) {
@@ -26,7 +27,7 @@ function Comment({ comment }) {
           <span className='comment-likes-count'>{comment.likes}</span>
         </div>
         <div className='comment-right'>
-          <span>Reply</span> / <span>Report</span> / <span>Delete</span>
+          <span>Reply</span> / <span>Delete</span>
         </div>
       </div>
     </div>
