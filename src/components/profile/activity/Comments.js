@@ -2,12 +2,15 @@ import React, { useState} from "react";
 import { Image } from "antd";
 import Time from "./UpdateTime";
 import { TiArrowBack } from "react-icons/ti"
-import LikeHeart from "./LikeHeart";
-import {deletePost} from "../../../services/post"
+import {deleteComment} from "../../../services/comment"
+import { useDispatch ,useSelector} from "react-redux";
 function Comments({ comment }) {
+    const [replyText,setReplyText]=useState()
     const { user } = comment;
-    //console.log("new",comment,user.avatar).
     const [isClick, setClick] = useState(false);
+    const dispatch=useDispatch();
+    const { comments } = useSelector((state) => state.commentDuck);
+    const replyBtnClick=(()=>console.log(replyText))
     const FileUploader = () => {
         return (
           
@@ -20,17 +23,17 @@ function Comments({ comment }) {
                                       <Image 
                                       className="commentsAvatarReply" 
                                       src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>}
-                <input type="text" placeholder="Write a reply"/>
-                 <button>Reply</button>
+                <input type="text" value={replyText} placeholder="Write a reply" onInput={e=>setReplyText(e.target.value)} />
+                 <button onClick={replyBtnClick}>Reply</button>
             </div>
           
         );
       };
       ///delete comment
-     const deleteComment=()=>{
+     const deleteComments=(comment)=>{
          if(window.confirm("Are you sure you want to delete this comment?")){
-          deletePost(user.id)
-            console.log("delete id===",user.id)
+         dispatch(deleteComment(comment)) 
+        
          }
      }
         const onReply=()=>{
@@ -62,11 +65,8 @@ function Comments({ comment }) {
               </div>
              
          <div className="commentsFooterBtn">
-            <LikeHeart likes={comment.likes}/>
-            <div className="commentsthreeBtn">
                <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
-                <div><span onClick={deleteComment}>Delete</span></div>
-            </div> 
+                <div><span onClick={()=>deleteComments(comment)}>Delete</span></div>
           </div>
           {isClick?<FileUploader/>:null}
         </div>
