@@ -3,8 +3,9 @@ import { postAdd, postUpdate, postDelete, postError } from "../redux/ducks/postD
 import { postSchema } from "../helpers/schemas";
 
 // Add new post ................................
-export const addPost = (data) => (dispatch) => {
-  const postData = { ...postSchema, ...data };
+export const addPost = (data) => (dispatch, getState) => {
+  let { user } = getState().userDuck;
+  const postData = { ...postSchema, ...data, userid: user.id };
 
   fetch(`${api}/posts`, {
     method: "POST",

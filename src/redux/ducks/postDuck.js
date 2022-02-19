@@ -40,7 +40,7 @@ const postDuck = (state = initialState, { type, payload }) => {
     case POST_ADD:
       return {
         ...state,
-        posts: [...state.posts, { ...postSchema, payload }],
+        posts: [...state.posts, payload],
       };
     case POST_UPDATE:
       return {
