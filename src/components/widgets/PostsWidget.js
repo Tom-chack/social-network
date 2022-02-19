@@ -20,7 +20,7 @@ const [modalData, setModalData] = useState(null)
 
 useEffect(() => {
     
-    dispatch(getPosts("?_sort=likes&_order=desc&_start=1&_end=6", true, true, false));
+    dispatch(getPosts("?_sort=likes&_order=desc&_start=0&_end=5", true, true, false));
     
   }, [dispatch]);
   
