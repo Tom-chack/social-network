@@ -22,9 +22,10 @@ export const userSchema = {
 export const postSchema = {
   content: "",
   userid: 0,
-  image: "",
   likes: [],
+  liked: [],
   comments: [],
+  image: "",
   date: Date.now(),
 };
 
