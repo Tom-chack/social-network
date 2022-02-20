@@ -70,3 +70,25 @@
 .post-foot svg {
     cursor: pointer;
 }
+.post-image{
+    display: inline-block;
+    padding: 2px;
+    background: #fff;
+    margin-top: 7px;
+}
+.post-image .ant-image-img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    max-height: 200px;
+}
+.tools{
+    margin-left: 10px;
+    font-size: 16px;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+.ant-popover button.ant-btn{
+    margin: 0 5px;
+    min-width: 60px;
+}
