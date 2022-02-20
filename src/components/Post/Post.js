@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, dislikePost } from "../../services/like";
+import { deletePost } from "../../services/post";
 import { Popover, Image, Button } from "antd";
 
 import "./post.css";
@@ -50,7 +51,14 @@ function Post({ post }) {
         <Button type='primary' size='small' ghost onClick={() => setEditor(true)}>
           Edit
         </Button>
-        <Button size='small' danger>
+        <Button
+          danger
+          size='small'
+          onClick={() =>
+            window.confirm("Are you sure you want to delete this post?") &&
+            dispatch(deletePost(post))
+          }
+        >
           Delete
         </Button>
       </div>

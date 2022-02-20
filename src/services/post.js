@@ -73,15 +73,38 @@ export const updatePost = (data) => async (dispatch) => {
 };
 
 // Delete post by id .............................
-export const deletePost = (id) => async (dispatch) => {
+export const deletePost = (post) => async (dispatch) => {
+  const { id, liked, image, comments } = post;
   if (id) {
     try {
+      // Delete post
       await fetch(`${api}/posts/${id}`, {
         method: "DELETE",
       });
-      await fetch(`${api}/images/${id}`, {
-        method: "DELETE",
-      });
+      // Delete post image
+      if (image) {
+        await fetch(`${api}/images/${id}`, {
+          method: "DELETE",
+        });
+      }
+      // Delete post comments
+      let commentCount = comments?.length;
+      if (commentCount > 0) {
+        for (let c = 0; c < commentCount; c++) {
+          await fetch(`${api}/comments/${comments[c].id}`, {
+            method: "DELETE",
+          });
+        }
+      }
+      // Delete post
+      let likedCount = liked?.length;
+      if (likedCount > 0) {
+        for (let l = 0; l < likedCount; l++) {
+          await fetch(`${api}/likes/${liked[l]}-${id}`, {
+            method: "DELETE",
+          });
+        }
+      }
       dispatch(postDelete(id));
     } catch (err) {
       dispatch(postError(err.message));
