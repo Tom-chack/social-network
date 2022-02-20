@@ -6,7 +6,7 @@ import {Profiler, useState} from "react"
 import { FaRegCommentDots} from "react-icons/fa"
 import { deletePost } from "../../../services/post";
 import { useDispatch ,useSelector} from "react-redux";
-function ActivityCard({users,date,avatars,content,likes,image,comments,id}) {
+function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id}) {
     const [showComments, setShowComments] = useState(false);
     const dispatch=useDispatch();
     const { posts} = useSelector((state) => state.postDuck); 
@@ -39,6 +39,7 @@ function ActivityCard({users,date,avatars,content,likes,image,comments,id}) {
                  <div className="avatarUserName">
                          <div>
                              <Avatar/>
+                             
                          </div>
                          <div className="userName">
                              <h3> 
@@ -57,7 +58,7 @@ function ActivityCard({users,date,avatars,content,likes,image,comments,id}) {
            
                  <div className="likesComments">
                     
-                             <LikeHeart likes={likes} /> 
+                             <LikeHeart post={posts} likes={likes} /> 
                              <div className='comments'> 
                              <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
                               <h4>Comments:{comments.length}</h4>

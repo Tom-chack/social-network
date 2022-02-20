@@ -27,11 +27,12 @@ function Activity() {
 
       return (
             <div className="activityMain">
+              
                 {((loggedIn===true)&&(profile.id===user.id))?<PostEditor/>:null }
                
                   <div >
-                        {data.slice(0, visible).map(({ user, id, date, content, likes, image, comments }) =>
-                              <ActivityCard classname="activityCard"
+                        {data.slice(0, visible).map(({ liked,user, id, date, content, likes, image, comments }) =>
+                                  <ActivityCard classname="activityCard"
                                     users={user.name}
                                     key={id}
                                     userid={user.id}
@@ -42,6 +43,7 @@ function Activity() {
                                     likes={likes}
                                     image={image}
                                     comments={comments}
+                                    liked={liked}
                               />)}
                   </div>
                   <div className="loadMore">
