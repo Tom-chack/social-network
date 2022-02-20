@@ -13,7 +13,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
    console.log("delete post",id)
     const onClickDeletePost=(id)=>{
         if(window.confirm("Are you sure you want to delete this comment?")){
-            dispatch(deletePost({id:id})) 
+            dispatch(deletePost(id)) 
            
         }
 }
@@ -62,7 +62,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
                               <h4>Comments:{comments.length}</h4>
                             </div> 
                             <div>
-                                <button onClick={()=>onClickDeletePost(posts.id)}>Delet post</button>
+                                <button onClick={()=>onClickDeletePost(id)}>Delet post</button>
                             </div>
                              
                  </div>
