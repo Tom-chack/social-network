@@ -34,9 +34,9 @@ function Home() {
                   size='middle'
                   onChange={(e) => setFilter(e.target.value)}
                 >
-                  <Radio.Button value='?_sort=date&_order=desc'>Recent</Radio.Button>
-                  <Radio.Button value='?_sort=likes&_order=desc'>Popular</Radio.Button>
-                  <Radio.Button value='?_sort=date&_order=asc'>Top Rated</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=desc'>Newest</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=asc'>Oldest</Radio.Button>
+                  <Radio.Button value='?_sort=likes&_order=desc'>Top Rated</Radio.Button>
                 </Radio.Group>
               </Col>
             </Row>
