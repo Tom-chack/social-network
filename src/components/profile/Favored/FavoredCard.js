@@ -14,7 +14,7 @@ function FavoredCard({ post, changeBackground, changeBack}) {
   const { id, content, user, likes, date } = post;
   const dispatch = useDispatch();
 
-  const dislike = () => {
+  const dislike = (e) => {
     dispatch(
       dislikePost(post))
   }

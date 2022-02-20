@@ -3,8 +3,8 @@ import FavoredCard from "./FavoredCard";
 import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../../services/getPosts";
 import { Row, Col, Radio, Card } from "antd";
-
-
+import ReactPaginate from "react-paginate";
+import './favored.css';
 function Favored() {
 
   //Redux functions
@@ -16,7 +16,16 @@ function Favored() {
   const [filter, setFilter] = useState('&_sort=date&_order=desc');
 
   //calculations for pagination
-  
+  const [pageNumber, setPageNumber] = useState(0);
+  const postsPerPage = 5;
+  const pagesVisited = pageNumber * postsPerPage;
+
+  const displayPosts = posts.slice(pagesVisited, pagesVisited + postsPerPage);
+  const pageCount = Math.ceil(posts.length / postsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
   //Fetch user object by profile user id and likes by userid
   useEffect(() => {
     if (profile.id) {
@@ -41,6 +50,19 @@ function Favored() {
     <div>
       <Row>
         <Col flex={5} style={{ margin: 0 }}>
+        {
+          posts.length <= 5 ? null : <ReactPaginate
+                                                previousLabel={'<'}
+                                                nextLabel={'>'}
+                                                pageCount={pageCount}
+                                                onPageChange={changePage}
+                                                containerClassName={'paginationBttns'}
+                                                previousLinkClassName={'previusBttn'}
+                                                nextLinkClassName={'nextBttn'}
+                                                disabledClassName={'paginationDisabled'}
+                                                activeClassName={'paginationActive'}
+                                                />
+        }
         </Col>
         <Col flex={1} align='right'>
           <Radio.Group
@@ -55,7 +77,7 @@ function Favored() {
         </Col>
       </Row>
       <div >
-        { posts.map((post) =>
+        {displayPosts.map((post) =>
           <Card
             key={post.id}
             className='post'
