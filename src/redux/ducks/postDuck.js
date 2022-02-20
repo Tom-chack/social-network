@@ -40,7 +40,7 @@ const postDuck = (state = initialState, { type, payload }) => {
     case POST_ADD:
       return {
         ...state,
-        posts: [...state.posts, { ...postSchema, payload }],
+        posts: [...state.posts, payload],
       };
     case POST_UPDATE:
       return {
@@ -80,15 +80,27 @@ const postDuck = (state = initialState, { type, payload }) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.id === payload.postid) post = { ...post, likes: post.likes + 1 };
-          return post;
+          if (post.id === payload.postid) {
+            return {
+              ...post,
+              likes: post.likes + 1,
+              liked: [...new Set([...post.liked, payload.userid])],
+            };
+          } else {
+            return post;
+          }
         }),
       };
     case POST_DISLIKE:
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.id === payload.postid) post = { ...post, likes: post.likes - 1 };
+          if (post.id === payload.postid)
+            post = {
+              ...post,
+              likes: post.likes - 1,
+              liked: post.liked.filter((userid) => userid !== payload.userid),
+            };
           return post;
         }),
       };

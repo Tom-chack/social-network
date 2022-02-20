@@ -3,23 +3,29 @@ import { postAdd, postUpdate, postDelete, postError } from "../redux/ducks/postD
 import { postSchema } from "../helpers/schemas";
 
 // Add new post ................................
-export const addPost = (data) => (dispatch) => {
-  const postData = { ...postSchema, ...data };
+export const addPost = (data) => async (dispatch, getState) => {
+  let { user } = getState().userDuck;
+  const post = { ...postSchema, content: data.content, userid: user.id };
 
-  fetch(`${api}/posts`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(postData),
-  })
-    .then((res) => res.json())
-    .then((post) => {
-      dispatch(postAdd(post));
-    })
-    .catch((err) => {
-      dispatch(postError(err.message));
+  try {
+    let postRes = await fetch(`${api}/posts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(post),
     });
+
+    let postData = await postRes.json();
+    dispatch(postAdd({ ...postData, user, image: data.image }));
+
+    let image = { postid: postData.id, url: data.image };
+    await fetch(`${api}/images`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(image),
+    });
+  } catch (e) {
+    dispatch(postError(e.message));
+  }
 };
 
 // Update post by id ..............................
