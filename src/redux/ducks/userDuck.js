@@ -70,7 +70,7 @@ const userDuck = (state = initialState, { type, payload }) => {
         ...state,
         user: payload,
         users: state.users.map((user) => {
-          if (user.id === payload.id) user = { ...user, payload };
+          if (user.id === payload.id) user = { ...user, ...payload };
           return user;
         }),
         errorsUser: "",

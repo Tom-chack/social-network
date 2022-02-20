@@ -46,7 +46,7 @@ const postDuck = (state = initialState, { type, payload }) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.id === payload.id) post = { ...post, payload };
+          if (post.id === payload.id) post = { ...post, ...payload };
           return post;
         }),
       };
