@@ -46,14 +46,14 @@ const postDuck = (state = initialState, { type, payload }) => {
       return {
         ...state,
         posts: state.posts.map((post) => {
-          if (post.id === payload.id) post = { ...post, payload };
+          if (post.id === payload.id) post = { ...post, ...payload };
           return post;
         }),
       };
     case POST_DELETE:
       return {
         ...state,
-        posts: state.posts.filter((post) => !post.id === payload),
+        posts: state.posts.filter((post) => post.id !== payload),
       };
     case POST_COMMENT_ADD:
       return {

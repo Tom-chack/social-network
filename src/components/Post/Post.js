@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, dislikePost } from "../../services/like";
-import { Image } from "antd";
+import { Popover, Image, Button } from "antd";
 
 import "./post.css";
-import { HeartOutlined, HeartTwoTone, MessageOutlined } from "@ant-design/icons";
+import { HeartOutlined, HeartTwoTone, SettingOutlined, MessageOutlined } from "@ant-design/icons";
 import Comment from "../Comment/Comment";
 
 import timeAgo from "../../helpers/timeAgo";
@@ -41,6 +40,29 @@ function Post({ post }) {
     return <HeartOutlined className='post-like-icon' />;
   };
 
+  const tools = () => {
+    return (
+      <div>
+        <Button type='primary' size='small' ghost>
+          Edit
+        </Button>
+        <Button size='small' danger>
+          Delete
+        </Button>
+      </div>
+    );
+  };
+
+  const toolsButton = () => {
+    if (loggedIn && user.id === currentUser.id) {
+      return (
+        <Popover content={tools} className='tools'>
+          <SettingOutlined />
+        </Popover>
+      );
+    }
+  };
+
   return (
     <div className='post'>
       <div className='post-head'>
@@ -64,6 +86,7 @@ function Post({ post }) {
           <MessageOutlined className='post-comment-icon' />
           <span className='post-comments-button'>comments</span>
           <span className='post-comments-count'>{post.comments.length}</span>
+          {toolsButton()}
         </div>
       </div>
       {comments?.length ? (
