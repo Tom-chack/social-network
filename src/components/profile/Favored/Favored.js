@@ -4,16 +4,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../../services/getPosts";
 import { Row, Col, Radio, Card } from "antd";
 import ReactPaginate from "react-paginate";
+
 import './favored.css';
+
 function Favored() {
 
   //Redux functions
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.userDuck);
-  const { posts, data } = useSelector((state) => state.postDuck);
+  const { posts } = useSelector((state) => state.postDuck);
 
   //Local states
   const [filter, setFilter] = useState('&_sort=date&_order=desc');
+
+  //Fetch user object by profile user id and likes by userid
+  useEffect(() => {
+    if (profile.id) {
+      dispatch(getPosts('?favoredby=' + profile.id + filter));
+    }
+  }, [dispatch, profile, filter]);
 
   //calculations for pagination
   const [pageNumber, setPageNumber] = useState(0);
@@ -26,13 +35,6 @@ function Favored() {
   const changePage = ({ selected }) => {
     setPageNumber(selected)
   }
-  //Fetch user object by profile user id and likes by userid
-  useEffect(() => {
-    if (profile.id) {
-      dispatch(getPosts('?favoredby=' + profile.id + filter));
-    }
-  }, [dispatch, profile, filter]);
-
 
   // changing heart icon's background while hovering
   function changeBackground(e) {
@@ -50,19 +52,20 @@ function Favored() {
     <div>
       <Row>
         <Col flex={5} style={{ margin: 0 }}>
-        {
-          posts.length <= 5 ? null : <ReactPaginate
-                                                previousLabel={'<'}
-                                                nextLabel={'>'}
-                                                pageCount={pageCount}
-                                                onPageChange={changePage}
-                                                containerClassName={'paginationBttns'}
-                                                previousLinkClassName={'previusBttn'}
-                                                nextLinkClassName={'nextBttn'}
-                                                disabledClassName={'paginationDisabled'}
-                                                activeClassName={'paginationActive'}
-                                                />
-        }
+          {
+            posts.length <= 5 ? null :
+              <ReactPaginate
+                previousLabel={'<'}
+                nextLabel={'>'}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={'paginationBttns'}
+                previousLinkClassName={'previusBttn'}
+                nextLinkClassName={'nextBttn'}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+              />
+          }
         </Col>
         <Col flex={1} align='right'>
           <Radio.Group
