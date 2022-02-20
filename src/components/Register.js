@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import getUsers from "../services/getUsers";
 import register from "../services/register";
+import "./Register.css";
 
 import { Form, Input, Button, Row, Col, Divider, Typography } from "antd";
 const { Title } = Typography;
@@ -9,22 +11,45 @@ const { Title } = Typography;
 function Register() {
   //Using navigate to redirect to home page after successfuly login
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //Local state to handle login result messages
   const [formMessage, setFormMessage] = useState("");
+  const [usernameValidation, setUsernameValidation] = useState(false);
+  const { users } = useSelector((state) => state.userDuck);
+
+  //getting all users
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  //making array consists of only usernames
+  const usernames = users.map((item) => item.username);
+  console.log(usernames);
 
   //Redux functions
-  const dispatch = useDispatch();
-  const { signedUp, errorsUser } = useSelector((state) => state.userDuck);
+  let { errorsUser } = useSelector((state) => state.userDuck);
 
-  //Authorize username/password in asynchronous login() function
+  //Authorize username/password in asynchronous login() function, checking if username exists or no
   const onSubmit = (data) => {
-    dispatch(register(data));
+    console.log(data);
+    if (usernames.includes(data.username)) {
+      setUsernameValidation(true);
+    } else {
+      setUsernameValidation(false);
+      setFormMessage("completed");
+      dispatch(register(data));
+    }
   };
 
   //Handle registration form submission, if registration successes, shows success message and redirects, otherwise shows error message from redux errorsUser
   useEffect(() => {
-    if (signedUp) {
+    if (usernameValidation) {
+      setFormMessage("Username already exists!");
+      setTimeout(() => {
+        navigate("/register");
+      }, 1000);
+    } else if (!usernameValidation && formMessage !== "") {
       setFormMessage("You have successfully registered...");
       setTimeout(() => {
         navigate("/login", { replace: true });
@@ -32,7 +57,7 @@ function Register() {
     } else {
       setFormMessage(errorsUser);
     }
-  }, [signedUp, navigate, errorsUser]);
+  }, [navigate, errorsUser, usernameValidation, formMessage]);
 
   //Create register form based on Ant Design { Form, Input, Button, Checkbox }
   return (
@@ -68,7 +93,7 @@ function Register() {
                 },
               ]}
             >
-              <Input />
+              <Input className={usernameValidation ? "repeated-username" : ""}/>
             </Form.Item>
 
             <Form.Item
