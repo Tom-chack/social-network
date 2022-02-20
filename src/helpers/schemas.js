@@ -30,10 +30,8 @@ export const postSchema = {
 };
 
 export const commentSchema = {
-  id: 1,
-  postid: 1,
-  userid: 2,
+  postid: 0,
+  userid: 0,
   content: "",
   date: Date.now(),
-  likes: 0,
 };
