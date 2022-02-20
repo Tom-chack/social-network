@@ -21,7 +21,10 @@ export const likePost = (post) => async (dispatch, getState) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ likes: post.likes + 1 }),
+        body: JSON.stringify({
+          likes: post.likes + 1,
+          liked: [...new Set([...post.liked, user.id])],
+        }),
       });
       // Add a new like object in the likes array
       const likeRes = await fetch(`${api}/likes`, {
@@ -41,7 +44,6 @@ export const likePost = (post) => async (dispatch, getState) => {
 
 // Dislike a post ................................
 export const dislikePost = (post) => async (dispatch, getState) => {
-  //postLike: {userid, postid}
   let { user } = getState().userDuck;
   let likeData = {
     id: `${user.id}-${post.id}`,
@@ -55,7 +57,10 @@ export const dislikePost = (post) => async (dispatch, getState) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ likes: post.likes - 1 }),
+      body: JSON.stringify({
+        likes: post.likes - 1,
+        liked: post.liked.filter((likedUserid) => likedUserid !== user.id),
+      }),
     });
     // Add a new like object in the likes array
     await fetch(`${api}/likes/${likeData.id}`, {
