@@ -96,7 +96,7 @@ export const deletePost = (post) => async (dispatch) => {
           });
         }
       }
-      // Delete post
+      // Delete post likes
       let likedCount = liked?.length;
       if (likedCount > 0) {
         for (let l = 0; l < likedCount; l++) {
