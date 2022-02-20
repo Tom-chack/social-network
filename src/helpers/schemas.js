@@ -22,7 +22,7 @@ export const userSchema = {
 export const postSchema = {
   content: "",
   userid: 0,
-  likes: [],
+  likes: 0,
   liked: [],
   comments: [],
   image: "",

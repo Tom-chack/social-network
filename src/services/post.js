@@ -15,10 +15,9 @@ export const addPost = (data) => async (dispatch, getState) => {
     });
 
     let postData = await postRes.json();
-    console.log(postData);
-    dispatch(postAdd({ ...postData, image: data.image }));
+    dispatch(postAdd({ ...postData, user, image: data.image }));
 
-    let image = { postid: postData.id, url: data.image };
+    let image = { id: postData.id, postid: postData.id, url: data.image };
     await fetch(`${api}/images`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -53,22 +52,19 @@ export const updatePost = (postData) => (dispatch) => {
 };
 
 // Delete post by id .............................
-export const deletePost = (id) => (dispatch) => {
+export const deletePost = (id) => async (dispatch) => {
   if (id) {
-    fetch(`${api}/posts/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {},
-    })
-      .then((res) => res.json())
-      .then((post) => {
-        dispatch(postDelete(id));
-      })
-      .catch((err) => {
-        dispatch(postError(err.message));
+    try {
+      await fetch(`${api}/posts/${id}`, {
+        method: "DELETE",
       });
+      await fetch(`${api}/images/${id}`, {
+        method: "DELETE",
+      });
+      dispatch(postDelete(id));
+    } catch (err) {
+      dispatch(postError(err.message));
+    }
   } else {
     dispatch(postError("Post ID is not found"));
   }
