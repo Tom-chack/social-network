@@ -15,37 +15,58 @@ export const addPost = (data) => async (dispatch, getState) => {
     });
 
     let postData = await postRes.json();
-    dispatch(postAdd({ ...postData, user, image: data.image }));
-
-    let image = { id: postData.id, postid: postData.id, url: data.image };
-    await fetch(`${api}/images`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(image),
-    });
+    if (data?.image) {
+      dispatch(postAdd({ ...postData, user, image: data.image }));
+      let image = { id: postData.id, postid: postData.id, url: data.image };
+      await fetch(`${api}/images`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(image),
+      });
+    } else {
+      dispatch(postAdd({ ...postData, user }));
+    }
   } catch (e) {
     dispatch(postError(e.message));
   }
 };
 
 // Update post by id ..............................
-export const updatePost = (postData) => (dispatch) => {
-  //const postData = { ...postSchema, ...data };
-  if (postData.id) {
-    fetch(`${api}/posts/${postData.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    })
-      .then((res) => res.json())
-      .then((post) => {
-        dispatch(postUpdate(post));
-      })
-      .catch((err) => {
-        dispatch(postError(err.message));
+export const updatePost = (data) => async (dispatch) => {
+  if (data.id) {
+    try {
+      let postRes = await fetch(`${api}/posts/${data.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...data, image: "" }),
       });
+      let postData = await postRes.json();
+
+      if (data?.image) {
+        let imageRes = await fetch(`${api}/images/${data.id}`);
+        let imageData = await imageRes.json();
+        if (imageData.id) {
+          let image = { url: data.image };
+          await fetch(`${api}/images/${imageData.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(image),
+          });
+        } else {
+          let image = { id: data.id, postid: data.id, url: data.image };
+          await fetch(`${api}/images`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(image),
+          });
+        }
+      }
+      dispatch(postUpdate({ ...postData, ...data }));
+    } catch (e) {
+      dispatch(postError(e.message));
+    }
   } else {
     dispatch(postError("Post ID is not found"));
   }

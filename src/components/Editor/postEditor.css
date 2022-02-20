@@ -32,5 +32,8 @@
   border: 1px solid #e1e1e1;
 }
 .post-field-image .ant-form-item-control-input-content .post-editor-sep{
-  width: 50px;
+  flex-grow: 1;
+}
+.cancel-button{
+  margin-right: 10px;
 }
