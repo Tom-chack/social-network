@@ -5,13 +5,12 @@ import { TiArrowBack } from "react-icons/ti"
 import {deleteComment} from "../../../services/comment"
 import { useDispatch ,useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
+import CommentEditor from "./commentEditor";
 function Comments({ comment }) {
-    const [replyText,setReplyText]=useState()
     const { user } = comment;
     const [isClick, setClick] = useState(false);
     const dispatch=useDispatch();
     const { comments } = useSelector((state) => state.commentDuck);
-    const replyBtnClick=(()=>console.log(replyText))
         ///delete comment
         const deleteComments=(comment)=>{
           if(window.confirm("Are you sure you want to delete this comment?")){
@@ -20,7 +19,8 @@ function Comments({ comment }) {
           }
       }
          const onReply=()=>{
-         return    setClick(!isClick)
+          
+         return  setClick(!isClick)
  
          }
     const FileUploader = () => {
@@ -35,8 +35,7 @@ function Comments({ comment }) {
                                       <Image 
                                       className="commentsAvatarReply" 
                                       src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>}
-                <input type="text" value={replyText} placeholder="Write a reply" onInput={e=>setReplyText(e.target.value)} />
-                 <button onClick={replyBtnClick}>Reply</button>
+                     <CommentEditor/>        
             </div>
           
         );
@@ -68,10 +67,13 @@ function Comments({ comment }) {
               </div>
              
          <div className="commentsFooterBtn">
+           
                <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
                 <div><span onClick={()=>deleteComments(comment)}>Delete</span></div>
+            
+              
           </div>
-          {isClick?<FileUploader/>:null}
+          <div> {isClick?<FileUploader/>:null} </div>
         </div>
     
   );

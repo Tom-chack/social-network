@@ -282,17 +282,11 @@ commentContainer h4{
   flex-direction: row;
   margin-left:40px;
 }
-.fileUploader input{
-width:400px;
-  height:30px;
-  border-color: rgba(153, 157, 160, 0.623);
-  margin-right:5px;
-
-}
 .fileUploader button{
   width: 130px;
-  height: 30px;
+  height: 35px;
   font-size: 14px;
+  margin-left: 20px;
   border:1px solid #2f89f0 ;
   background-color: #2f89f0;
   color: rgb(238, 227, 227);

@@ -26,7 +26,7 @@ function PostEditor() {
   //Send submitted data to json-server
   const [form] = Form.useForm();
   const onSubmit = (data) => {
-    dispatch(addPost({ ...data, image }));
+    dispatch(addPost({ ...data}));
     form.resetFields();
   };
 
