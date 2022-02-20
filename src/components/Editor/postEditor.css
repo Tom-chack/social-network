@@ -1,0 +1,36 @@
+/* tile uploaded pictures */
+#post-editor .ant-row.ant-form-item.post-field-content{
+  margin: 0 0 5px 0;
+}
+
+.upload-list-inline .ant-upload-list-item {
+  float: left;
+  width: 200px;
+  margin-right: 8px;
+}
+
+.upload-list-inline [class*='-upload-list-rtl'] .ant-upload-list-item {
+  float: right;
+}
+
+.post-field-image{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.post-field-image .ant-form-item-control-input-content{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.post-field-image .ant-form-item-control-input-content input{
+  width: 200px;
+  background: #f5f5f5;
+  padding: 5px;
+  height: 34px;
+  border: 1px solid #e1e1e1;
+}
+.post-field-image .ant-form-item-control-input-content .post-editor-sep{
+  width: 50px;
+}
