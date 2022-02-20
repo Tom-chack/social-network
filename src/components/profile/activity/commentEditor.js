@@ -1,19 +1,12 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { addComment } from "../../../services/comment";
-import getBase64 from "../../../helpers/file2base64";
 
 import { Form, Input, Button } from "antd";
 const { TextArea } = Input;
 function CommentEditor() {
-    const [image, setImage] = useState("");
-    const inputEl = useRef(null);
-  
-    const uploadFile = async () => {
-      let file = inputEl.current.files[0];
-      let data = await getBase64(file);
-      setImage(data);
-    };
+    
+ 
   const dispatch = useDispatch();
 
   //Send submitted data to json-server
@@ -44,12 +37,9 @@ function CommentEditor() {
             maxLength={100}
             style={{ height: 30 ,width:400}}
             name='content'
-            onChange={uploadFile}
           />
           </Form.Item>
           <Form.Item>
-          {image && <img src={image} alt='Preview' style={{ height: "34px" }} />}
-          <div></div>
            <Button type='primary' htmlType='submit'>
             Reply comment
           </Button>
