@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import getPosts from "../../../services/getPosts";
 import { Row, Col, Radio, Card } from "antd";
 import ReactPaginate from "react-paginate";
-
 import './favored.css';
 
 function Favored() {
@@ -38,14 +37,10 @@ function Favored() {
 
   // changing heart icon's background while hovering
   function changeBackground(e) {
-    e.target.style.background = 'red';
-    e.target.style.borderRadius = '10px';
-    e.target.style.padding = '3px';
-    e.target.style.cursor = 'default';
+    e.target.style.color = 'red';
   }
   function changeBack(e) {
-    e.target.style.backgroundColor = '';
-    e.target.style.padding = '0px'
+    e.target.style.color = 'pink';
   }
 
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
+import { dislikePost } from "../../../services/like.js";
 import { Image, Modal } from "antd";
 import { Icon } from '@iconify/react';
 import ReadMoreReact from 'read-more-react';
-import { dislikePost } from "../../../services/like.js";
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
@@ -15,7 +15,6 @@ const { confirm } = Modal;
 function FavoredCard({ post, changeBackground, changeBack }) {
   const { id, content, user, likes, date } = post;
   const dispatch = useDispatch();
-
   const dislike = () => {
     dispatch(
       dislikePost(post))
