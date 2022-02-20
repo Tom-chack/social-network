@@ -9,13 +9,13 @@ import { Form, Input, Button, Row, Col, Divider, Typography } from "antd";
 const { Title } = Typography;
 
 function Register() {
-  //Using navigate to redirect to home page after successfuly login
+  //Using navigate to redirect to home page after successfully login
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //Local state to handle login result messages
   const [formMessage, setFormMessage] = useState("");
-  const [usernameValidation, setUsernameValidation] = useState(false);
+  const [userExists, setUserExists] = useState(false);
   const { users } = useSelector((state) => state.userDuck);
 
   //getting all users
@@ -34,9 +34,9 @@ function Register() {
   const onSubmit = (data) => {
     console.log(data);
     if (usernames.includes(data.username)) {
-      setUsernameValidation(true);
+      setUserExists(true);
     } else {
-      setUsernameValidation(false);
+      setUserExists(false);
       setFormMessage("completed");
       dispatch(register(data));
     }
@@ -44,12 +44,9 @@ function Register() {
 
   //Handle registration form submission, if registration successes, shows success message and redirects, otherwise shows error message from redux errorsUser
   useEffect(() => {
-    if (usernameValidation) {
+    if (userExists) {
       setFormMessage("Username already exists!");
-      setTimeout(() => {
-        navigate("/register");
-      }, 1000);
-    } else if (!usernameValidation && formMessage !== "") {
+    } else if (!userExists && formMessage !== "") {
       setFormMessage("You have successfully registered...");
       setTimeout(() => {
         navigate("/login", { replace: true });
@@ -57,7 +54,7 @@ function Register() {
     } else {
       setFormMessage(errorsUser);
     }
-  }, [navigate, errorsUser, usernameValidation, formMessage]);
+  }, [navigate, errorsUser, userExists, formMessage]);
 
   //Create register form based on Ant Design { Form, Input, Button, Checkbox }
   return (
@@ -93,7 +90,7 @@ function Register() {
                 },
               ]}
             >
-              <Input className={usernameValidation ? "repeated-username" : ""}/>
+              <Input className={userExists ? "repeated-username" : ""} />
             </Form.Item>
 
             <Form.Item
