@@ -5,7 +5,6 @@ import { Icon } from '@iconify/react';
 import ReadMoreReact from 'read-more-react';
 import TimeAgo from "javascript-time-ago";
 import {dislikePost} from "../../../services/like.js";
-//import { postDelete } from "../../../redux/ducks/postDuck.js";
 import en from "javascript-time-ago/locale/en.json";
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo("en-US");
@@ -17,13 +16,8 @@ function FavoredCard({ post, changeBackground, changeBack}) {
 
   const dislike = () => {
     dispatch(
-      dislikePost({ id }))
+      dislikePost(post))
   }
-
-  // const deletePost = () => {
-  //   dispatch(
-  //     postDelete({ post }))
-  // }
   
   return (
     <div className='post' >
