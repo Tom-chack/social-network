@@ -1,37 +1,63 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getUsers from "../../services/getUsers";
-import getUser from "../../services/getUser";
 import { Form, Input } from "antd";
 import "./Account.css";
 import TextArea from "antd/lib/input/TextArea";
+import getUsers from "../../services/getUsers";
 
 function Account() {
-
+  const { profile } = useSelector((state) => state.userDuck);
   const { users } = useSelector((state) => state.userDuck);
-  const { user } = useSelector((state) => state.userDuck);
-
-  const dispatch = useDispatch();
-  //getting users and current user
-  useEffect (() => {
-    dispatch(getUsers());
-    dispatch(getUser())
-  }, [dispatch])
-  
-  const handleSubmit = (data) => {
-    console.log(data);
-  };
-
-  console.log(user);
+  const { user } = useSelector((state) => state.userDuck)
+  const { loggedIn } = useSelector((state) => state.userDuck);
+  console.log (loggedIn)
+  console.log(user)
   console.log(users)
 
+  const dispatch = useDispatch();
+
+  useEffect (() => {
+    dispatch(getUsers());
+  },  [dispatch])
+
+  //filtering current user data
+  const currentUser = users.map (item => {
+    if (item.id === user.id){
+      return item
+    }
+  }).filter (item => item !== undefined);
+  console.log(currentUser)
+  const updateAccount= (data) => {
+    console.log(data);
+    
+  };
+
   return (
-    <>
-      <Form
+    <div>
+    {user.id === profile.id ? currentUser.map ((item) => {
+      console.log(item)
+      return (<Form
+        key={item.id}
         layout="vertical"
-        onFinish={handleSubmit}
+        onFinish={updateAccount}
         className="ant-form"
         method="post"
+        initialValues={{
+          name: item.name ? item.name : "",
+          avatar: item.avatar ? item.avatar : "",
+          cover: item.cover ? item.cover : "",
+          about: item.about ? item.about : "",
+          email: item.email ? item.email : "",
+          password: item.password ? item.password : "",
+          fb: item.fb ? item.fb : "",
+          tw: item.tw ? item.tw : "",
+          lin: item.lin ? item.lin : "",
+          git: item.git ? item.git : "",
+          vib: item.vib ? item.vib : "",
+          wapp: item.wapp ? item.wapp : "",
+        }
+          
+        }
       >
         <h2>Profile Information</h2>
         <Form.Item
@@ -40,11 +66,11 @@ function Account() {
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your name and surname!",
             },
           ]}
         >
-          <Input placeholder="@ex. Name Surname" />
+          <Input name="name" placeholder="@ex. Name Surname" />
         </Form.Item>
         <Form.Item label="Profile Photo" name="avatar">
           <Input placeholder="Choose you profile picture" type="file" />
@@ -139,8 +165,9 @@ function Account() {
           className="button-update"
         />
         </Form.Item>
-      </Form>
-    </>
+      </Form>)
+    }) : ""}
+    </div>
   );
 }
 
