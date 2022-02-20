@@ -6,7 +6,7 @@ import PostEditor from "../../Editor/postEditor";
 function Activity() {
       const dispatch = useDispatch();
       const { posts } = useSelector((state) => state.postDuck);
-      const { profile,user } = useSelector((state) => state.userDuck);
+      const { profile,user,loggedIn } = useSelector((state) => state.userDuck);
       const postLength = posts.length
       //load more 
       const [data, setData] = useState(posts)
@@ -27,12 +27,12 @@ function Activity() {
 
       return (
             <div className="activityMain">
-                {(profile.id===user.id)?<PostEditor/>:null }
+                {((loggedIn===true)&&(profile.id===user.id))?<PostEditor/>:null }
                
                   <div >
                         {data.slice(0, visible).map(({ user, id, date, content, likes, image, comments }) =>
                               <ActivityCard classname="activityCard"
-                                    user={user.name}
+                                    users={user.name}
                                     key={id}
                                     userid={user.id}
                                     date={date}

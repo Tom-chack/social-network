@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { Profiler, useState} from "react";
 import { Image } from "antd";
 import Time from "./UpdateTime";
 import { TiArrowBack } from "react-icons/ti"

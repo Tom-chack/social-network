@@ -2,14 +2,15 @@ import { Image } from "antd";
 import LikeHeart from "./LikeHeart";
 import Time from "./UpdateTime";
 import Comments from "./Comments"
-import {useState} from "react"
+import {Profiler, useState} from "react"
 import { FaRegCommentDots} from "react-icons/fa"
 import { deletePost } from "../../../services/post";
 import { useDispatch ,useSelector} from "react-redux";
-function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
+function ActivityCard({users,date,avatars,content,likes,image,comments,id}) {
     const [showComments, setShowComments] = useState(false);
     const dispatch=useDispatch();
-    const { posts } = useSelector((state) => state.postDuck); 
+    const { posts} = useSelector((state) => state.postDuck); 
+    const {profile,user}=useSelector((state)=>state.userDuck)
    console.log("delete post",id)
     const onClickDeletePost=(id)=>{
         if(window.confirm("Are you sure you want to delete this comment?")){
@@ -41,7 +42,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
                          </div>
                          <div className="userName">
                              <h3> 
-                                 {user}
+                                 {users}
                              </h3>
                              <h6 className="date">
                                  Posted <Time date={date}/>
@@ -62,7 +63,7 @@ function ActivityCard({user,date,avatars,content,likes,image,comments,id}) {
                               <h4>Comments:{comments.length}</h4>
                             </div> 
                             <div>
-                                <button onClick={()=>onClickDeletePost(id)}>Delet post</button>
+                              {(user.id===profile.id) ? <button onClick={()=>onClickDeletePost(id)}>Delet post</button>:null}
                             </div>
                              
                  </div>
