@@ -4,8 +4,9 @@ import { commentAdd, commentUpdate, commentDelete, commentError } from "../redux
 import { commentSchema } from "../helpers/schemas";
 
 // Add new comment ................................
-export const addComment = (data) => (dispatch) => {
-  const commentData = { ...commentSchema, ...data };
+export const addComment = (data) => (dispatch, getState) => {
+  let { user } = getState().userDuck;
+  const commentData = { ...commentSchema, ...data, userid: user.id };
 
   fetch(`${api}/comments`, {
     method: "POST",

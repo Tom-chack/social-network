@@ -26,7 +26,7 @@ function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id}
       return   (comments?.length ? (
             <div>
             {comments.map((comment) => (
-            <Comments key={comment.id} comment={comment} />))}
+            <Comments key={comment.id} comment={comment}  id={id}/>))}
            </div> ) : (''));
     }
 

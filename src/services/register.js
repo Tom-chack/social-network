@@ -13,7 +13,7 @@ const register = (data) => (dispatch) => {
     body: JSON.stringify(userData),
   })
     .then((res) => res.json())
-    .then((res) => {
+    .then(() => {
       dispatch(userRegister());
     })
     .catch((err) => {

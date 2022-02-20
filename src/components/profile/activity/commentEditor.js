@@ -4,16 +4,15 @@ import { addComment } from "../../../services/comment";
 
 import { Form, Input, Button } from "antd";
 const { TextArea } = Input;
-function CommentEditor() {
-    
- 
+function CommentEditor({id}) {
+   console.log("new comment id",id)
   const dispatch = useDispatch();
 
   //Send submitted data to json-server
   const [form] = Form.useForm();
   const onSubmit = (data) => {
     console.log(data)
-    dispatch(addComment(data));
+    dispatch(addComment({...data,postid:id}));
     form.resetFields();
   };
 

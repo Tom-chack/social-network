@@ -6,11 +6,12 @@ import {deleteComment} from "../../../services/comment"
 import { useDispatch ,useSelector} from "react-redux";
 import { Link } from 'react-router-dom';
 import CommentEditor from "./commentEditor";
-function Comments({ comment }) {
+function Comments({ comment,id }) {
+  console.log("postid from activitycard",id)
     const { user } = comment;
     const [isClick, setClick] = useState(false);
     const dispatch=useDispatch();
-    const { comments } = useSelector((state) => state.commentDuck);
+   const {profile}=useSelector((state)=>state.userDuck)
         ///delete comment
         const deleteComments=(comment)=>{
           if(window.confirm("Are you sure you want to delete this comment?")){
@@ -35,7 +36,7 @@ function Comments({ comment }) {
                                       <Image 
                                       className="commentsAvatarReply" 
                                       src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>}
-                     <CommentEditor/>        
+                     <CommentEditor id={id}/>        
             </div>
           
         );
@@ -68,7 +69,7 @@ function Comments({ comment }) {
              
          <div className="commentsFooterBtn">
            
-               <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
+              {(profile.id!==user.id)?<div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> :null} 
                 <div><span onClick={()=>deleteComments(comment)}>Delete</span></div>
             
               

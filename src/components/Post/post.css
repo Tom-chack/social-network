@@ -92,3 +92,9 @@
     margin: 0 5px;
     min-width: 60px;
 }
+.post-editor{
+    padding:10px 0;
+}
+.post-editor .ant-row.post-field-image{
+    margin-top: 10px;
+}
