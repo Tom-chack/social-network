@@ -7,12 +7,8 @@ import { CommentOutlined, SettingOutlined } from "@ant-design/icons";
 import timeAgo from "../../helpers/timeAgo";
 import CommentEditor from "../Editor/commentEditor";
 
-<<<<<<< HEAD
-function Comment({ comment }) {
-  console.log("Art",comment)
-=======
 function Comment({ post, comment }) {
->>>>>>> main
+
   const { user } = comment;
   const [reply, setReply] = useState(false);
   const { loggedIn } = useSelector((state) => state.userDuck);
