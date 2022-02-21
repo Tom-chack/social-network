@@ -102,10 +102,13 @@ function Post({ post }) {
           <span className='post-likes-count'>{Number(post.likes)}</span>
         </div>
         <div className='post-right'>
-          {loggedIn && (
-            <MessageOutlined className='post-comment-icon' onClick={() => setReply(true)} />
-          )}
-          <span className='post-comments-button'>comments</span>
+          <MessageOutlined
+            className='post-comment-icon'
+            onClick={() => loggedIn && setReply(!reply)}
+          />
+          <span className='post-comments-button' onClick={() => loggedIn && setReply(!reply)}>
+            comments
+          </span>
           <span className='post-comments-count'>{post.comments.length}</span>
           <ToolsButton />
         </div>
@@ -123,7 +126,7 @@ function Post({ post }) {
       {comments?.length ? (
         <div className='post-comments'>
           {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
+            <Comment key={comment.id} post={post} comment={comment} />
           ))}
         </div>
       ) : (
