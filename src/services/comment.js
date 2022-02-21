@@ -59,7 +59,7 @@ export const deleteComment = (comment) => (dispatch) => {
       method: "DELETE",
     })
       .then((res) => res.json())
-      .then((res) => {
+      .then(() => {
         dispatch(commentDelete(id));
         dispatch(postCommentDelete(comment));
       })
