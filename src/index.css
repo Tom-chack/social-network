@@ -1,321 +1,319 @@
 /* Header */
-.ant-layout-header{
-  display: flex;
-  justify-content: center;
+.ant-layout-header {
+     display: flex;
+     justify-content: center;
 }
-.xLogo{
-  font-size: 18px;
-  font-weight: bold;
-  color: #f5f5f5;
+.xLogo {
+     font-size: 18px;
+     font-weight: bold;
+     color: #f5f5f5;
 }
-.headLeft{
-  width: 55%;
-  min-width: 200px;
+.headLeft {
+     width: 55%;
+     min-width: 200px;
 }
-.headRight{
-  width: 44%;
-  min-width: 600px;
+.headRight {
+     width: 44%;
+     min-width: 600px;
 }
 
 /* Layout */
-.ant-layout-content{
-  width:1200px
+.ant-layout-content {
+     width: 1200px;
 }
 .ant-layout {
-  background: #F0F2F5;
+     background: #f0f2f5;
 }
 .site-layout-content {
-  min-height: 80vh;
-  margin-top: 0;
-  background: #fff;
-  box-sizing: border-box;
+     min-height: 80vh;
+     margin-top: 0;
+     background: #fff;
+     box-sizing: border-box;
 }
 #components-layout-demo-top .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
+     float: left;
+     width: 120px;
+     height: 31px;
+     margin: 16px 24px 16px 0;
+     background: rgba(255, 255, 255, 0.3);
 }
 .ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
+     float: right;
+     margin: 16px 0 16px 24px;
 }
 
 /* Menu */
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected, 
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
 .ant-menu.ant-menu-dark .ant-menu-item-selected {
-  background-color: #1890ff;
+     background-color: #1890ff;
 }
 
 /* Login / Registration Pages */
 .login-page,
-.register-page{
-  padding:50px;
+.register-page {
+     padding: 50px;
 }
 .login-page .ant-divider-horizontal.ant-divider-with-text,
-.register-page .ant-divider-horizontal.ant-divider-with-text{
-  margin: 30px 0;
+.register-page .ant-divider-horizontal.ant-divider-with-text {
+     margin: 30px 0;
 }
 
 /* Profile Pages */
-.profile-head{
-  width: 100%;
-  height: 220px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+.profile-head {
+     width: 100%;
+     height: 220px;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: bottom;
 }
-.profile-content{
-  padding: 20px 50px;
+.profile-content {
+     padding: 20px 50px;
 }
-.profile-panel{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.profile-panel {
+     display: flex;
+     justify-content: space-between;
+     align-items: flex-start;
 }
-.profile-panel .profile-panel-left{
-  padding-left: 5%;
+.profile-panel .profile-panel-left {
+     padding-left: 5%;
 }
-.profile-panel .profile-panel-left img{
-  width: 200px;
-  height: 200px;
-  border: 5px solid #fff;
-  margin-top: -130px;
-  border-radius: 50%;
+.profile-panel .profile-panel-left img {
+     width: 200px;
+     height: 200px;
+     border: 5px solid #fff;
+     margin-top: -130px;
+     border-radius: 50%;
 }
 .profile-panel .profile-panel-left .ant-image-mask {
-  margin-top: -130px;
-  border-radius: 50%;
+     margin-top: -130px;
+     border-radius: 50%;
 }
-.profile-panel .profile-panel-center{
-  display: flex;
-  justify-content: flex-start;
-  flex-grow: 1;
-  padding-left: 10px;
-  padding-top: 5px;
+.profile-panel .profile-panel-center {
+     display: flex;
+     justify-content: flex-start;
+     flex-grow: 1;
+     padding-left: 10px;
+     padding-top: 5px;
 }
-.profile-panel .profile-name{
-  font-size: 24px;
-  font-weight: bold;
+.profile-panel .profile-name {
+     font-size: 24px;
+     font-weight: bold;
 }
 .profile-panel h3.ant-typography {
-  margin-bottom: 0px;
+     margin-bottom: 0px;
 }
-.profile-panel .profile-panel-right{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  flex-grow: 1;
+.profile-panel .profile-panel-right {
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     flex-grow: 1;
 }
 .profile-stat-box {
-  background-color: #f5f5f5;
-  padding:5px 10px;
-  min-width:110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size:14px;
-  text-transform: uppercase;
-  margin: 10px 10px 10px 0;
+     background-color: #f5f5f5;
+     padding: 5px 10px;
+     min-width: 110px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     font-size: 14px;
+     text-transform: uppercase;
+     margin: 10px 10px 10px 0;
 }
 /* Mobile */
 @media screen and (max-width: 1400px) {
-  .ant-layout-content{
-    max-width: 90%;
-  }
+     .ant-layout-content {
+          max-width: 90%;
+     }
 }
 @media screen and (max-width: 600px) {
-  .ant-layout-content{
-    max-width: 100%;
-  }
+     .ant-layout-content {
+          max-width: 100%;
+     }
 }
 /*Activity design*/
-.activityMain{
-  display: flex;
-  flex-direction: column;
-  margin:auto,10px;
+.activityMain {
+     display: flex;
+     flex-direction: column;
+     margin: auto, 10px;
 }
-.activityCard{
-border: 1px solid rgba(211, 209, 211, 0.432);
-width: 720px;
-margin-bottom: 20px;
+.activityCard {
+     border: 1px solid rgba(211, 209, 211, 0.432);
+     width: 720px;
+     margin-bottom: 20px;
 }
-.likesComments{
-  display: flex;
-  justify-content: space-between;
-  flex-direction:row;
-  font-size:15px;
-  border-bottom: 1px solid rgba(194, 192, 192, 0.651);
-  font-family:'Times New Roman', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.likesComments {
+     display: flex;
+     justify-content: space-between;
+     flex-direction: row;
+     font-size: 15px;
+     border-bottom: 1px solid rgba(194, 192, 192, 0.651);
+     font-family: "Times New Roman", Cambria, Cochin, Georgia, Times,
+          "Times New Roman", serif;
 }
-.activityAvatar{
-  width: 40px;
-  border-radius:50%;
-  margin:10px
+.activityAvatar {
+     width: 40px;
+     border-radius: 50%;
+     margin: 10px;
 }
 .activityPosts {
-  margin:10px;
+     margin: 10px;
 }
 .avatarUserName {
-   display: flex;
-   flex-direction: row;
+     display: flex;
+     flex-direction: row;
 }
 .updateButton {
-  display: flex;
-  flex-direction: row;
-  justify-content:flex-start;
-  height: 30px;
-  width: 720px;
-  margin-bottom: 50px;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     height: 30px;
+     width: 720px;
+     margin-bottom: 50px;
 }
 .updateButton input {
-  width:590px;
-  height:50px;
-  margin-right: 15px;
-  border-radius: 3%;
-  border-color: rgba(226, 225, 224, 0.493);
-  font-size: 20px;
+     width: 590px;
+     height: 50px;
+     margin-right: 15px;
+     border-radius: 3%;
+     border-color: rgba(226, 225, 224, 0.493);
+     font-size: 20px;
 }
 .updateButton button {
-  width: 130px;
-  height: 50px;
-  font-size: 18px;
-  font-weight: bold;
-  border:1px solid #2f89f0 ;
-  background-color: #2f89f0;
-  color: rgb(238, 227, 227);
-  transition-duration: 0.4s;
-  border-radius: 10%;
-  
+     width: 130px;
+     height: 50px;
+     font-size: 18px;
+     font-weight: bold;
+     border: 1px solid #2f89f0;
+     background-color: #2f89f0;
+     color: rgb(238, 227, 227);
+     transition-duration: 0.4s;
+     border-radius: 10%;
 }
 
 .updateButton button:hover {
-  background-color: #0751a5; 
-  color: rgb(222, 228, 240);
-  transition-duration: 0.3s;
+     background-color: #0751a5;
+     color: rgb(222, 228, 240);
+     transition-duration: 0.3s;
 }
-.likeHeart{
-  display: flex;
-  flex-direction: row;
-  margin-top:5px;
-  margin-left: 10px;
-
+.likeHeart {
+     display: flex;
+     flex-direction: row;
+     margin-top: 5px;
+     margin-left: 10px;
 }
-.likeHeart h4{
-  margin-left:17px;
-
+.likeHeart h4 {
+     margin-left: 17px;
 }
-.commentContainer{
-  display: flex;
- flex-direction: column;
+.commentContainer {
+     display: flex;
+     flex-direction: column;
 }
-commentContainer h4{
- padding-top:10px;
+commentContainer h4 {
+     padding-top: 10px;
 }
-.comments{
- display: flex;
- flex-direction: row;
- margin-right: 12px;
+.comments {
+     display: flex;
+     flex-direction: row;
+     margin-right: 12px;
 }
-.comments h4{
-  margin-left:10px;
+.comments h4 {
+     margin-left: 10px;
 }
-.commentBtn{
-  margin-top: 5px;
-  cursor: pointer;
+.commentBtn {
+     margin-top: 5px;
+     cursor: pointer;
 }
 @media screen and (max-width: 800px) {
-  .headRight{
-    min-width:auto;
-  }
+     .headRight {
+          min-width: auto;
+     }
 }
-.postImage{
- width: 700px;
- height: 500px;
+.postImage {
+     width: 700px;
+     height: 500px;
 }
-.commentsHeaderPart{
-  display: flex;
-  flex-direction: row;
+.commentsHeaderPart {
+     display: flex;
+     flex-direction: row;
 }
-.commentsDataPart{
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  margin-left: 10px;
+.commentsDataPart {
+     display: flex;
+     flex-direction: column;
+     font-size: 14px;
+     margin-left: 10px;
 }
 .commentsAvatar {
-  width: 30px;
-  border-radius:50%;
-  margin-left:50px;
-  margin-top:10px
+     width: 30px;
+     border-radius: 50%;
+     margin-left: 50px;
+     margin-top: 10px;
 }
 .commentsAvatarReply {
-  width: 30px;
-  border-radius:50%;
-  margin-left:50px;
-  margin-top:10px
+     width: 30px;
+     border-radius: 50%;
+     margin-left: 50px;
+     margin-top: 10px;
 }
 .commentsAvatarReply {
-  width: 20px;
-  border-radius:50%;
-  margin:10px
+     width: 20px;
+     border-radius: 50%;
+     margin: 10px;
 }
-.commentsFooterBtn{
-  border-top: 2px dotted rgba(194, 192, 192, 0.651);
- display: flex;
- flex-direction: row;
- justify-content:flex-end;
- border-bottom: 1px solid rgba(194, 192, 192, 0.651); cursor: pointer;
+.commentsFooterBtn {
+     border-top: 2px dotted rgba(194, 192, 192, 0.651);
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     border-bottom: 1px solid rgba(194, 192, 192, 0.651);
+     cursor: pointer;
 }
-.commentsFooterBtn span{
-  margin-right: 10px;
-  cursor: pointer;
- 
+.commentsFooterBtn span {
+     margin-right: 10px;
+     cursor: pointer;
 }
-.line{
-  color: rgba(241, 237, 237, 0.479);
+.line {
+     color: rgba(241, 237, 237, 0.479);
 }
-.fileUploader{
-  display: flex;
-  flex-direction: row;
-  margin-left:40px;
+.fileUploader {
+     display: flex;
+     flex-direction: row;
+     margin-left: 40px;
 }
-.fileUploader button{
-  width: 130px;
-  height: 35px;
-  font-size: 14px;
-  margin-left: 20px;
-  border:1px solid #2f89f0 ;
-  background-color: #2f89f0;
-  color: rgb(238, 227, 227);
-  transition-duration: 0.3s;
+.fileUploader button {
+     width: 130px;
+     height: 35px;
+     font-size: 14px;
+     margin-left: 20px;
+     border: 1px solid #2f89f0;
+     background-color: #2f89f0;
+     color: rgb(238, 227, 227);
+     transition-duration: 0.3s;
 }
-.fileUploader button:hover{
-  width: 130px;
-  height: 30px;
-  font-size: 14px;
-  background-color: #0751a5; 
-  color: rgb(222, 228, 240);
-  transition-duration: 0.3s;
+.fileUploader button:hover {
+     width: 130px;
+     height: 30px;
+     font-size: 14px;
+     background-color: #0751a5;
+     color: rgb(222, 228, 240);
+     transition-duration: 0.3s;
 }
-.loadMore{
-  display: flex;
-  width: 720px;
-  justify-content:space-around ;
+.loadMore {
+     display: flex;
+     width: 720px;
+     justify-content: space-around;
 }
-.loadMore button{
-  width: 150px;
-  border-radius: 4%;
-  border:1px solid #2f89f0 ;
-  background-color: #2f89f0;
-  color: rgb(238, 227, 227);
-  font-size: 20px;
-  cursor: pointer;
+.loadMore button {
+     width: 150px;
+     border-radius: 4%;
+     border: 1px solid #2f89f0;
+     background-color: #2f89f0;
+     color: rgb(238, 227, 227);
+     font-size: 20px;
+     cursor: pointer;
 }
 .loadMore button:hover {
-  background-color: #0751a5; 
-  color: rgb(222, 228, 240);
-  transition-duration: 0.3s;
+     background-color: #0751a5;
+     color: rgb(222, 228, 240);
+     transition-duration: 0.3s;
 }
