@@ -37,7 +37,7 @@ Textarea {
   background-color: rgb(168, 165, 165) !important;
   margin-left: 40% !important;
   margin-top: 3% !important;
-  padding: 1% !important;
+  padding: -2% !important;
 }
 
 .id {
