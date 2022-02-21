@@ -2,27 +2,30 @@ import api from "../helpers/api";
 import { postCommentAdd, postCommentDelete } from "../redux/ducks/postDuck";
 import { commentAdd, commentUpdate, commentDelete, commentError } from "../redux/ducks/commentDuck";
 import { commentSchema } from "../helpers/schemas";
+import getUser from "./getUser";
 
 // Add new comment ................................
-export const addComment = (data) => (dispatch, getState) => {
+export const addComment = (data) => async (dispatch, getState) => {
   let { user } = getState().userDuck;
-  const commentData = { ...commentSchema, ...data, userid: user.id };
+  try {
+    let currentUser = await getUser(user.id);
+    let commentData = { ...commentSchema, ...data, userid: user.id };
 
-  fetch(`${api}/comments`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(commentData),
-  })
-    .then((res) => res.json())
-    .then((comment) => {
-      dispatch(commentAdd(comment));
-      dispatch(postCommentAdd(comment));
-    })
-    .catch((err) => {
-      dispatch(commentError(err.message));
+    let commentRes = await fetch(`${api}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(commentData),
     });
+
+    let comment = await commentRes.json();
+
+    dispatch(commentAdd({ ...comment, user: currentUser }));
+    dispatch(postCommentAdd({ ...comment, user: currentUser }));
+  } catch (e) {
+    dispatch(commentError(e.message));
+  }
 };
 
 // Update comment by id ..............................
