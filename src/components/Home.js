@@ -18,6 +18,7 @@ function Home() {
     dispatch(getPosts(filter));
   }, [dispatch, filter]);
 
+
   return (
     <div className='home'>
       <Row>

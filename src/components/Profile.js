@@ -24,6 +24,16 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 
+// <<<<<<< HEAD
+
+// import Activity from "./profile/Activity";
+// import About from "./profile/About";
+// import Account from "./profile/Account";
+// import Favored from "./profile/Favored";
+// import Friends from "./profile/Friends";
+
+// =======
+// >>>>>>> 971cc28b5e47572b42adf54f020bbdf88403b8a2
 const { TabPane } = Tabs;
 const { Title } = Typography;
 
