@@ -53,8 +53,6 @@ function Account() {
                 initialValues={{
                   id: item.id,
                   name: item.name ? item.name : "",
-                  avatar: item.avatar ? item.avatar : "",
-                  cover: item.cover ? item.cover : "",
                   about: item.about ? item.about : "",
                   email: item.email ? item.email : "",
                   password: item.password ? item.password : "",
