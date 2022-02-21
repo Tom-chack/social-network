@@ -78,14 +78,14 @@ function FriendsContent() {
                 <div>
                   <Image
                     className="cover"
-                    src={item.cover ? item.cover : "default cover link"}
+                    src={item.cover}
                     alt="cover pic can't be uploaded"
                   />
                 </div>
                 <div>
                   <Image
                     className="avatar"
-                    src={item.avatar ? item.avatar : 'default avatar link'}
+                    src={item.avatar}
                     alt="user pic can't be uploaded"
                   />
                 </div>
