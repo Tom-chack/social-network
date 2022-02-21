@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Input } from "antd";
+import getBase64 from "../../helpers/file2base64";
 import "./Account.css";
 import TextArea from "antd/lib/input/TextArea";
 import getUsers from "../../services/getUsers";
 import { updateUser } from "../../services/user";
 import { Button, Divider } from 'antd';
-import imageToBase64 from "image-to-base64";
 
 function Account() {
+  const [avatar, setAvatar] = useState("");
+  const [cover, setCover] = useState("");
   const [dataUpdated, setDataUpdated] = useState("");
   const [loading, setLoading] = useState (false);
   const { profile } = useSelector((state) => state.userDuck);
   const { users } = useSelector((state) => state.userDuck);
   const { user } = useSelector((state) => state.userDuck);
+  const avatarRef = useRef(null);
+  const coverRef = useRef(null)
 
   const dispatch = useDispatch();
 
@@ -32,18 +36,32 @@ function Account() {
 
   //sending updated data to json server.  
   const updateAccount = (data) => {
-    data.avatar = imageToBase64(data.avatar);
-    data.cover = imageToBase64(data.cover);
-    console.log(data.cover);
-    console.log(data.avatar)
     setDataUpdated('Data is updated successfully!!');
     setLoading(true);
     setTimeout(() => {
         setDataUpdated("");
         setLoading(false);
     }, 2000);
+
+    if (avatar) data.avatar = avatar;
+    if(cover) data.cover = cover;
+    console.log(data)
     dispatch(updateUser(data));
+    
   };
+
+  const uploadAvatar = async () => {
+    let avatarData= avatarRef.current.files[0];
+    let avatar = await getBase64(avatarData);
+    setAvatar(avatar);
+  };
+
+  const uploadCover = async () => {
+    let coverData= avatarRef.current.files[0];
+    let cover = await getBase64(coverData);
+    setCover(cover);
+  };
+
   return (
     <div>
       <Divider plain>{dataUpdated}</Divider>
@@ -85,11 +103,11 @@ function Account() {
                 >
                   <Input name="name" placeholder="@ex. Name Surname" />
                 </Form.Item>
-                <Form.Item label="Profile Photo" name="avatar">
-                  <Input placeholder="Choose you profile picture" type="file" />
+                <Form.Item label="Profile Photo" >
+                  <input name="avatar" placeholder="Choose you profile picture" type="file" ref = {avatarRef} onChange={uploadAvatar}/>
                 </Form.Item>
-                <Form.Item label="Cover image" name="cover">
-                  <Input placeholder="Choose you cover image" type="file" />
+                <Form.Item label="Cover image" >
+                  <input name="cover" placeholder="Choose you cover image" type="file" ref = {coverRef} onChange={uploadCover}/>
                 </Form.Item>
                 <Form.Item label="About Me" name="about">
                   <TextArea placeholder="Short intro..." />
