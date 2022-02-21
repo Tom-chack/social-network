@@ -11,8 +11,6 @@ function Activity() {
       //load more 
       const [data, setData] = useState(posts)
       const [visible, setVisible] = useState(2)
-      //
-      console.log(posts)
       useEffect(() => setData(posts))
       useEffect(() => {
             if (profile.id) {
@@ -28,22 +26,23 @@ function Activity() {
       return (
             <div className="activityMain">
               
-                {((loggedIn===true)&&(profile.id===user.id))?<PostEditor/>:null }
+                {(loggedIn&&profile.id===user.id)?<PostEditor/>:null }
                
                   <div >
-                        {data.slice(0, visible).map(({ liked,user, id, date, content, likes, image, comments }) =>
+                        {data.slice(0, visible).map((post) =>
                                   <ActivityCard classname="activityCard"
-                                    users={user.name}
-                                    key={id}
-                                    userid={user.id}
-                                    date={date}
-                                    avatars={user.avatar}
-                                    id={id}
-                                    content={content}
-                                    likes={likes}
-                                    image={image}
-                                    comments={comments}
-                                    liked={liked}
+                                    users={post.user.name}
+                                    key={post.id}
+                                    userid={post.user.id}
+                                    date={post.date}
+                                    avatars={post.user.avatar}
+                                    id={post.id}
+                                    content={post.content}
+                                    likes={post.likes}
+                                    image={post.image}
+                                    comments={post.comments}
+                                    liked={post.liked}
+                                    post={post}
                               />)}
                   </div>
                   <div className="loadMore">

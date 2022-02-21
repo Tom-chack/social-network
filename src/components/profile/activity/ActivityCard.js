@@ -1,25 +1,24 @@
 import { Image } from "antd";
-import LikeHeart from "./LikeHeart";
 import Time from "./UpdateTime";
 import Comments from "./Comments"
-import {Profiler, useState} from "react"
 import { FaRegCommentDots} from "react-icons/fa"
 import { deletePost } from "../../../services/post";
 import { useDispatch ,useSelector} from "react-redux";
-function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id}) {
+import React, { useState } from "react";
+import LikeButton from "./Hearted";
+function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id,post}) {
     const [showComments, setShowComments] = useState(false);
     const dispatch=useDispatch();
     const { posts} = useSelector((state) => state.postDuck); 
-    const {profile,user}=useSelector((state)=>state.userDuck)
-   console.log("delete post",id)
-    const onClickDeletePost=(id)=>{
+    const {profile,loggedIn,user}=useSelector((state)=>state.userDuck)
+    const onClickDeletePost=(post)=>{
         if(window.confirm("Are you sure you want to delete this comment?")){
-            dispatch(deletePost(id)) 
-           
+            dispatch(deletePost(post)) 
+        
         }
 }
     const onCommentBtnClick=()=>{
-      return     setShowComments(!showComments)
+      return    setShowComments(!showComments)
         
     }
     const CommentsLoader=()=>{
@@ -33,6 +32,8 @@ function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id}
     const Avatar = () => {
     return <Image src={avatars} className='activityAvatar'  />;
     };
+    
+   
     return (
         <>
          <div className="activityCard">
@@ -57,14 +58,20 @@ function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id}
                  </div>
            
                  <div className="likesComments">
-                    
-                             <LikeHeart post={posts} likes={likes} /> 
+                           <div><LikeButton  post={post} liked={liked}/>Likes:{likes}</div>
+                         {(loggedIn && user.id===profile.id) ?  
                              <div className='comments'> 
                              <FaRegCommentDots className='commentBtn' onClick={onCommentBtnClick}/> 
                               <h4>Comments:{comments.length}</h4>
-                            </div> 
+                            </div>
+                            :
+                            <div className='comments'> 
+                             <FaRegCommentDots className='commentBtn'/> 
+                              <h4>Comments:{comments.length}</h4>
+                            </div>
+                        } 
                             <div>
-                              {(user.id===profile.id) ? <button onClick={()=>onClickDeletePost(id)}>Delet post</button>:null}
+                              {(loggedIn && user.id===profile.id) ? <button onClick={()=>onClickDeletePost(post)}>Delet post</button>:null}
                             </div>
                              
                  </div>
