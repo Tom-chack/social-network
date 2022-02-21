@@ -6,6 +6,7 @@ import TextArea from "antd/lib/input/TextArea";
 import getUsers from "../../services/getUsers";
 import { updateUser } from "../../services/user";
 import { Button, Divider } from 'antd';
+import imageToBase64 from "image-to-base64";
 
 function Account() {
   const [dataUpdated, setDataUpdated] = useState("");
@@ -31,6 +32,10 @@ function Account() {
 
   //sending updated data to json server.  
   const updateAccount = (data) => {
+    data.avatar = imageToBase64(data.avatar);
+    data.cover = imageToBase64(data.cover);
+    console.log(data.cover);
+    console.log(data.avatar)
     setDataUpdated('Data is updated successfully!!');
     setLoading(true);
     setTimeout(() => {
