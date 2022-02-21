@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/prop-types */
 import { useDispatch ,useSelector} from "react-redux";
 import { likePost, dislikePost } from "../../../services/like";
 import { HeartOutlined, HeartTwoTone } from "@ant-design/icons";

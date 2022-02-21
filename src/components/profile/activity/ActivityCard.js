@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Image } from "antd";
 import Time from "./UpdateTime";
 import Comments from "./Comments"
@@ -6,10 +7,10 @@ import { deletePost } from "../../../services/post";
 import { useDispatch ,useSelector} from "react-redux";
 import React, { useState } from "react";
 import LikeButton from "./Hearted";
+// eslint-disable-next-line react/prop-types
 function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id,post}) {
     const [showComments, setShowComments] = useState(false);
     const dispatch=useDispatch();
-    const { posts} = useSelector((state) => state.postDuck); 
     const {profile,loggedIn,user}=useSelector((state)=>state.userDuck)
     const onClickDeletePost=(post)=>{
         if(window.confirm("Are you sure you want to delete this comment?")){
@@ -22,6 +23,7 @@ function ActivityCard({users,date,avatars,content,likes,liked,image,comments,id,
         
     }
     const CommentsLoader=()=>{
+      // eslint-disable-next-line react/prop-types
       return   (comments?.length ? (
             <div>
             {comments.map((comment) => (

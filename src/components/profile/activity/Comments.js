@@ -1,4 +1,5 @@
-import React, { Profiler, useState} from "react";
+/* eslint-disable react/prop-types */
+import React, {  useState} from "react";
 import { Image } from "antd";
 import Time from "./UpdateTime";
 import { TiArrowBack } from "react-icons/ti"

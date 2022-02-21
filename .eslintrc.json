@@ -4,32 +4,19 @@
         "es2021": true
     },
     "extends": [
-        "react-app",
-        "prettier"
-    ],
-    "plugins": [
-        "react",
-        "import",
-        "prettier"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
+    "plugins": [
+        "react"
+    ],
     "rules": {
-        "prettier/prettier": [
-            "warn",
-            {
-                "printWidth": 100,
-                "trailingComma": "es5",
-                "semi": true,
-                "jsxSingleQuote": true,
-                "singleQuote": false,
-                "useTabs": false,
-                "jsxBracketSameLine": false
-            }
-        ]
     }
 }
