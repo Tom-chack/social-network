@@ -4,7 +4,6 @@ import { userUpdate, userError } from "../redux/ducks/userDuck";
 // Update user by id ..............................
 export const updateUser = (data) => (dispatch) => {
   if (data.id) {
-    console.log('check')
     fetch(`${api}/users/${data.id}`, {
       method: "PATCH",
       headers: {
@@ -14,7 +13,6 @@ export const updateUser = (data) => (dispatch) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         dispatch(userUpdate(data));
       })
       .catch((err) => {
