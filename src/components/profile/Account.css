@@ -39,3 +39,7 @@ Textarea {
   margin-top: 3% !important;
   padding: 1% !important;
 }
+
+.id {
+  display: none !important;
+}

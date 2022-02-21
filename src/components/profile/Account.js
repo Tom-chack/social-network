@@ -4,16 +4,13 @@ import { Form, Input } from "antd";
 import "./Account.css";
 import TextArea from "antd/lib/input/TextArea";
 import getUsers from "../../services/getUsers";
+import { updateUser } from "../../services/user";
 
 function Account() {
   const { profile } = useSelector((state) => state.userDuck);
   const { users } = useSelector((state) => state.userDuck);
   const { user } = useSelector((state) => state.userDuck)
-  const { loggedIn } = useSelector((state) => state.userDuck);
-  console.log (loggedIn)
-  console.log(user)
-  console.log(users)
-
+  
   const dispatch = useDispatch();
 
   useEffect (() => {
@@ -23,26 +20,24 @@ function Account() {
   //filtering current user data
   const currentUser = users.map (item => {
     if (item.id === user.id){
+      console.log("current", item)
       return item
     }
   }).filter (item => item !== undefined);
-  console.log(currentUser)
   const updateAccount= (data) => {
-    console.log(data);
-    
+    dispatch(updateUser(data))
   };
 
   return (
     <div>
     {user.id === profile.id ? currentUser.map ((item) => {
-      console.log(item)
       return (<Form
         key={item.id}
         layout="vertical"
         onFinish={updateAccount}
         className="ant-form"
-        method="post"
         initialValues={{
+          id: item.id,
           name: item.name ? item.name : "",
           avatar: item.avatar ? item.avatar : "",
           cover: item.cover ? item.cover : "",
@@ -56,10 +51,12 @@ function Account() {
           vib: item.vib ? item.vib : "",
           wapp: item.wapp ? item.wapp : "",
         }
-          
-        }
+       }
       >
         <h2>Profile Information</h2>
+        <Form.Item className="id" name="id">
+          <Input placeholder="id"/>
+        </Form.Item>
         <Form.Item
           label="Full Name"
           name="name"
