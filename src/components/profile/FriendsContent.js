@@ -28,7 +28,7 @@ function FriendsContent() {
   if (value !== ""){
     filteredFriends = filteredFriends
     .filter((item) => {
-        return item.name.toLowerCase().includes(value.toLowerCase());
+        return item.name?.toLowerCase().includes(value?.toLowerCase());
     })
   }
 
