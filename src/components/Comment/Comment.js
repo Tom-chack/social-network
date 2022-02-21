@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { Image } from "antd";
 
 import "./comment.css";
-import { HeartOutlined } from "@ant-design/icons";
+import { CommentOutlined, SettingOutlined } from "@ant-design/icons";
 
 import timeAgo from "../../helpers/timeAgo";
+import CommentEditor from "../Editor/commentEditor";
 
-function Comment({ comment }) {
+function Comment({ post, comment }) {
   const { user } = comment;
+  const [reply, setReply] = useState(false);
+  const { loggedIn } = useSelector((state) => state.userDuck);
+
+  const handleCancel = useCallback(() => {
+    setReply(false);
+  }, []);
+
   return (
     <div className='comment'>
       <div className='comment-head'>
@@ -21,15 +30,18 @@ function Comment({ comment }) {
         <div className='comment-content'>{comment.content}</div>
       </div>
       <div className='comment-foot'>
-        <div className='comment-left'>
-          <HeartOutlined className='comment-like-icon' />
-          <span className='comment-likes'>Likes</span>
-          <span className='comment-likes-count'>{comment.likes}</span>
+        <div className='comment-left' onClick={() => loggedIn && setReply(!reply)}>
+          <CommentOutlined /> <span className='comment-likes'>Reply</span>
         </div>
         <div className='comment-right'>
-          <span>Reply</span> / <span>Delete</span>
+          <SettingOutlined />
         </div>
       </div>
+      {reply && (
+        <div className='comment-editor'>
+          <CommentEditor editorId={`comment-editor-${post.id}`} post={post} cancel={handleCancel} />
+        </div>
+      )}
     </div>
   );
 }

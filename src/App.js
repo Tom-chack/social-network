@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userInit } from "./redux/ducks/userDuck";
@@ -12,8 +13,7 @@ import Test from "./components/Test";
 
 function App() {
   //Check if there is a user information in localStorage and authorize current visitor
-  const dispatch = useDispatch();
-  dispatch(userInit());
+  useDispatch()(userInit());
 
   return (
     <Routes>
