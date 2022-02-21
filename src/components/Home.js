@@ -6,7 +6,18 @@ import { Row, Col, Card, Radio } from "antd";
 import Post from "./Post/Post";
 
 function Home() {
-  const { user } = useSelector((state) => state.userDuck);
+  //Redux functions
+  const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.postDuck);
+
+  //Local states
+  const [filter, setFilter] = useState("?_sort=date&_order=desc");
+
+  //Fetch user object by profile user id
+  useEffect(() => {
+    dispatch(getPosts(filter));
+  }, [dispatch, filter]);
+
   return (
     <div className='home'>
       <Row>
@@ -23,9 +34,9 @@ function Home() {
                   size='middle'
                   onChange={(e) => setFilter(e.target.value)}
                 >
-                  <Radio.Button value='?_sort=date&_order=desc'>Recent</Radio.Button>
-                  <Radio.Button value='?_sort=likes&_order=desc'>Popular</Radio.Button>
-                  <Radio.Button value='?_sort=date&_order=asc'>Media</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=desc'>Newest</Radio.Button>
+                  <Radio.Button value='?_sort=date&_order=asc'>Oldest</Radio.Button>
+                  <Radio.Button value='?_sort=likes&_order=desc'>Top Rated</Radio.Button>
                 </Radio.Group>
               </Col>
             </Row>

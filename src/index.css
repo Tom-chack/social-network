@@ -131,7 +131,6 @@
     max-width: 100%;
   }
 }
-
 @media screen and (max-width: 800px) {
   .headRight{
     min-width:auto;

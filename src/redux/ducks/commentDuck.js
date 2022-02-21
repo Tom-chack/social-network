@@ -36,13 +36,13 @@ const commentDuck = (state = initialState, { type, payload }) => {
     case COMMENT_ADD:
       return {
         ...state,
-        comments: [...state.comments, { ...commentSchema, payload }],
+        comments: [...state.comments, { ...commentSchema, ...payload }],
       };
     case COMMENT_UPDATE:
       return {
         ...state,
         comments: state.comments.map((comment) => {
-          if (comment.id === payload.id) comment = { ...comment, payload };
+          if (comment.id === payload.id) comment = { ...comment, ...payload };
           return comment;
         }),
       };
