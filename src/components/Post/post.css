@@ -98,3 +98,12 @@
 .post-editor .ant-row.post-field-image{
     margin-top: 10px;
 }
+.comment-editor{
+    padding:10px 0;
+}
+.comment-editor .ant-row.comment-field-content{
+    margin-bottom: 5px;
+}
+.comment-editor .ant-row.comment-field-image{
+    text-align: right;
+}

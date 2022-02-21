@@ -1,6 +1,7 @@
 import api from "../helpers/api";
 import { postAdd, postUpdate, postDelete, postError } from "../redux/ducks/postDuck";
 import { postSchema } from "../helpers/schemas";
+import getUser from "./getUser";
 
 // Add new post ................................
 export const addPost = (data) => async (dispatch, getState) => {
@@ -8,6 +9,7 @@ export const addPost = (data) => async (dispatch, getState) => {
   const post = { ...postSchema, content: data.content, userid: user.id };
 
   try {
+    let currentUser = await getUser(user.id);
     let postRes = await fetch(`${api}/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -16,7 +18,7 @@ export const addPost = (data) => async (dispatch, getState) => {
 
     let postData = await postRes.json();
     if (data?.image) {
-      dispatch(postAdd({ ...postData, user, image: data.image }));
+      dispatch(postAdd({ ...postData, user: currentUser, image: data.image }));
       let image = { id: postData.id, postid: postData.id, url: data.image };
       await fetch(`${api}/images`, {
         method: "POST",
@@ -24,7 +26,7 @@ export const addPost = (data) => async (dispatch, getState) => {
         body: JSON.stringify(image),
       });
     } else {
-      dispatch(postAdd({ ...postData, user }));
+      dispatch(postAdd({ ...postData, user: currentUser }));
     }
   } catch (e) {
     dispatch(postError(e.message));

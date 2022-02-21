@@ -7,7 +7,7 @@ export const userSchema = {
   about: "",
   remember: false,
   posts: 0,
-  comments: 1,
+  comments: 0,
   fb: "",
   tw: "",
   lin: "",
@@ -22,6 +22,7 @@ export const userSchema = {
 export const postSchema = {
   content: "",
   userid: 0,
+  user: {},
   likes: 0,
   liked: [],
   comments: [],
@@ -32,6 +33,7 @@ export const postSchema = {
 export const commentSchema = {
   postid: 0,
   userid: 0,
+  user: {},
   content: "",
   date: Date.now(),
 };
