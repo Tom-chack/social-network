@@ -9,11 +9,11 @@ import Members from "./components/Members";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Test from "./components/Test";
 
 function App() {
   //Check if there is a user information in localStorage and authorize current visitor
-  const dispatch = useDispatch();
-  dispatch(userInit());
+  useDispatch()(userInit());
 
   return (
     <Routes>
@@ -24,6 +24,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/test' element={<Test />} />
       </Route>
     </Routes>
   );
