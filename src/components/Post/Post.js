@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, dislikePost } from "../../services/like";
 import { deletePost } from "../../services/post";
@@ -8,11 +8,14 @@ import "./post.css";
 import { HeartOutlined, HeartTwoTone, SettingOutlined, MessageOutlined } from "@ant-design/icons";
 import Comment from "../Comment/Comment";
 import PostEditor from "../Editor/postEditor";
+import CommentEditor from "../Editor/commentEditor";
 
 import timeAgo from "../../helpers/timeAgo";
 
 function Post({ post }) {
   const { user, liked, image, comments } = post;
+  const [editor, setEditor] = useState(false);
+  const [reply, setReply] = useState(false);
 
   const dispatch = useDispatch();
   const { user: currentUser, loggedIn } = useSelector((state) => state.userDuck);
@@ -42,8 +45,6 @@ function Post({ post }) {
     }
     return <HeartOutlined className='post-like-icon' />;
   };
-
-  const [editor, setEditor] = useState(false);
 
   const tools = () => {
     return (
@@ -76,9 +77,10 @@ function Post({ post }) {
     return "";
   };
 
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     setEditor(false);
-  };
+    setReply(false);
+  }, []);
 
   return (
     <div className='post'>
@@ -100,8 +102,13 @@ function Post({ post }) {
           <span className='post-likes-count'>{Number(post.likes)}</span>
         </div>
         <div className='post-right'>
-          <MessageOutlined className='post-comment-icon' />
-          <span className='post-comments-button'>comments</span>
+          <MessageOutlined
+            className='post-comment-icon'
+            onClick={() => loggedIn && setReply(!reply)}
+          />
+          <span className='post-comments-button' onClick={() => loggedIn && setReply(!reply)}>
+            comments
+          </span>
           <span className='post-comments-count'>{post.comments.length}</span>
           <ToolsButton />
         </div>
@@ -111,10 +118,15 @@ function Post({ post }) {
           <PostEditor editorId={`post-editor-${post.id}`} post={post} cancel={handleCancel} />
         </div>
       )}
+      {reply && (
+        <div className='comment-editor'>
+          <CommentEditor editorId={`comment-editor-${post.id}`} post={post} cancel={handleCancel} />
+        </div>
+      )}
       {comments?.length ? (
         <div className='post-comments'>
           {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
+            <Comment key={comment.id} post={post} comment={comment} />
           ))}
         </div>
       ) : (
