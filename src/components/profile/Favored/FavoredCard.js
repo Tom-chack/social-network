@@ -16,10 +16,10 @@ const { confirm } = Modal;
 function FavoredCard({ post, changeBackground, changeBack }) {
 	const { content, user, likes, date } = post;
 	const dispatch = useDispatch();
-
 	const dislike = () => {
 		dispatch(dislikePost(post));
 	};
+
 
 	// popup for confirming delete liked post
 	function showDeleteConfirm() {

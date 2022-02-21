@@ -20,7 +20,7 @@ function Favored() {
 		if (profile.id) {
 			dispatch(getPosts('?favoredby=' + profile.id + filter));
 		}
-	}, [dispatch, profile, filter]);
+	}, [dispatch, profile, filter, posts]);
 
 	//calculations for pagination
 	const [pageNumber, setPageNumber] = useState(0);
