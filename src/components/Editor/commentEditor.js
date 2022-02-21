@@ -48,7 +48,7 @@ function PostEditor({ post = {}, comment = {}, editorId = "comment-editor", canc
             </Button>
           )}
           <Button type='primary' htmlType='submit'>
-            {comment.id ? "Update Post" : "Submit Post"}
+            {comment.id ? "Update Comment" : "Submit Comment"}
           </Button>
         </Form.Item>
       </Form>
