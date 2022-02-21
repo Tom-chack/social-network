@@ -73,6 +73,9 @@ function Members() {
         if (item.name?.toLowerCase().includes(inputValue.toLowerCase())) {
           return item;
         }
+        else{
+          return null;
+        }
       })
     }
     setFilteredUsers(searchedUsers)
