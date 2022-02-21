@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "antd";
 
 import "./comment.css";
-import { HeartOutlined } from "@ant-design/icons";
+import { CommentOutlined, SettingOutlined } from "@ant-design/icons";
 
 import timeAgo from "../../helpers/timeAgo";
 
@@ -22,12 +22,10 @@ function Comment({ comment }) {
       </div>
       <div className='comment-foot'>
         <div className='comment-left'>
-          <HeartOutlined className='comment-like-icon' />
-          <span className='comment-likes'>Likes</span>
-          <span className='comment-likes-count'>{comment.likes}</span>
+          <CommentOutlined /> <span className='comment-likes'>Reply</span>
         </div>
         <div className='comment-right'>
-          <span>Reply</span> / <span>Delete</span>
+          <SettingOutlined />
         </div>
       </div>
     </div>
