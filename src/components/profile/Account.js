@@ -39,7 +39,6 @@ function Account() {
     }, 2000);
     dispatch(updateUser(data));
   };
-
   return (
     <div>
       <Divider plain>{dataUpdated}</Divider>
