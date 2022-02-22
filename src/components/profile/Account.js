@@ -6,18 +6,18 @@ import "./Account.css";
 import TextArea from "antd/lib/input/TextArea";
 import getUsers from "../../services/getUsers";
 import { updateUser } from "../../services/user";
-import { Button, Divider } from 'antd';
+import { Button, Divider } from "antd";
 
 function Account() {
   const [avatar, setAvatar] = useState("");
   const [cover, setCover] = useState("");
   const [dataUpdated, setDataUpdated] = useState("");
-  const [loading, setLoading] = useState (false);
+  const [loading, setLoading] = useState(false);
   const { profile } = useSelector((state) => state.userDuck);
   const { users } = useSelector((state) => state.userDuck);
   const { user } = useSelector((state) => state.userDuck);
   const avatarRef = useRef(null);
-  const coverRef = useRef(null)
+  const coverRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -34,30 +34,29 @@ function Account() {
     })
     .filter((item) => item !== undefined);
 
-  //sending updated data to json server.  
+  //sending updated data to json server.
   const updateAccount = (data) => {
-    setDataUpdated('Data is updated successfully!!');
+    setDataUpdated("Data is updated successfully!!");
     setLoading(true);
     setTimeout(() => {
-        setDataUpdated("");
-        setLoading(false);
+      setDataUpdated("");
+      setLoading(false);
     }, 2000);
 
     if (avatar) data.avatar = avatar;
-    if(cover) data.cover = cover;
-    console.log(data)
+    if (cover) data.cover = cover;
+    console.log(data);
     dispatch(updateUser(data));
-    
   };
 
   const uploadAvatar = async () => {
-    let avatarData= avatarRef.current.files[0];
+    let avatarData = avatarRef.current.files[0];
     let avatar = await getBase64(avatarData);
     setAvatar(avatar);
   };
 
   const uploadCover = async () => {
-    let coverData= avatarRef.current.files[0];
+    let coverData = avatarRef.current.files[0];
     let cover = await getBase64(coverData);
     setCover(cover);
   };
@@ -70,9 +69,9 @@ function Account() {
             return (
               <Form
                 key={item.id}
-                layout="vertical"
+                layout='vertical'
                 onFinish={updateAccount}
-                className="ant-form"
+                className='ant-form'
                 initialValues={{
                   id: item.id,
                   name: item.name ? item.name : "",
@@ -88,12 +87,12 @@ function Account() {
                 }}
               >
                 <h2>Profile Information</h2>
-                <Form.Item className="id" name="id">
-                  <Input placeholder="id" />
+                <Form.Item className='id' name='id'>
+                  <Input placeholder='id' />
                 </Form.Item>
                 <Form.Item
-                  label="Full Name"
-                  name="name"
+                  label='Full Name'
+                  name='name'
                   rules={[
                     {
                       required: true,
@@ -101,22 +100,34 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input name="name" placeholder="@ex. Name Surname" />
+                  <Input name='name' placeholder='@ex. Name Surname' />
                 </Form.Item>
-                <Form.Item label="Profile Photo" >
-                  <input name="avatar" placeholder="Choose you profile picture" type="file" ref = {avatarRef} onChange={uploadAvatar}/>
+                <Form.Item label='Profile Photo'>
+                  <input
+                    name='avatar'
+                    placeholder='Choose you profile picture'
+                    type='file'
+                    ref={avatarRef}
+                    onChange={uploadAvatar}
+                  />
                 </Form.Item>
-                <Form.Item label="Cover image" >
-                  <input name="cover" placeholder="Choose you cover image" type="file" ref = {coverRef} onChange={uploadCover}/>
+                <Form.Item label='Cover image'>
+                  <input
+                    name='cover'
+                    placeholder='Choose you cover image'
+                    type='file'
+                    ref={coverRef}
+                    onChange={uploadCover}
+                  />
                 </Form.Item>
-                <Form.Item label="About Me" name="about">
-                  <TextArea placeholder="Short intro..." />
+                <Form.Item label='About Me' name='about'>
+                  <TextArea placeholder='Short intro...' />
                 </Form.Item>
 
                 <h2>Personal Information</h2>
                 <Form.Item
-                  label="Email"
-                  name="email"
+                  label='Email'
+                  name='email'
                   rules={[
                     {
                       required: true,
@@ -128,11 +139,11 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter you email" />
+                  <Input placeholder='Enter you email' />
                 </Form.Item>
                 <Form.Item
-                  label="Password"
-                  name="password"
+                  label='Password'
+                  name='password'
                   rules={[
                     {
                       required: true,
@@ -140,13 +151,13 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter you password" type="password" />
+                  <Input placeholder='Enter you password' type='password' />
                 </Form.Item>
 
                 <h2>Social Networks</h2>
                 <Form.Item
-                  label="Facebook"
-                  name="fb"
+                  label='Facebook'
+                  name='fb'
                   rules={[
                     {
                       required: true,
@@ -154,11 +165,11 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter Facebook account link" />
+                  <Input placeholder='Enter Facebook account link' />
                 </Form.Item>
                 <Form.Item
-                  label="Twitter"
-                  name="tw"
+                  label='Twitter'
+                  name='tw'
                   rules={[
                     {
                       required: true,
@@ -166,11 +177,11 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter Twitter account link" />
+                  <Input placeholder='Enter Twitter account link' />
                 </Form.Item>
                 <Form.Item
-                  label="Linkdin"
-                  name="lin"
+                  label='Linkdin'
+                  name='lin'
                   rules={[
                     {
                       required: true,
@@ -178,23 +189,21 @@ function Account() {
                     },
                   ]}
                 >
-                  <Input placeholder="Enter Linkdin account link" />
+                  <Input placeholder='Enter Linkdin account link' />
                 </Form.Item>
-                <Form.Item label="Github" name="git">
-                  <Input placeholder="Enter Github account link" />
+                <Form.Item label='Github' name='git'>
+                  <Input placeholder='Enter Github account link' />
                 </Form.Item>
-                <Form.Item label="Viber" name="vib">
-                  <Input placeholder="Enter Viber account link" />
+                <Form.Item label='Viber' name='vib'>
+                  <Input placeholder='Enter Viber account link' />
                 </Form.Item>
-                <Form.Item label="Wahtsapp" name="wapp">
-                  <Input placeholder="Enter Whatsapp account link" />
+                <Form.Item label='Wahtsapp' name='wapp'>
+                  <Input placeholder='Enter Whatsapp account link' />
                 </Form.Item>
                 <Form.Item>
-                  <Button 
-                    loading={loading}
-                    htmlType="submit"
-                    className="button-update"
-                  > Update
+                  <Button loading={loading} htmlType='submit' className='button-update'>
+                    {" "}
+                    Update
                   </Button>
                 </Form.Item>
               </Form>
