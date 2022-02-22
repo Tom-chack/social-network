@@ -1,21 +1,55 @@
 import React, { useState, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { Image } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { Image, Popover, Button } from "antd";
 
 import "./comment.css";
 import { CommentOutlined, SettingOutlined } from "@ant-design/icons";
 
 import timeAgo from "../../helpers/timeAgo";
 import CommentEditor from "../Editor/commentEditor";
+import { deleteComment } from "../../services/comment";
 
 function Comment({ post, comment }) {
   const { user } = comment;
   const [reply, setReply] = useState(false);
-  const { loggedIn } = useSelector((state) => state.userDuck);
+
+  const dispatch = useDispatch();
+  const { user: currentUser, loggedIn } = useSelector((state) => state.userDuck);
 
   const handleCancel = useCallback(() => {
     setReply(false);
   }, []);
+
+  const tools = () => {
+    return (
+      <div>
+        <Button type='primary' size='small' ghost onClick={() => setReply(true)}>
+          Edit
+        </Button>
+        <Button
+          danger
+          size='small'
+          onClick={() =>
+            window.confirm("Are you sure you want to delete this post?") &&
+            dispatch(deleteComment(comment))
+          }
+        >
+          Delete
+        </Button>
+      </div>
+    );
+  };
+
+  const ToolsButton = () => {
+    if (loggedIn && user.id === currentUser.id) {
+      return (
+        <Popover content={tools} className='tools'>
+          <SettingOutlined />
+        </Popover>
+      );
+    }
+    return "";
+  };
 
   return (
     <div className='comment'>
@@ -34,12 +68,17 @@ function Comment({ post, comment }) {
           <CommentOutlined /> <span className='comment-likes'>Reply</span>
         </div>
         <div className='comment-right'>
-          <SettingOutlined />
+          <ToolsButton />
         </div>
       </div>
       {reply && (
         <div className='comment-editor'>
-          <CommentEditor editorId={`comment-editor-${post.id}`} post={post} cancel={handleCancel} />
+          <CommentEditor
+            editorId={`comment-editor-${post.id}`}
+            post={post}
+            comment={comment}
+            cancel={handleCancel}
+          />
         </div>
       )}
     </div>
