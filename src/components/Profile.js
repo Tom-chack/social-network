@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import getProfile from "../services/getProfile";
 
 //Components
-import Activity from "./profile/activity/Activity";
-import About from "./profile/About";
-import Account from "./profile/Account";
+import Activity from "./profile/Activity";
+import About from "./profile/About/About";
+import Account from "./profile/Account/Account";
 import Favored from "./profile/Favored";
 import Friends from "./profile/Friends";
 
