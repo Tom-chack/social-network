@@ -9,9 +9,15 @@ import getProfile from "../services/getProfile";
 
 //Components
 import Activity from "./profile/Activity";
+<<<<<<< HEAD
 import About from "./profile/About";
 import Account from "./profile/Account";
 import Favored from "./profile/Favored/Favored";
+=======
+import About from "./profile/About/About";
+import Account from "./profile/Account/Account";
+import Favored from "./profile/Favored";
+>>>>>>> main
 import Friends from "./profile/Friends";
 
 //Ant Design

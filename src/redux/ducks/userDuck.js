@@ -73,6 +73,7 @@ const userDuck = (state = initialState, { type, payload }) => {
           if (user.id === payload.id) user = { ...user, ...payload };
           return user;
         }),
+        profile: { ...state.profile, ...payload },
         errorsUser: "",
       };
     case USER_LOGOUT:
