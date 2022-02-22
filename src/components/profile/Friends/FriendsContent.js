@@ -2,8 +2,8 @@ import { Button, Image, Input, Card } from "antd";
 import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import getUsers from "../../services/getUsers";
-import "../profile/friends.css";
+import getUsers from "../../../services/getUsers";
+import "./friends.css";
 
 function FriendsContent() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function FriendsContent() {
   const countToBeLoaded = 6;
   const [loadFriends, setLoadFriends] = useState(6);
 
-  //fetchings users
+  //fetching users
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
