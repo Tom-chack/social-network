@@ -25,11 +25,10 @@ function FriendsContent() {
 
   filteredFriends = filteredFriends.flat();
 
-  if (value !== ""){
-    filteredFriends = filteredFriends
-    .filter((item) => {
-        return item.name?.toLowerCase().includes(value?.toLowerCase());
-    })
+  if (value !== "") {
+    filteredFriends = filteredFriends.filter((item) => {
+      return item.name?.toLowerCase().includes(value?.toLowerCase());
+    });
   }
 
   //delaying search results to show
@@ -45,7 +44,7 @@ function FriendsContent() {
   };
 
   let handleInput = (e) => {
-    setValue(e.target.value)
+    setValue(e.target.value);
   };
 
   const debouncedResults = useMemo(() => {
@@ -59,49 +58,43 @@ function FriendsContent() {
   };
 
   return (
-    <div className="card-container">
-      <div className="search-bar-container">
+    <div className='card-container'>
+      <div className='search-bar-container'>
         <h2>Friends {profile.friends.length}</h2>
         <Input
-          className="search-box"
-          type="text"
+          className='search-box'
+          type='text'
           onChange={debouncedResults}
-          placeholder="Search"
+          placeholder='Search'
         />
       </div>
-      <div className="friends-list-container" key="container">
-        {value && filteredFriends.length === 0 ? <span>No members found ...</span> : filteredFriends
-          .slice(0, loadFriends)
-          .map((item) => {
+      <div className='friends-list-container' key='container'>
+        {value && filteredFriends.length === 0 ? (
+          <span>No members found ...</span>
+        ) : (
+          filteredFriends.slice(0, loadFriends).map((item) => {
             return (
-              <div key={item.id} className="friends-list-avatars">
+              <div key={item.id} className='friends-list-avatars'>
                 <div>
-                  <Image
-                    className="cover"
-                    src={item.cover}
-                    alt="cover pic can't be uploaded"
-                  />
+                  <Image className='cover' src={item.cover} alt="cover pic can't be uploaded" />
                 </div>
                 <div>
-                  <Image
-                    className="avatar"
-                    src={item.avatar}
-                    alt="user pic can't be uploaded"
-                  />
+                  <Image className='avatar' src={item.avatar} alt="user pic can't be uploaded" />
                 </div>
-                <div className="username">
+                <div className='username'>
                   <Link to={`/profile/${item.id}`} style={{ color: "gray" }}>
                     {item.name}
                   </Link>
                 </div>
               </div>
             );
-          })}
+          })
+        )}
       </div>
       {loadFriends <= filteredFriends.length ? (
         <Button
           className={value ? "hidden" : "show-more"}
-          key="btn"
+          key='btn'
           style={{ margin: "0 10px" }}
           onClick={handleBtn}
         >

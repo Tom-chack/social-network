@@ -2,9 +2,7 @@ import React from "react";
 import FriendsContent from "./FriendsContent";
 
 function Friends() {
-  return (
-    <FriendsContent />
-  )
+  return <FriendsContent />;
 }
 
 export default Friends;
