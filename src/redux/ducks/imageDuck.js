@@ -10,28 +10,27 @@ export const imageError = (payload) => ({ type: IMAGE_ERROR, payload });
 
 // Initial State of the postDuck
 const initialState = {
-    image: { ...imageSchema, id: 0 },
-    images: [],
-    errorsImage: "",
-  };
-
+  image: { ...imageSchema, id: 0 },
+  images: [],
+  errorsImage: "",
+};
 
 // imageDuck Reducer
 const imageDuck = (state = initialState, { type, payload }) => {
-    switch (type) {
-      case LOAD_IMAGES:
-        return {
-          ...state,
-          images: payload,
-        };
-      case IMAGE_ERROR:
-        return {
-          ...state,
-          errorsImage: payload,
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default imageDuck;
+  switch (type) {
+    case LOAD_IMAGES:
+      return {
+        ...state,
+        images: payload,
+      };
+    case IMAGE_ERROR:
+      return {
+        ...state,
+        errorsImage: payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default imageDuck;

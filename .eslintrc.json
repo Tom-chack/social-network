@@ -18,5 +18,18 @@
         },
         "ecmaVersion": "latest"
     },
-    "rules": {}
+    "rules": {
+        "prettier/prettier": [
+            "warn",
+            {
+                "printWidth": 100,
+                "trailingComma": "es5",
+                "semi": true,
+                "jsxSingleQuote": true,
+                "singleQuote": false,
+                "useTabs": false,
+                "jsxBracketSameLine": false
+            }
+        ]
+    }
 }

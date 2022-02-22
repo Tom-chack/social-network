@@ -5,7 +5,6 @@ import imageDuck from "./ducks/imageDuck";
 import commentDuck from "./ducks/commentDuck";
 import widgetDuck from "./ducks/widgetDuck";
 
-
 const reducers = combineReducers({
   userDuck,
   postDuck,
