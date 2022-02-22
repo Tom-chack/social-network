@@ -1,4 +1,4 @@
-import { Button, Image, Input } from "antd";
+import { Button, Image, Input, Card } from "antd";
 import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -58,8 +58,8 @@ function FriendsContent() {
   };
 
   return (
-    <div className='card-container'>
-      <div className='search-bar-container'>
+    <div className='friends-container'>
+      <div className='friends-bar'>
         <h2>Friends {profile.friends.length}</h2>
         <Input
           className='search-box'
@@ -68,29 +68,36 @@ function FriendsContent() {
           placeholder='Search'
         />
       </div>
-      <div className='friends-list-container' key='container'>
-        {value && filteredFriends.length === 0 ? (
-          <span>No members found ...</span>
-        ) : (
-          filteredFriends.slice(0, loadFriends).map((item) => {
-            return (
-              <div key={item.id} className='friends-list-avatars'>
-                <div>
-                  <Image className='cover' src={item.cover} alt="cover pic can't be uploaded" />
-                </div>
-                <div>
-                  <Image className='avatar' src={item.avatar} alt="user pic can't be uploaded" />
-                </div>
-                <div className='username'>
-                  <Link to={`/profile/${item.id}`} style={{ color: "gray" }}>
-                    {item.name}
-                  </Link>
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
+      <Card style={{ backgroundColor: "#fafafa" }}>
+        <div className='friends'>
+          {value && filteredFriends.length === 0 ? (
+            <span>No members found ...</span>
+          ) : (
+            filteredFriends.slice(0, loadFriends).map((item) => {
+              return (
+                <Card key={item.id} className='friend-card'>
+                  <div
+                    className='friend-head'
+                    style={{ backgroundImage: `url(${item.cover})` }}
+                  ></div>
+                  <div>
+                    <Image
+                      className='friend-avatar'
+                      src={item.avatar}
+                      alt={`${item.username} avatar`}
+                    />
+                  </div>
+                  <div className='friend-name'>
+                    <Link to={`/profile/${item.id}`} style={{ color: "gray" }}>
+                      {item.name}
+                    </Link>
+                  </div>
+                </Card>
+              );
+            })
+          )}
+        </div>
+      </Card>
       {loadFriends <= filteredFriends.length ? (
         <Button
           className={value ? "hidden" : "show-more"}
@@ -98,7 +105,7 @@ function FriendsContent() {
           style={{ margin: "0 10px" }}
           onClick={handleBtn}
         >
-          Load more{" "}
+          Load more
         </Button>
       ) : (
         ""

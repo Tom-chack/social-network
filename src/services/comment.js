@@ -16,7 +16,7 @@ export const addComment = (data) => async (dispatch, getState) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(commentData),
+      body: JSON.stringify({ ...commentData, user: {} }),
     });
 
     let comment = await commentRes.json();
@@ -37,7 +37,7 @@ export const updateComment = (commentData) => (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(commentData),
+      body: JSON.stringify({ ...commentData, user: {} }),
     })
       .then((res) => res.json())
       .then((comment) => {
