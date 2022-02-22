@@ -1,5 +1,5 @@
 import api from "../helpers/api";
-import { postCommentAdd, postCommentDelete } from "../redux/ducks/postDuck";
+import { postCommentAdd, postCommentUpdate, postCommentDelete } from "../redux/ducks/postDuck";
 import { commentAdd, commentUpdate, commentDelete, commentError } from "../redux/ducks/commentDuck";
 import { commentSchema } from "../helpers/schemas";
 import getUser from "./getUser";
@@ -16,7 +16,7 @@ export const addComment = (data) => async (dispatch, getState) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(commentData),
+      body: JSON.stringify({ ...commentData, user: {} }),
     });
 
     let comment = await commentRes.json();
@@ -37,11 +37,12 @@ export const updateComment = (commentData) => (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(commentData),
+      body: JSON.stringify({ ...commentData, user: {} }),
     })
       .then((res) => res.json())
       .then((comment) => {
         dispatch(commentUpdate(comment));
+        dispatch(postCommentUpdate(comment));
       })
       .catch((err) => {
         dispatch(commentError(err.message));
