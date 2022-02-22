@@ -1,16 +1,16 @@
-.card-container {
+.friends .card-container {
     width: 100% !important;
     background-color: rgb(247, 248, 248);
     border: 1px solid lightgrey;
 
 }
-.friends-list-container {
+.friends .friends-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
   
-  .friends-list-avatars {
+  .friends .friends-list-avatars {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,12 +19,12 @@
     padding: 2.5em;
   }
   
-  .cover {
+  .friends .cover {
     width: 170% !important;
     border-radius: 6px;
   }
   
-  .avatar {
+  .friends .avatar {
     width: 60% !important;
     border-radius: 50%;
     border: 4px solid white;
@@ -32,14 +32,14 @@
     margin-left: 55%;
   }
   
-  .username {
+  .friends .username {
     text-align: center;
     flex-wrap: nowrap;
     color:black;
     margin-left: 60% !important;
   }
   
-  .search-bar-container {
+  .friends .search-bar-container {
     display: flex;
     background-color: whilte;
     flex-wrap:nowrap;
@@ -47,13 +47,13 @@
     margin: 3%;
   }
   
-  .search-box {
+  .friends .search-box {
      width: 20% !important;
      margin-right: 3% !important;
      border-radius: 6px !important;
   }
   
-  .show-more {
+  .friends .show-more {
     width: 15%;
     background-color: rgb(149, 140, 160) !important;
     border-radius: 6px !important;
@@ -62,7 +62,7 @@
     margin-bottom: 5% !important;
   }
 
-  .hidden {
+  .friends .hidden {
     visibility: hidden;
     width: 15% !important; 
     background-color: rgb(186, 147, 231) !important;
@@ -72,11 +72,11 @@
     margin-bottom: 5% !important;
   }
 
-  h2 {
+  .friends h2 {
       margin-left: 3%;
   }
 
-  span {
+  .friends span {
       padding: 2%;
       margin: 2%;
   }
