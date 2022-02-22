@@ -2,7 +2,7 @@ import React from "react";
 import FriendsContent from "./FriendsContent";
 
 function Friends() {
-  return <FriendsContent className='friends' />;
+  return <FriendsContent />;
 }
 
 export default Friends;
