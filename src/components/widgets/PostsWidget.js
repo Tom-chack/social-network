@@ -60,7 +60,7 @@ useEffect(() => {
                                 showModal()
                                 setModalData(posts[index])
                             }}>
-                            <span>{post.content.length <= 60 ? post.content : `${post.content.slice(0,60)} . . .`}</span>
+                            <span>{post.content.length <= 50 ? post.content : `${post.content.slice(0,50)} . . .`}</span>
                             </Link>
                         </div>
                     </div>

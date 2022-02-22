@@ -29,8 +29,8 @@
     font-size: large;
 }
 
-.search-container input{
-    width: 35%;
+.search-container input {
+    width: 35% !important;
     height: 5vh;
     border: 1px solid #bebebe;
     border-radius: 5px;
@@ -41,6 +41,7 @@
 
 .users-container{
     width: 90%;
+    min-width: 450px;
     height: 25vh;
     display: flex;
     flex-direction: column;
@@ -106,7 +107,6 @@
 .info-part div a :hover{
     color: #1890ff
 }
-
 
 
 .not-found{
