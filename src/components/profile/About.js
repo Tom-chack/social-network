@@ -26,7 +26,7 @@ function About() {
             <div>
               {profile.fb ? (
                 <>
-                  <img className='icons' src={fb} />
+                  <img className='icons' src={fb} alt='Facebook' />
                   <a
                     className='social-network-links'
                     href={profile.fb}
@@ -43,7 +43,7 @@ function About() {
             <div>
               {profile.tw ? (
                 <>
-                  <img className='icons' src={twit} />
+                  <img className='icons' src={twit} alt='Twitter' />
                   <a
                     className='social-network-links'
                     href={profile.tw}
@@ -60,7 +60,7 @@ function About() {
             <div>
               {profile.lin ? (
                 <>
-                  <img className='icons' src={lin} />
+                  <img className='icons' src={lin} alt='LinkedIn' />
                   <a
                     className='social-network-links'
                     href={profile.lin}
@@ -78,7 +78,7 @@ function About() {
               {profile.git ? (
                 <>
                   {" "}
-                  <img className='icons' src={git} />
+                  <img className='icons' src={git} alt='GitHub' />
                   <a
                     className='social-network-links'
                     href={profile.git}
@@ -95,7 +95,7 @@ function About() {
             <div>
               {profile.vib ? (
                 <>
-                  <img className='icons' src={viber} />
+                  <img className='icons' src={viber} alt='Viber' />
                   <a
                     className='social-network-links'
                     href={profile.vib}
@@ -112,7 +112,7 @@ function About() {
             <div>
               {profile.wapp ? (
                 <>
-                  <img className='icons' src={whap} />
+                  <img className='icons' src={whap} alt='WhatsApp' />
                   <a
                     className='social-network-links'
                     href={profile.wapp}
