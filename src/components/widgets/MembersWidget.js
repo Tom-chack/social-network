@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import getUsers from '../../services/widget';
 import { Avatar } from "antd";
-import { AVATAR } from "../../helpers/constants";
 import { Link } from "react-router-dom";
 
 
@@ -34,7 +33,7 @@ useEffect(() => {
                     users.map(item=>(
                        <div key={item.id}>
                             <Link to={`/profile/${item.id}`}>
-                                <Avatar size={60} src={item.avatar?item.avatar:AVATAR} />
+                                <Avatar size={60} src={item.avatar} />
                             </Link>
                         </div>
                     ))

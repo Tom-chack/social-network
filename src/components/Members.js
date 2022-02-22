@@ -9,7 +9,6 @@ import { Image,Avatar } from 'antd';
 import ReactPaginate from "react-paginate";
 import PostWidget from './widgets/PostsWidget.js'
 import PhotoWidget from './widgets/PhotosWidget.js'
-import {AVATAR, COVER} from '../helpers/constants'
 
 
 function Members() {
@@ -51,7 +50,6 @@ function Members() {
     searchUsers()
     setPageNumber(0)
   }, [inputValue])
-
 
 
   //Getting date from users
@@ -116,14 +114,14 @@ function Members() {
             <div className="users-container" key={item.id}>
               <div className="background-part">
                 <img
-                  src={item.covers?item.covers:COVER}
+                  src={item.covers}
                   alt="cover-img"
                 />
                 <div className="img-container">
                   <Avatar
                     size={92}
                     src={<Image
-                    src={item.avatar?item.avatar:AVATAR}
+                    src={item.avatar}
                     style={{
                       width: 92, height: 92
                     }}

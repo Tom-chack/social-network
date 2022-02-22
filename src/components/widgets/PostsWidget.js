@@ -3,7 +3,6 @@ import {useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { Modal} from 'antd';
-import {AVATAR} from '../../helpers/constants'
 
 
 const PostWidget = () =>{
@@ -53,7 +52,7 @@ useEffect(() => {
                     <div key={post.id} className='post-element'>
                         <div className='post-avatar'>
                             <Link to={`/profile/${post.user.id}`}>
-                                <img src={post.user.avatar?post.user.avatar:AVATAR} alt={'avatar'}/>
+                                <img src={post.user.avatar} alt={'avatar'}/>
                             </Link>
                         </div>
                         <div className='post-content'>
@@ -72,7 +71,7 @@ useEffect(() => {
                 <Modal title="Popular Posts" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                 <div className='post-content'>
                     <div className='post-avatar'>
-                        <img src={modalData?.user.avatar?modalData?.user.avatar:AVATAR} alt={'avatar'}/>           
+                        <img src={modalData?.user.avatar} alt={'avatar'}/>           
                     </div>
                     <div className='modal-name'>
                         <Link to={`/profile/${modalData?.user.id}`}>

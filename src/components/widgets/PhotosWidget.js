@@ -82,7 +82,7 @@ const getRandomImages = () =>{
                 <div className="photo-content-div">
                 {
                     imagesData.map(item=>(
-/*posid-id*/            <div key={item.id} className={'photo-element'}>
+                        <div key={item.id} className={'photo-element'}>
                             <Image src={item.url} style={{borderRadius:0}} />
                         </div>
                     ))

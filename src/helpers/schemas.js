@@ -38,6 +38,6 @@ export const commentSchema = {
   date: Date.now(),
 };
 export const imageSchema = {
-  postid: 1,
+  postid: 0,
   url: "",
 }
