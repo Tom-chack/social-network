@@ -26,13 +26,7 @@ function Account() {
   }, [dispatch]);
 
   //filtering current user data
-  const currentUser = users
-    .map((item) => {
-      if (item.id === user.id) {
-        return item;
-      }
-    })
-    .filter((item) => item !== undefined);
+  const currentUser = users.filter((item) => item.id === user.id);
 
   //sending updated data to json server.
   const updateAccount = (data) => {
