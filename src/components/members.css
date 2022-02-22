@@ -1,0 +1,162 @@
+/* Users cards styles */
+
+.members-container{
+    width: 100%;
+    display: flex;
+}
+
+.members-content{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+
+.search-container{
+    width: 90%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #bebebe;
+    margin-top: 30px;
+}
+
+.search-container span{
+    color:grey;
+    font-size: large;
+}
+
+.search-container input {
+    width: 35% !important;
+    height: 5vh;
+    border: 1px solid #bebebe;
+    border-radius: 5px;
+    color: black;
+    background-color: #ebebebd0;
+    padding: 0 5px;
+}
+
+.users-container{
+    width: 90%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #bebebe;
+    margin: 30px 0;
+}
+
+.background-part{
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.info-part{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-container{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+}
+
+.img-container img{
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+}
+
+.background-part img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-part div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: 80%;
+    height: 70%;
+    z-index: 1;
+}
+
+.info-part div a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+.info-part div a :hover{
+    color: #1890ff
+}
+
+
+.not-found{
+    color: grey;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+/* Pagination styles */
+
+.paginationBttns {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    
+  }
+
+  
+  .paginationBttns a {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #bebebe;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
+    border: 1px solid #1890ff;
+    color: #1890ff;
+  }
+  
+  .paginationActive a {
+    border: 1px solid #1890ff;
+    color: #1890ff;
+  }
+  
+
+  .paginationDisabled a {
+    color: #bebebe;
+    border: 1px solid #bebebe;
+    pointer-events: none;
+  }
+
+  .hidePagination{
+      display: none;
+  }
