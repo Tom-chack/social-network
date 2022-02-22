@@ -9,7 +9,6 @@ import viber from "../../images/viber.png";
 import whap from "../../images/Whatsapp.png";
 
 import "./About.css";
-import "antd/dist/antd.css";
 
 function About() {
   const { profile } = useSelector((state) => state.userDuck);
