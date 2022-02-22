@@ -41,7 +41,6 @@
 
 .users-container{
     width: 90%;
-    min-width: 450px;
     height: 25vh;
     display: flex;
     flex-direction: column;
