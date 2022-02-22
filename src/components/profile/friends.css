@@ -1,0 +1,82 @@
+.friends .card-container {
+    width: 100% !important;
+    background-color: rgb(247, 248, 248);
+    border: 1px solid lightgrey;
+
+}
+.friends .friends-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .friends .friends-list-avatars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin: 0 4em 3em 0;
+    padding: 2.5em;
+  }
+  
+  .friends .cover {
+    width: 170% !important;
+    border-radius: 6px;
+  }
+  
+  .friends .avatar {
+    width: 60% !important;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-top: -40% !important;
+    margin-left: 55%;
+  }
+  
+  .friends .username {
+    text-align: center;
+    flex-wrap: nowrap;
+    color:black;
+    margin-left: 60% !important;
+  }
+  
+  .friends .search-bar-container {
+    display: flex;
+    background-color: whilte;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    margin: 3%;
+  }
+  
+  .friends .search-box {
+     width: 20% !important;
+     margin-right: 3% !important;
+     border-radius: 6px !important;
+  }
+  
+  .friends .show-more {
+    width: 15%;
+    background-color: rgb(149, 140, 160) !important;
+    border-radius: 6px !important;
+    color: white !important;
+    margin-left: 40% !important;
+    margin-bottom: 5% !important;
+  }
+
+  .friends .hidden {
+    visibility: hidden;
+    width: 15% !important; 
+    background-color: rgb(186, 147, 231) !important;
+    border-radius: 6px !important;
+    color: white !important;
+    margin-left: 40% !important;
+    margin-bottom: 5% !important;
+  }
+
+  .friends h2 {
+      margin-left: 3%;
+  }
+
+  .friends span {
+      padding: 2%;
+      margin: 2%;
+  }

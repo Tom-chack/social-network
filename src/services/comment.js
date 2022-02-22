@@ -1,5 +1,5 @@
 import api from "../helpers/api";
-import { postCommentAdd, postCommentDelete } from "../redux/ducks/postDuck";
+import { postCommentAdd, postCommentUpdate, postCommentDelete } from "../redux/ducks/postDuck";
 import { commentAdd, commentUpdate, commentDelete, commentError } from "../redux/ducks/commentDuck";
 import { commentSchema } from "../helpers/schemas";
 import getUser from "./getUser";
@@ -42,6 +42,7 @@ export const updateComment = (commentData) => (dispatch) => {
       .then((res) => res.json())
       .then((comment) => {
         dispatch(commentUpdate(comment));
+        dispatch(postCommentUpdate(comment));
       })
       .catch((err) => {
         dispatch(commentError(err.message));
