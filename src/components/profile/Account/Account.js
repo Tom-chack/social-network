@@ -98,7 +98,7 @@ function Account() {
                   <Form.Item label='Profile Photo'>
                     <input
                       name='avatar'
-                      placeholder='Choose you profile picture'
+                      placeholder='Choose your profile picture'
                       type='file'
                       ref={avatarRef}
                       onChange={uploadAvatar}
@@ -114,7 +114,7 @@ function Account() {
                     />
                   </Form.Item>
                   <Form.Item label='About Me' name='about'>
-                    <TextArea placeholder='Short intro...' />
+                    <TextArea placeholder='Short intro...' style={{ height: 120 }} />
                   </Form.Item>
                 </Card>
 
