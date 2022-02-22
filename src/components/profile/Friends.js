@@ -1,11 +1,10 @@
 import React from "react";
+import FriendsContent from "./FriendsContent";
 
 function Friends() {
   return (
-    <div>
-      <span>Friends Component</span>
-    </div>
-  );
+    <FriendsContent />
+  )
 }
 
 export default Friends;
