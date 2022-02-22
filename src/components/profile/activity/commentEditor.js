@@ -2,7 +2,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addComment } from "../../../services/comment";
-
 import { Form, Input, Button } from "antd";
 const { TextArea } = Input;
 function CommentEditor({id}) {

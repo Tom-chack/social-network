@@ -151,6 +151,14 @@
      font-family: "Times New Roman", Cambria, Cochin, Georgia, Times,
           "Times New Roman", serif;
 }
+.commentsandtool {
+     display: flex;
+     flex-direction: row;
+     margin-right: 10px;
+}
+.likess {
+     margin-left: 15px;
+}
 .activityAvatar {
      width: 40px;
      border-radius: 50%;
@@ -162,39 +170,6 @@
 .avatarUserName {
      display: flex;
      flex-direction: row;
-}
-.updateButton {
-     display: flex;
-     flex-direction: row;
-     justify-content: flex-start;
-     height: 30px;
-     width: 720px;
-     margin-bottom: 50px;
-}
-.updateButton input {
-     width: 590px;
-     height: 50px;
-     margin-right: 15px;
-     border-radius: 3%;
-     border-color: rgba(226, 225, 224, 0.493);
-     font-size: 20px;
-}
-.updateButton button {
-     width: 130px;
-     height: 50px;
-     font-size: 18px;
-     font-weight: bold;
-     border: 1px solid #2f89f0;
-     background-color: #2f89f0;
-     color: rgb(238, 227, 227);
-     transition-duration: 0.4s;
-     border-radius: 10%;
-}
-
-.updateButton button:hover {
-     background-color: #0751a5;
-     color: rgb(222, 228, 240);
-     transition-duration: 0.3s;
 }
 .likeHeart {
      display: flex;

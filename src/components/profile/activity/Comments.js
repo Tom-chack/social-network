@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
 import React, {  useState} from "react";
-import { Image } from "antd";
-import Time from "./UpdateTime";
-import { TiArrowBack } from "react-icons/ti"
-import {deleteComment} from "../../../services/comment"
 import { useDispatch ,useSelector} from "react-redux";
-import { Link } from 'react-router-dom';
+import {deleteComment} from "../../../services/comment"
 import CommentEditor from "./commentEditor";
+import Time from "./UpdateTime";
+import { Image } from "antd";
+import { TiArrowBack } from "react-icons/ti"
+import { Link } from 'react-router-dom';
+
 function Comments({ comment,id }) {
-  console.log("postid from activitycard",id)
     const { user } = comment;
     const [isClick, setClick] = useState(false);
     const dispatch=useDispatch();
-   const {profile}=useSelector((state)=>state.userDuck)
+    const {profile}=useSelector((state)=>state.userDuck)
         ///delete comment
         const deleteComments=(comment)=>{
           if(window.confirm("Are you sure you want to delete this comment?")){
@@ -29,14 +29,11 @@ function Comments({ comment,id }) {
         return (
 
            <div className="fileUploader">
-                 {user?.avatar? <Image
-                                       className='commentsAvatarReply' 
-                                       src={user.avatar} 
-                                       alt={user.name || user.username} />
-                                       :
-                                      <Image 
-                                      className="commentsAvatarReply" 
-                                      src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>}
+                  <Image
+                        className='commentsAvatarReply' 
+                        src={user.avatar} 
+                        alt={user.name || user.username} />
+                                      
                      <CommentEditor id={id}/>        
             </div>
           
@@ -48,15 +45,13 @@ function Comments({ comment,id }) {
             <div  className="commentsHeaderPart">
                  <div>
                      
-                     <Link to={`/profile/${user.id}`}> {user?.avatar ? <Image
+                     <Link to={`/profile/${user.id}`}>
+                                    <Image
                                        className='commentsAvatar' 
                                        src={user.avatar} 
-                                       alt={user.name || user.username} />
-                                       :
-                                      <Image 
-                                      className="commentsAvatar" 
-                                      src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"/>
-                                     } </Link>
+                                       alt={user.name || user.username}
+                                     />
+                     </Link>
                  </div> 
                  <div className="commentsDataPart">
                     <Link to={`/profile/${user.id}`}><h4>{user.name}</h4> </Link> 
@@ -70,8 +65,8 @@ function Comments({ comment,id }) {
              
          <div className="commentsFooterBtn">
            
-              {(profile.id!==user.id)?<div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> :null} 
-                <div><span onClick={()=>deleteComments(comment)}>Delete</span></div>
+              <div><span><TiArrowBack onClick={onReply}/>Reply</span> |</div> 
+              {(profile.id===user.id)?  <div><span onClick={()=>deleteComments(comment)}>Delete</span></div>:null}
             
               
           </div>
