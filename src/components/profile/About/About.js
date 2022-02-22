@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Row, Col } from "antd";
-import fb from "../../images/facebook.png";
-import git from "../../images/github.jpg";
-import lin from "../../images/linkdin.png";
-import twit from "../../images/twitter.png";
-import viber from "../../images/viber.png";
-import whap from "../../images/Whatsapp.png";
+import fb from "../../../images/facebook.png";
+import git from "../../../images/github.jpg";
+import lin from "../../../images/linkdin.png";
+import twit from "../../../images/twitter.png";
+import viber from "../../../images/viber.png";
+import whap from "../../../images/Whatsapp.png";
 
 import "./About.css";
 
