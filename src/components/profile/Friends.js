@@ -1,11 +1,8 @@
 import React from "react";
+import FriendsContent from "./FriendsContent";
 
 function Friends() {
-  return (
-    <div>
-      <span>Friends Component</span>
-    </div>
-  );
+  return <FriendsContent className='friends' />;
 }
 
 export default Friends;
