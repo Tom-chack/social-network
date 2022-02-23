@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import dateFormat from "dateformat";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -36,7 +37,7 @@ function Profile() {
 
   //Redux functions, get current profile owner (user object)
   const dispatch = useDispatch();
-  const { profile } = useSelector((state) => state.userDuck);
+  const { profile, loggedIn, user } = useSelector((state) => state.userDuck);
 
   //Fetch user object by profile user id
   useEffect(() => {
@@ -52,8 +53,6 @@ function Profile() {
     return <Image width={200} src={profile.avatar} alt={profile.name || profile.username} />;
   };
 
-  
-
   return (
     <div className='profile'>
       <div className='profile-head' style={{ backgroundImage: `url(${profile.cover})` }}></div>
@@ -64,7 +63,7 @@ function Profile() {
         <div className='profile-panel-center'>
           <div>
             <Title level={3}>{profile.name || profile.username}</Title>
-            <div className='profile-joined'>Member since 2018</div>
+            <div className='profile-joined'>Member since {dateFormat(profile.date, "yyyy")}</div>
           </div>
         </div>
         <div className='profile-panel-right'>
@@ -115,6 +114,7 @@ function Profile() {
           >
             <Friends />
           </TabPane>
+
           <TabPane
             tab={
               <span>
@@ -124,20 +124,22 @@ function Profile() {
             }
             key='4'
           >
-              <Favored /> 
+            <Favored />
+          </TabPane>
 
-          </TabPane>
-          <TabPane
-            tab={
-              <span>
-                <SettingOutlined />
-                Account Settings
-              </span>
-            }
-            key='5'
-          >
-            <Account />
-          </TabPane>
+          {loggedIn && user.id === profile.id && (
+            <TabPane
+              tab={
+                <span>
+                  <SettingOutlined />
+                  Account Settings
+                </span>
+              }
+              key='5'
+            >
+              <Account />
+            </TabPane>
+          )}
         </Tabs>
       </div>
     </div>
