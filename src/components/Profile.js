@@ -52,8 +52,6 @@ function Profile() {
     return <Image width={200} src={profile.avatar} alt={profile.name || profile.username} />;
   };
 
-  
-
   return (
     <div className='profile'>
       <div className='profile-head' style={{ backgroundImage: `url(${profile.cover})` }}></div>
@@ -124,8 +122,7 @@ function Profile() {
             }
             key='4'
           >
-              <Favored /> 
-
+            <Favored />
           </TabPane>
           <TabPane
             tab={
