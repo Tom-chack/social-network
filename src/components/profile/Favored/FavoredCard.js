@@ -47,7 +47,11 @@ function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
         <div className='post-date'>{timeAgo.format(date)}</div>
       </div>
       <div className='post-body'>
-        <span className='post-heart' style={{ float: "right", marginLeft: "5px" }}>
+        <span
+          className='post-heart'
+          style={{ float: "right", marginLeft: "5px", fontSize: "18px", cursor: "pointer" }}
+          title='Click to remove from favored posts'
+        >
           <Icon
             icon='ant-design:heart-filled'
             likes={likes}
@@ -58,15 +62,13 @@ function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
             onClick={showDeleteConfirm}
           />
         </span>
-        {content.length > 0 || (
-          <ReadMoreReact
-            text={content}
-            min={content.length > 10 ? content.length : content.length - 1}
-            ideal={5}
-            max={content.length}
-            readMoreText={"Read more ▼"}
-          />
-        )}
+        <ReadMoreReact
+          text={content}
+          min={80}
+          ideal={80}
+          max={content.length > 80 ? content.length : 80 + 1}
+          readMoreText={"Read more ▼"}
+        />
       </div>
     </div>
   );

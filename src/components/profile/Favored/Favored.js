@@ -47,19 +47,7 @@ function Favored() {
     <div>
       <Row>
         <Col flex={5} style={{ margin: 0 }}>
-          {posts.length <= 5 ? null : (
-            <ReactPaginate
-              previousLabel={"<"}
-              nextLabel={">"}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={"paginationBttns"}
-              previousLinkClassName={"previusBttn"}
-              nextLinkClassName={"nextBttn"}
-              disabledClassName={"paginationDisabled"}
-              activeClassName={"paginationActive"}
-            />
-          )}
+          <h2>Favored Posts / {posts.length}</h2>
         </Col>
         <Col flex={1} align='right'>
           <Radio.Group
@@ -81,7 +69,6 @@ function Favored() {
             style={{
               backgroundColor: "#fafafa",
               marginTop: "20px",
-              width: "90%",
             }}
           >
             <FavoredCard
@@ -93,6 +80,23 @@ function Favored() {
           </Card>
         ))}
       </div>
+      <Row justify='center'>
+        <Col>
+          {posts.length <= 5 ? null : (
+            <ReactPaginate
+              previousLabel={"<"}
+              nextLabel={">"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginationBttns"}
+              previousLinkClassName={"previusBttn"}
+              nextLinkClassName={"nextBttn"}
+              disabledClassName={"paginationDisabled"}
+              activeClassName={"paginationActive"}
+            />
+          )}
+        </Col>
+      </Row>
     </div>
   );
 }

@@ -43,3 +43,8 @@
   .hidePagination{
       display: none;
   }
+
+  .read-more-button{
+    cursor: pointer;
+    color: #4588DD;
+  }
