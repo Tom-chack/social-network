@@ -1,7 +1,6 @@
 import { useDispatch ,useSelector} from "react-redux";
 import { likePost, dislikePost } from "../../../services/like";
 import { HeartOutlined, HeartTwoTone } from "@ant-design/icons";
-
     
     const LikeButton=({post,liked})=>{
         const dispatch=useDispatch();

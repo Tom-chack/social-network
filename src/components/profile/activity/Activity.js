@@ -10,19 +10,19 @@ function Activity() {
       const postLength = posts.length
       //load more 
       const [data, setData] = useState(posts)
-      const [visible, setVisible] = useState(4)
+      const [visible, setVisible] = useState(5)
       
       //Tom /change-1
-      useEffect(() => setData(posts), [posts]);
+      
 
       useEffect(() => {
             if (profile.id) {
-                  dispatch(getPosts("?userid=" + profile.id));
+                  dispatch(getPosts(`?userid=${profile.id}`));
             } else {
                   console.log("no posts found");
             }
       }, [dispatch, profile]);
-
+      useEffect(() => setData(posts), [posts]);
       const loadMoreItems = () => {
             setVisible((previtem) => previtem + 5)
       }
@@ -30,12 +30,11 @@ function Activity() {
       return (
             <div className="activityMain">
               
-                {(loggedIn && profile.id===user.id)?<PostEditor/>:null }
+                {(loggedIn && profile.id===user.id)?<PostEditor editorId="activity-editor"/>:null }
                
                   <div >
                         {data.slice(0, visible).map((post) =>
                                   <ActivityCard classname="activityCard"
-                                  
                                     users={post.user.name}
                                     usersName={post.user.username}
                                     key={post.id}

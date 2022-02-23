@@ -27,8 +27,6 @@ function PostEditor({ post = {}, editorId = "post-editor", cancel = null }) {
   const [form] = Form.useForm();
 
   const onSubmit = (data) => {
-    dispatch(addPost({ ...data}));
-    form.resetFields();
     if (post?.id) {
       if (image) {
         dispatch(updatePost({ ...post, ...data, image }));
@@ -41,7 +39,6 @@ function PostEditor({ post = {}, editorId = "post-editor", cancel = null }) {
       form.resetFields();
     }
     setImage(null);
-
   };
 
   //Post Editor

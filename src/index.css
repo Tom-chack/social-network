@@ -131,6 +131,11 @@
           max-width: 100%;
      }
 }
+@media screen and (max-width: 800px) {
+     .headRight {
+          min-width: auto;
+     }
+}
 /*Activity design*/
 .activityMain {
      display: flex;
@@ -155,6 +160,10 @@
      display: flex;
      flex-direction: row;
      margin-right: 10px;
+}
+.toolcomment{
+     display: flex;
+     flex-direction: row;
 }
 .likess {
      margin-left: 15px;
@@ -191,19 +200,22 @@ commentContainer h4 {
      display: flex;
      flex-direction: row;
      margin-right: 12px;
+    
 }
 .comments h4 {
      margin-left: 10px;
+      cursor: pointer;
 }
 .commentBtn {
      margin-top: 5px;
      cursor: pointer;
 }
-@media screen and (max-width: 800px) {
-     .headRight {
-          min-width: auto;
-     }
+.comment-editor {
+     display: flex;
+     flex-direction: row;
 }
+
+
 .postImage {
      width: 700px;
      height: 500px;
