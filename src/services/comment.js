@@ -41,8 +41,8 @@ export const updateComment = (commentData) => (dispatch) => {
     })
       .then((res) => res.json())
       .then((comment) => {
-        dispatch(commentUpdate(comment));
-        dispatch(postCommentUpdate(comment));
+        dispatch(commentUpdate({ ...comment, user: commentData.user }));
+        dispatch(postCommentUpdate({ ...comment, user: commentData.user }));
       })
       .catch((err) => {
         dispatch(commentError(err.message));
