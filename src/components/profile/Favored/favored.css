@@ -1,0 +1,45 @@
+
+/* Pagination styles */
+
+.paginationBttns {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    align-items: left;   
+  }
+
+  
+  .paginationBttns a {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 0 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #bebebe;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
+    border: 1px solid #1890ff;
+    color: #1890ff;
+  }
+  
+  .paginationActive a {
+    border: 1px solid #1890ff;
+    color: #1890ff;
+  }
+  
+
+  .paginationDisabled a {
+    color: #bebebe;
+    border: 1px solid #bebebe;
+    pointer-events: none;
+  }
+
+  .hidePagination{
+      display: none;
+  }

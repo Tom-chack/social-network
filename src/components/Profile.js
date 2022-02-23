@@ -11,7 +11,7 @@ import getProfile from "../services/getProfile";
 import Activity from "./profile/Activity";
 import About from "./profile/About/About";
 import Account from "./profile/Account/Account";
-import Favored from "./profile/Favored";
+import Favored from "./profile/Favored/Favored";
 import Friends from "./profile/Friends/Friends";
 
 //Ant Design
@@ -51,6 +51,8 @@ function Profile() {
   const Avatar = () => {
     return <Image width={200} src={profile.avatar} alt={profile.name || profile.username} />;
   };
+
+  
 
   return (
     <div className='profile'>
@@ -122,7 +124,8 @@ function Profile() {
             }
             key='4'
           >
-            <Favored />
+              <Favored /> 
+
           </TabPane>
           <TabPane
             tab={
