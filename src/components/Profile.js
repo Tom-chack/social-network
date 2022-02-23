@@ -12,7 +12,7 @@ import Activity from "./profile/Activity";
 import About from "./profile/About/About";
 import Account from "./profile/Account/Account";
 import Favored from "./profile/Favored/Favored";
-import Friends from "./profile/Friends";
+import Friends from "./profile/Friends/Friends";
 
 //Ant Design
 import { Tabs, Image, Typography } from "antd";
