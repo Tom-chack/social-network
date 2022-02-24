@@ -2,7 +2,7 @@ import getPosts from "../../services/getPosts";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Modal } from "antd";
+import { Modal, Card } from "antd";
 
 const PostWidget = () => {
   //Getting posts
@@ -31,7 +31,7 @@ const PostWidget = () => {
   };
 
   return (
-    <div className='post-widget-content'>
+    <Card className='widget' style={{ backgroundColor: "#fafafa" }}>
       <div className='header-div'>
         <div className='header-content'>
           <span>Popular Posts</span>
@@ -87,7 +87,7 @@ const PostWidget = () => {
           </div>
         </Modal>
       }
-    </div>
+    </Card>
   );
 };
 

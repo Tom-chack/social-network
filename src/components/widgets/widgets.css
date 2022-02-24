@@ -1,145 +1,131 @@
 /*Post-Widget*/
-
-.widgets-content{
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+.widget{
+    margin-bottom: 30px!important;
 }
-  .post-widget-content{
-      width: 80%;
-      border: 1px solid #bebebe;
-      margin: 30px;
-  }
+
+.widget .ant-card-body{
+    padding-top: 13px;
+}
+
+.widget .header-div h2{
+    padding-top: 0;
+    margin-top: 0;
+    color: #444;
+}
   
-  .header-div{
+.widget .header-div{
     width: 100%;
-    height: 9vh;
     display: flex;
-    justify-content: center
-  }
+    justify-content: left;
+    border-bottom: 1px solid #eee;
+}
 
-  .header-content{
-      width: 90%;
-      height: 100%;
-      border-bottom: 1px solid #bebebe;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
+.widget .header-content{
+    width: 90%;
+    height: 100%;
+    border-bottom: 1px solid #bebebe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
 
-  }
+.widget .header-content span{
+    color: grey;
+    font-size: large;
+}
 
-  .header-content span{
-      color: grey;
-      font-size: large;
-  }
+.widget .post-element{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid #bebebe;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
-  .post-element{
-      width: 100%;
-      padding: 10px;
-      display: flex;
-      border-bottom: 1px solid #bebebe;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-  }
+.widget  .post-element:last-child{
+    border: none;
+}
 
-  .post-element:last-child{
-      border: none;
-  }
+.widget .post-avatar{
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    
+}
 
-  .post-avatar{
-      width: 50px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      border-radius: 50%;
-      
-  }
-
-  .post-avatar img{
+.widget .post-avatar img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-  }
+}
 
-  .post-element a {
-      color: black;
-  }
-
-  .post-content{
-      width: 80%;
-      margin: 0 10px;
-      display: flex;
-  }
-
-  .modal-name a{
+.widget .post-element a {
     color: black;
-    font-size: larger;
-  }
+}
 
-  .modal-image{
-      width: 90%;
-  }
+.widget .post-content{
+    width: 80%;
+    margin: 0 10px;
+    display: flex;
+}
 
-  .modal-div{
-      width: 100%;
-      display: flex;
-      justify-content: center;
-  }
+.widget .modal-name a{
+color: black;
+font-size: larger;
+}
+
+.widget .modal-image{
+    width: 90%;
+}
+
+.widget .modal-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 
 
 /*Photo-Widget*/
-
-  .photo-widget-content{
-    width: 80%;
-    border: 1px solid #bebebe;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.photo-content{
-    width: 90%;
+.widget .photo-content{
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: initial;
     justify-content: center;
 }
 
-.photo-content-div {
+.widget .photo-content-div {
     display: grid; 
-    grid-template-columns: repeat(auto-fill, 85px);
-    gap: 10px 10px; 
-    padding: 10px 0;
+    grid-template-columns: repeat(auto-fill, 95px);
+    gap: 15px 15px; 
+    padding: 15px 0;
     justify-content: center;
 
 }
 
-.photo-element{
-    width: 85px;
-    height: 85px;
+.widget .photo-element{
+    width: 100px;
+    height: 100px;
     border: 1px solid #bebebe;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.photo-element img{
-    width: 85px;
-    height: 85px;
+.widget .photo-element img{
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-
 }
 
 
 /* Members-Widget */
-
 .members-widget-content{
     width: 80%;
     border: 1px solid #bebebe;
