@@ -138,3 +138,169 @@
     min-width:auto;
   }
 }
+/*Activity design*/
+.activityMain {
+     display: flex;
+     flex-direction: column;
+     margin: auto, 10px;
+}
+.activityCard {
+     border: 1px solid rgba(211, 209, 211, 0.432);
+     width: 720px;
+     margin-bottom: 20px;
+}
+.likesComments {
+     display: flex;
+     justify-content: space-between;
+     flex-direction: row;
+     font-size: 15px;
+     border-bottom: 1px solid rgba(194, 192, 192, 0.651);
+     font-family: "Times New Roman", Cambria, Cochin, Georgia, Times,
+          "Times New Roman", serif;
+}
+.commentsandtool {
+     display: flex;
+     flex-direction: row;
+     margin-right: 10px;
+}
+.toolcomment{
+     display: flex;
+     flex-direction: row;
+}
+.likess {
+     margin-left: 15px;
+}
+.activityAvatar {
+     width: 40px;
+     border-radius: 50%;
+     margin: 10px;
+}
+.activityPosts {
+     margin: 10px;
+}
+.avatarUserName {
+     display: flex;
+     flex-direction: row;
+}
+.likeHeart {
+     display: flex;
+     flex-direction: row;
+     margin-top: 5px;
+     margin-left: 10px;
+}
+.likeHeart h4 {
+     margin-left: 17px;
+}
+.commentContainer {
+     display: flex;
+     flex-direction: column;
+}
+commentContainer h4 {
+     padding-top: 10px;
+}
+.comments {
+     display: flex;
+     flex-direction: row;
+     margin-right: 12px;
+    
+}
+.comments h4 {
+     margin-left: 10px;
+      cursor: pointer;
+}
+.commentBtn {
+     margin-top: 5px;
+     cursor: pointer;
+}
+.comment-editor {
+     display: flex;
+     flex-direction: row;
+}
+.postImage {
+     width: 700px;
+     height: 500px;
+}
+.commentsHeaderPart {
+     display: flex;
+     flex-direction: row;
+}
+.commentsDataPart {
+     display: flex;
+     flex-direction: column;
+     font-size: 14px;
+     margin-left: 10px;
+}
+.commentsAvatar {
+     width: 30px;
+     border-radius: 50%;
+     margin-left: 50px;
+     margin-top: 10px;
+}
+.commentsAvatarReply {
+     width: 30px;
+     border-radius: 50%;
+     margin-left: 50px;
+     margin-top: 10px;
+}
+.commentsAvatarReply {
+     width: 20px;
+     border-radius: 50%;
+     margin: 10px;
+}
+.commentsFooterBtn {
+     border-top: 2px dotted rgba(194, 192, 192, 0.651);
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     border-bottom: 1px solid rgba(194, 192, 192, 0.651);
+     cursor: pointer;
+}
+.commentsFooterBtn span {
+     margin-right: 10px;
+     cursor: pointer;
+}
+.line {
+     color: rgba(241, 237, 237, 0.479);
+}
+.fileUploader {
+     display: flex;
+     flex-direction: row;
+     margin-left: 40px;
+}
+.fileUploader button {
+     width: 130px;
+     height: 35px;
+     font-size: 14px;
+     margin-left: 20px;
+     border: 1px solid #2f89f0;
+     background-color: #2f89f0;
+     color: rgb(238, 227, 227);
+     transition-duration: 0.3s;
+}
+.fileUploader button:hover {
+     width: 130px;
+     height: 30px;
+     font-size: 14px;
+     background-color: #0751a5;
+     color: rgb(222, 228, 240);
+     transition-duration: 0.3s;
+}
+.loadMore {
+     display: flex;
+     width: 720px;
+     justify-content: space-around;
+}
+.loadMore button {
+     width: 150px;
+     border-radius: 4%;
+     border: 1px solid #2f89f0;
+     background-color: #2f89f0;
+     color: rgb(238, 227, 227);
+     font-size: 20px;
+     cursor: pointer;
+}
+.loadMore button:hover {
+     background-color: #0751a5;
+     color: rgb(222, 228, 240);
+     transition-duration: 0.3s;
+}

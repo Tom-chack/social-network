@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { Image, Popover, Button } from "antd";
 
@@ -10,6 +11,7 @@ import CommentEditor from "../Editor/commentEditor";
 import { deleteComment } from "../../services/comment";
 
 function Comment({ post, comment }) {
+
   const { user } = comment;
   const [reply, setReply] = useState(false);
   const [edit, setEdit] = useState(false);
