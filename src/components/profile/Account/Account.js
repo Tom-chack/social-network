@@ -15,6 +15,8 @@ function Account() {
   const [dataUpdated, setDataUpdated] = useState("");
   const [loading, setLoading] = useState(false);
   const { profile, user, users } = useSelector((state) => state.userDuck);
+
+  const [form] = Form.useForm();
   const avatarRef = useRef(null);
   const coverRef = useRef(null);
 
@@ -44,6 +46,9 @@ function Account() {
     if (avatar) data.avatar = avatar;
     if (cover) data.cover = cover;
     dispatch(updateUser({ ...data, id: profile.id }));
+    form.resetFields();
+    setAvatar(null);
+    setCover(null);
   };
 
   const uploadAvatar = async () => {
@@ -53,7 +58,7 @@ function Account() {
   };
 
   const uploadCover = async () => {
-    let coverData = avatarRef.current.files[0];
+    let coverData = coverRef.current.files[0];
     let cover = await getBase64(coverData);
     setCover(cover);
   };
@@ -64,6 +69,7 @@ function Account() {
         ? currentUser.map((item) => {
             return (
               <Form
+                form={form}
                 key={item.id}
                 layout='vertical'
                 onFinish={updateAccount}
@@ -82,6 +88,19 @@ function Account() {
                 }}
               >
                 <h2>Profile Information</h2>
+
+                <div
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: "20px",
+                    textAlign: "center",
+                    fontSize: "16px",
+                    color: "#005500",
+                  }}
+                >
+                  {dataUpdated}
+                </div>
+
                 <Card style={{ backgroundColor: "#fafafa" }}>
                   <Form.Item
                     label='Full Name'

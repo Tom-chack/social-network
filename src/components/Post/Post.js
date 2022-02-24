@@ -49,7 +49,7 @@ function Post({ post }) {
   const tools = () => {
     return (
       <div>
-        <Button type='primary' size='small' ghost onClick={() => setEditor(true)}>
+        <Button size='small' onClick={() => setEditor(true)}>
           Edit
         </Button>
         <Button

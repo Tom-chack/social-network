@@ -5,7 +5,7 @@ import { dateToLocalFormat } from "date-format-ms";
 import { useEffect } from "react";
 import getUsers from "../services/getUsers";
 import "./members.css";
-import { Image, Avatar } from "antd";
+import { Image, Row, Col, Card } from "antd";
 import ReactPaginate from "react-paginate";
 import PostWidget from "./widgets/PostsWidget.js";
 import PhotoWidget from "./widgets/PhotosWidget.js";
@@ -20,7 +20,7 @@ function Members() {
 
   //Pagination
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 5;
+  const usersPerPage = 4;
   const pagesVisited = pageNumber * usersPerPage;
 
   const displayUsers = filteredUsers.slice(pagesVisited, pagesVisited + usersPerPage);
@@ -83,65 +83,75 @@ function Members() {
   };
 
   return (
-    <div className='members-container'>
-      <div className='members-content'>
-        <div className='search-container'>
-          <span>Members</span>
-          <input onChange={debounce(inpVal, 1000)} type={"text"} placeholder={"Search . . ."} />
-        </div>
+    <div className='home'>
+      <Row>
+        <Col flex='1 1 300px' style={{ padding: "20px" }}>
+          <Card style={{ backgroundColor: "#fafafa" }}>
+            <Row>
+              <Col flex={5}>
+                <h2 style={{ margin: 0 }}>Members</h2>
+              </Col>
+              <Col flex={1} align='right'>
+                <input
+                  onChange={debounce(inpVal, 1000)}
+                  type={"text"}
+                  placeholder={"Search..."}
+                  style={{ width: "100%", border: "1px solid #cecece", padding: "5px 10px" }}
+                />
+              </Col>
+            </Row>
+          </Card>
+          <div className='members-content'>
+            {inputValue && displayUsers.length === 0 ? (
+              <span className='not-found'>No Members Found</span>
+            ) : (
+              displayUsers.map((item) => (
+                <Card
+                  className='users-container'
+                  key={item.id}
+                  style={{ backgroundColor: "#fafafa" }}
+                >
+                  <div
+                    className='member-head'
+                    style={{ backgroundImage: `url(${item.cover})` }}
+                  ></div>
+                  <div className='img-container'>
+                    <Image
+                      src={item.avatar}
+                      style={{
+                        width: 92,
+                        height: 92,
+                      }}
+                    />
+                    <div className='member-name'>
+                      <Link to={`/profile/${item.id}`}>{item.name}</Link>
+                    </div>
+                    <div className='member-date'>{`Joined ${getDate(item.date)}`}</div>
+                  </div>
+                </Card>
+              ))
+            )}
 
-        {inputValue && displayUsers.length === 0 ? (
-          <span className='not-found'>No Members Found</span>
-        ) : (
-          displayUsers.map((item) => (
-            <div className='users-container' key={item.id}>
-              <div className='background-part'>
-                <img src={item.covers} alt='cover-img' />
-                <div className='img-container'>
-                  <Avatar
-                    size={92}
-                    src={
-                      <Image
-                        src={item.avatar}
-                        style={{
-                          width: 92,
-                          height: 92,
-                        }}
-                      />
-                    }
-                  />
-                </div>
-              </div>
-              <div className='info-part'>
-                <div>
-                  <Link to={`/profile/${item.id}`}>
-                    <span>{item.name}</span>
-                  </Link>
-                  <span style={{ color: "grey" }}>{`Joined ${getDate(item.date)}`}</span>
-                </div>
-              </div>
-            </div>
-          ))
-        )}
-
-        {filteredUsers.length <= 5 ? null : (
-          <ReactPaginate
-            previousLabel={"<"}
-            nextLabel={">"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"paginationBttns"}
-            previousLinkClassName={"previusBttn"}
-            nextLinkClassName={"nextBttn"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={"paginationActive"}
-          />
-        )}
-      </div>
-      <div className='widgets-content'>
-        <PostWidget />
-        <PhotoWidget />
-      </div>
+            {filteredUsers.length <= 4 ? null : (
+              <ReactPaginate
+                previousLabel={"<"}
+                nextLabel={">"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"paginationBttns"}
+                previousLinkClassName={"previusBttn"}
+                nextLinkClassName={"nextBttn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+              />
+            )}
+          </div>
+        </Col>
+        <Col flex='0 1 400px' style={{ padding: "20px 20px 0 0" }}>
+          <PostWidget />
+          <PhotoWidget />
+        </Col>
+      </Row>
     </div>
   );
 }

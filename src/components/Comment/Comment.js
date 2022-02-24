@@ -14,18 +14,20 @@ function Comment({ post, comment }) {
 
   const { user } = comment;
   const [reply, setReply] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const dispatch = useDispatch();
   const { user: currentUser, loggedIn } = useSelector((state) => state.userDuck);
 
   const handleCancel = useCallback(() => {
     setReply(false);
+    setEdit(false);
   }, []);
 
   const tools = () => {
     return (
       <div>
-        <Button type='primary' size='small' ghost onClick={() => setReply(true)}>
+        <Button type='primary' size='small' ghost onClick={() => setEdit(true)}>
           Edit
         </Button>
         <Button
@@ -73,7 +75,7 @@ function Comment({ post, comment }) {
           <ToolsButton />
         </div>
       </div>
-      {reply && (
+      {edit && (
         <div className='comment-editor'>
           <CommentEditor
             editorId={`comment-editor-${post.id}`}
@@ -81,6 +83,11 @@ function Comment({ post, comment }) {
             comment={comment}
             cancel={handleCancel}
           />
+        </div>
+      )}
+      {reply && (
+        <div className='comment-editor'>
+          <CommentEditor editorId={`comment-editor-${post.id}`} post={post} cancel={handleCancel} />
         </div>
       )}
     </div>
