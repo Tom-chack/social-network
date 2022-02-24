@@ -24,5 +24,6 @@ yarn-error.log*
 
 # json-server
 db.json
+package-lock.json
 .eslintrc.json
 .eslintrc.js
