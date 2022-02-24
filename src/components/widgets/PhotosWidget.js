@@ -66,7 +66,7 @@ const PhotoWidget = () => {
         <h2>Posted Media</h2>
       </div>
       <div className='photo-content'>
-        <div class='photo-content-div'>
+        <div className='photo-content-div'>
           {imagesData.map((item) => (
             <div key={item.id} className={"photo-element"}>
               <Image src={item.url} style={{ borderRadius: 0 }} />

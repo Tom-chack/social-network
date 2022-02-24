@@ -1,18 +1,48 @@
 /* Users cards styles */
+.member-head{
+  width: 100%;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-color: #ccc;
+  position: relative;
+  padding: 0;
+}
 
 .members-container{
     width: 100%;
-    display: flex;
+}
+
+.ant-card.ant-card-bordered.users-container{
+    margin-bottom: 30px;
+    border: none!important;
+}
+.members-content .ant-card-body {
+    padding: 0 0 10px 0;
+}
+
+.member-date{
+    padding-right: 10px;
 }
 
 .members-content{
-    width: 65%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 30px;
+    padding: 30px 10px;
 }
 
+.member-name{
+    flex-grow: 1;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.member-name a{
+    color: #333;
+}
 
 .search-container{
     width: 90%;
@@ -31,7 +61,6 @@
 
 .search-container input {
     width: 35% !important;
-    height: 5vh;
     border: 1px solid #bebebe;
     border-radius: 5px;
     color: black;
@@ -40,39 +69,39 @@
 }
 
 .users-container{
-    width: 90%;
-    height: 25vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     border: 1px solid #bebebe;
     margin: 30px 0;
 }
 
+.users-container .ant-image {
+    position: relative;
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 50%;
+}
+
 .background-part{
     width: 100%;
-    height: 50%;
+    height: 200px;
     position: relative;
 }
 
 .info-part{
     width: 100%;
-    height: 50%;
     display: flex;
     justify-content: flex-end;
 }
 
 .img-container{
-    width: 100px;
-    height: 100px;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 50%;
+    justify-content: space-between;
+    align-items: flex-end;
     padding: 5px;
-    position: absolute;
-    top: 50%;
-    left: 20px;
+    margin-top: -61px;
 }
 
 .img-container img{
