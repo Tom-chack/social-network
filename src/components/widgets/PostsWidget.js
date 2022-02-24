@@ -32,10 +32,8 @@ const PostWidget = () => {
 
   return (
     <Card className='widget' style={{ backgroundColor: "#fafafa" }}>
-      <div className='header-div'>
-        <div className='header-content'>
-          <span>Popular Posts</span>
-        </div>
+      <div className='header-div' style={{ marginBottom: "5px" }}>
+        <h2>Posted Media</h2>
       </div>
       {posts.map((post, index) => (
         <div key={post.id} className='post-element'>
@@ -53,7 +51,7 @@ const PostWidget = () => {
               }}
             >
               <span>
-                {post.content.length <= 50 ? post.content : `${post.content.slice(0, 50)} . . .`}
+                {post.content.length <= 70 ? post.content : `${post.content.slice(0, 70)} ...`}
               </span>
             </Link>
           </div>
@@ -67,13 +65,18 @@ const PostWidget = () => {
           onOk={handleOk}
           onCancel={handleCancel}
         >
-          <div className='post-content'>
+          <div style={{ display: "flex", alignItems: "flex-end" }}>
             <div className='post-avatar'>
-              <img src={modalData?.user.avatar} alt={"avatar"} />
+              <img
+                src={modalData?.user.avatar}
+                alt={"avatar"}
+                width={48}
+                style={{ borderRadius: "50%" }}
+              />
             </div>
-            <div className='modal-name'>
+            <div style={{ fontSize: "16px", padding: "0 0 5px 10px" }}>
               <Link to={`/profile/${modalData?.user.id}`}>
-                <span>{modalData?.user.name}</span>
+                <span style={{ color: "#333" }}>{modalData?.user.name}</span>
               </Link>
             </div>
           </div>

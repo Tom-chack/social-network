@@ -9,8 +9,10 @@
   color: #f5f5f5;
 }
 .headLeft{
-  width: 55%;
+  width: 20%;
   min-width: 200px;
+  text-align: right;
+  padding-right: 5%;
 }
 .headRight{
   width: 44%;

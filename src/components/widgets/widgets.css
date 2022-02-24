@@ -36,11 +36,10 @@
 
 .widget .post-element{
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     display: flex;
-    border-bottom: 1px solid #bebebe;
-    display: flex;
-    align-items: center;
+    border-bottom: 1px dashed #ccc;
+    align-items: flex-start;
     justify-content: flex-end;
 }
 
