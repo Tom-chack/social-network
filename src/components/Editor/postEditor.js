@@ -9,7 +9,7 @@ import "./postEditor.css";
 
 const { TextArea } = Input;
 
-function PostEditor({ post = {}, editorId = "post-editor", cancel = null }) {
+function PostEditor({ post = {}, editorId = "post-editor", cancel = null, buttonText = "" }) {
   //Redux functions
   const dispatch = useDispatch();
 
@@ -68,7 +68,7 @@ function PostEditor({ post = {}, editorId = "post-editor", cancel = null }) {
             </Button>
           )}
           <Button type='primary' htmlType='submit'>
-            {post.id ? "Update Post" : "Submit Post"}
+            {post.id ? "Update Post" : buttonText ? buttonText : "Submit Post"}
           </Button>
         </Form.Item>
       </Form>

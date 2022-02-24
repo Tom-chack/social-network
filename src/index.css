@@ -144,110 +144,116 @@
      flex-direction: column;
      margin: auto, 10px;
 }
+
+.activity-list{
+     margin: 20px 0;
+}
+
+.ant-card.ant-card-bordered{
+     margin-bottom: 20px;
+}
+
 .activityCard {
      border: 1px solid rgba(211, 209, 211, 0.432);
      width: 720px;
      margin-bottom: 20px;
 }
-.likesComments {
+.ant-tabs-tabpane-active .likesComments {
      display: flex;
      justify-content: space-between;
      flex-direction: row;
      font-size: 15px;
-     border-bottom: 1px solid rgba(194, 192, 192, 0.651);
-     font-family: "Times New Roman", Cambria, Cochin, Georgia, Times,
-          "Times New Roman", serif;
 }
-.commentsandtool {
+.ant-tabs-tabpane-active .commentsandtool {
      display: flex;
      flex-direction: row;
      margin-right: 10px;
 }
-.toolcomment{
+.ant-tabs-tabpane-active .toolcomment{
      display: flex;
      flex-direction: row;
 }
-.likess {
+.ant-tabs-tabpane-active .likess {
      margin-left: 15px;
 }
-.activityAvatar {
+.ant-tabs-tabpane-active .activityAvatar {
      width: 40px;
      border-radius: 50%;
      margin: 10px;
 }
-.activityPosts {
+.ant-tabs-tabpane-active .activityPosts {
      margin: 10px;
 }
-.avatarUserName {
+.ant-tabs-tabpane-active .avatarUserName {
      display: flex;
      flex-direction: row;
 }
-.likeHeart {
+.ant-tabs-tabpane-active .likeHeart {
      display: flex;
      flex-direction: row;
      margin-top: 5px;
      margin-left: 10px;
 }
-.likeHeart h4 {
+.ant-tabs-tabpane-active .likeHeart h4 {
      margin-left: 17px;
 }
-.commentContainer {
+.ant-tabs-tabpane-active .commentContainer {
      display: flex;
      flex-direction: column;
 }
-commentContainer h4 {
+.ant-tabs-tabpane-active .commentContainer h4 {
      padding-top: 10px;
 }
-.comments {
+.ant-tabs-tabpane-active .comments {
      display: flex;
      flex-direction: row;
      margin-right: 12px;
     
 }
-.comments h4 {
+.ant-tabs-tabpane-active .comments h4 {
      margin-left: 10px;
       cursor: pointer;
 }
-.commentBtn {
+.ant-tabs-tabpane-active .commentBtn {
      margin-top: 5px;
      cursor: pointer;
 }
-.comment-editor {
+.ant-tabs-tabpane-active .comment-editor {
      display: flex;
      flex-direction: row;
 }
-.postImage {
+.ant-tabs-tabpane-active .postImage {
      width: 700px;
      height: 500px;
 }
-.commentsHeaderPart {
+.ant-tabs-tabpane-active .commentsHeaderPart {
      display: flex;
      flex-direction: row;
 }
-.commentsDataPart {
+.ant-tabs-tabpane-active .commentsDataPart {
      display: flex;
      flex-direction: column;
      font-size: 14px;
      margin-left: 10px;
 }
-.commentsAvatar {
+.ant-tabs-tabpane-active .commentsAvatar {
      width: 30px;
      border-radius: 50%;
      margin-left: 50px;
      margin-top: 10px;
 }
-.commentsAvatarReply {
+.ant-tabs-tabpane-active .commentsAvatarReply {
      width: 30px;
      border-radius: 50%;
      margin-left: 50px;
      margin-top: 10px;
 }
-.commentsAvatarReply {
+.ant-tabs-tabpane-active .commentsAvatarReply {
      width: 20px;
      border-radius: 50%;
      margin: 10px;
 }
-.commentsFooterBtn {
+.ant-tabs-tabpane-active .commentsFooterBtn {
      border-top: 2px dotted rgba(194, 192, 192, 0.651);
      display: flex;
      flex-direction: row;
@@ -255,19 +261,19 @@ commentContainer h4 {
      border-bottom: 1px solid rgba(194, 192, 192, 0.651);
      cursor: pointer;
 }
-.commentsFooterBtn span {
+.ant-tabs-tabpane-active .commentsFooterBtn span {
      margin-right: 10px;
      cursor: pointer;
 }
-.line {
+.ant-tabs-tabpane-active .line {
      color: rgba(241, 237, 237, 0.479);
 }
-.fileUploader {
+.ant-tabs-tabpane-active ant-tabs-tabpane-active .fileUploader {
      display: flex;
      flex-direction: row;
      margin-left: 40px;
 }
-.fileUploader button {
+.ant-tabs-tabpane-active .fileUploader button {
      width: 130px;
      height: 35px;
      font-size: 14px;
@@ -277,7 +283,7 @@ commentContainer h4 {
      color: rgb(238, 227, 227);
      transition-duration: 0.3s;
 }
-.fileUploader button:hover {
+.ant-tabs-tabpane-active .fileUploader button:hover {
      width: 130px;
      height: 30px;
      font-size: 14px;
@@ -285,12 +291,12 @@ commentContainer h4 {
      color: rgb(222, 228, 240);
      transition-duration: 0.3s;
 }
-.loadMore {
+.ant-tabs-tabpane-active .loadMore {
      display: flex;
      width: 720px;
      justify-content: space-around;
 }
-.loadMore button {
+.ant-tabs-tabpane-active .loadMore button {
      width: 150px;
      border-radius: 4%;
      border: 1px solid #2f89f0;
@@ -299,8 +305,31 @@ commentContainer h4 {
      font-size: 20px;
      cursor: pointer;
 }
-.loadMore button:hover {
+.ant-tabs-tabpane-active .loadMore button:hover {
      background-color: #0751a5;
      color: rgb(222, 228, 240);
      transition-duration: 0.3s;
+}
+
+.ant-tabs-tabpane-active .ant-row.ant-form-item.post-field-content{
+  margin-bottom: 0px;
+}
+
+.ant-tabs-tabpane-active .post-editor .ant-form-item{
+  margin-bottom: 0;
+}
+.activity-list .activity-comments{
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     cursor: pointer;
+}
+.activity-list .activity-comments span{
+     display: inline-block;
+     margin-left: 5px;
+}
+.activity-list .anticon-setting{
+     margin-left: 10px!important;
+     border-left: 1px solid #eaeaea;
+     padding-left: 10px;
 }

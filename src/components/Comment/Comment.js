@@ -11,7 +11,6 @@ import CommentEditor from "../Editor/commentEditor";
 import { deleteComment } from "../../services/comment";
 
 function Comment({ post, comment }) {
-
   const { user } = comment;
   const [reply, setReply] = useState(false);
   const [edit, setEdit] = useState(false);

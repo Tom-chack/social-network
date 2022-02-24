@@ -3,19 +3,18 @@ import { useDispatch } from "react-redux";
 import { addComment } from "../../../services/comment";
 import { Form, Input, Button } from "antd";
 const { TextArea } = Input;
-function CommentEditor({id}) {
+function CommentEditor({ id }) {
   const dispatch = useDispatch();
 
   //Send submitted data to json-server
   const [form] = Form.useForm();
   const onSubmit = (data) => {
-    dispatch(addComment({...data,postid:id}));
+    dispatch(addComment({ ...data, postid: id }));
     form.resetFields();
   };
 
   return (
     <div className='comment-editor'>
-     
       <Form form={form} name='comment-editor' onFinish={onSubmit} autoComplete='off'>
         <Form.Item
           name='content'
@@ -31,21 +30,19 @@ function CommentEditor({id}) {
             placeholder='Write comment here...'
             allowClear
             maxLength={100}
-            style={{ height: 30 ,width:700 ,marginLeft:10}}
+            style={{ height: 30, width: 700, marginLeft: 10 }}
             name='content'
           />
-          </Form.Item>
-          <Form.Item>
-          
-           <Button 
-              type='primary' 
-              htmlType='submit'
-              style={{ height: 30 ,width:100 ,marginLeft:610}}
-           >
+        </Form.Item>
+        <Form.Item>
+          <Button
+            type='primary'
+            htmlType='submit'
+            style={{ height: 30, width: 100, marginLeft: 610 }}
+          >
             Reply
           </Button>
-         
-       </Form.Item>
+        </Form.Item>
       </Form>
     </div>
   );
