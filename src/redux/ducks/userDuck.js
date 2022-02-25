@@ -57,7 +57,11 @@ const userDuck = (state = initialState, { type, payload }) => {
     case USER_LOGIN:
       localStorage.setItem(
         "_user",
-        JSON.stringify({ id: payload.id, username: payload.username, remember: payload.remember })
+        JSON.stringify({
+          id: payload.id,
+          username: payload.username,
+          remember: payload.remember,
+        })
       );
       return {
         ...state,

@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import getPosts from "../services/getPosts";
 import { Row, Col, Card, Radio } from "antd";
 import Post from "./Post/Post";
+import MembersWidget from "./widgets/MembersWidget";
+import PhotoWidget from "./widgets/PhotosWidget";
 
 function Home() {
   //Redux functions
@@ -21,7 +23,7 @@ function Home() {
   return (
     <div className='home'>
       <Row>
-        <Col flex='1 1 200px' style={{ padding: "20px" }}>
+        <Col flex='1 1 300px' style={{ padding: "20px" }}>
           <Card style={{ backgroundColor: "#fafafa" }}>
             <Row>
               <Col flex={5}>
@@ -51,8 +53,9 @@ function Home() {
             </Card>
           ))}
         </Col>
-        <Col flex='0 1 300px' style={{ padding: "20px 20px 0 0" }}>
-          <Card style={{ backgroundColor: "#fafafa" }}>www</Card>
+        <Col flex='0 1 400px' style={{ padding: "20px 20px 0 0" }}>
+          <MembersWidget />
+          <PhotoWidget />
         </Col>
       </Row>
     </div>

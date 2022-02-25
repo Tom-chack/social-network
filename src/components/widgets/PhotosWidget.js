@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./widgets.css";
 import getImages from "../../services/getImages";
-import { Image } from "antd";
+import { Image, Card } from "antd";
 
 const PhotoWidget = () => {
   //Getting images
@@ -61,11 +61,9 @@ const PhotoWidget = () => {
   }, [images, getRandomImages]);
 
   return (
-    <div className='photo-widget-content'>
+    <Card className='widget' style={{ backgroundColor: "#fafafa" }}>
       <div className='header-div'>
-        <div className='header-content'>
-          <span>Posted Media</span>
-        </div>
+        <h2>Posted Media</h2>
       </div>
       <div className='photo-content'>
         <div className='photo-content-div'>
@@ -76,7 +74,7 @@ const PhotoWidget = () => {
           ))}
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

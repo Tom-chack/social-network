@@ -60,7 +60,7 @@ function FriendsContent() {
   return (
     <div className='friends-container'>
       <div className='friends-bar'>
-        <h2>Friends {profile.friends.length}</h2>
+        <h2>Friends / {profile.friends.length}</h2>
         <Input
           className='search-box'
           type='text'

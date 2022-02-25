@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import { Image, Popover, Button } from "antd";
 
@@ -67,7 +68,11 @@ function Comment({ post, comment }) {
       </div>
       <div className='comment-foot'>
         <div className='comment-left' onClick={() => loggedIn && setReply(!reply)}>
-          <CommentOutlined /> <span className='comment-likes'>Reply</span>
+          {loggedIn && (
+            <>
+              <CommentOutlined /> <span className='comment-likes'>Reply</span>
+            </>
+          )}
         </div>
         <div className='comment-right'>
           <ToolsButton />
