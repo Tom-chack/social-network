@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # json-server
-db.json
+/db.json
 package-lock.json
 .eslintrc.json
 .eslintrc.js
