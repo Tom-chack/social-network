@@ -15,7 +15,13 @@ function CommentEditor({ id }) {
 
   return (
     <div className='comment-editor'>
-      <Form form={form} name='comment-editor' onFinish={onSubmit} autoComplete='off'>
+      <Form
+        form={form}
+        name='comment-editor'
+        onFinish={onSubmit}
+        autoComplete='off'
+        style={{ display: "flex", marginTop: "15px" }}
+      >
         <Form.Item
           name='content'
           className='comment-field-content'
@@ -29,8 +35,7 @@ function CommentEditor({ id }) {
           <TextArea
             placeholder='Write comment here...'
             allowClear
-            maxLength={100}
-            style={{ height: 30, width: 700, marginLeft: 10 }}
+            style={{ height: 40, width: "calc(100% - 10px)", marginLeft: 10 }}
             name='content'
           />
         </Form.Item>
@@ -38,7 +43,7 @@ function CommentEditor({ id }) {
           <Button
             type='primary'
             htmlType='submit'
-            style={{ height: 30, width: 100, marginLeft: 610 }}
+            style={{ height: 40, width: 100, marginLeft: 2 }}
           >
             Reply
           </Button>

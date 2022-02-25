@@ -49,7 +49,16 @@ function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
       <div className='post-body'>
         <span
           className='post-heart'
-          style={{ float: "right", marginLeft: "5px", fontSize: "18px", cursor: "pointer" }}
+          style={{
+            float: "right",
+            marginLeft: "5px",
+            fontSize: "18px",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
           title='Click to remove from favored posts'
         >
           <Icon
@@ -61,6 +70,7 @@ function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
             onMouseLeave={changeBack}
             onClick={showDeleteConfirm}
           />
+          <span style={{ fontSize: "14px", display: "block" }}>{post.likes}</span>
         </span>
         <ReadMoreReact
           text={content}

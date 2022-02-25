@@ -74,7 +74,6 @@ function Comments({ comment, id }) {
       {reply && (
         <div className='toolcomment'>
           <div>
-            {" "}
             <Link to={`/profile/${user.id}`}>
               <Image
                 className='commentsAvatar'

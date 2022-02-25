@@ -14,7 +14,7 @@ const PostWidget = () => {
   const [modalData, setModalData] = useState(null);
 
   useEffect(() => {
-    dispatch(getPosts("?_sort=likes&_order=desc&_start=0&_end=5"));
+    dispatch(getPosts("?_sort=date&_order=desc&_start=0&_end=5"));
   }, [dispatch]);
 
   //Modal functions
@@ -33,7 +33,7 @@ const PostWidget = () => {
   return (
     <Card className='widget' style={{ backgroundColor: "#fafafa" }}>
       <div className='header-div' style={{ marginBottom: "5px" }}>
-        <h2>Posted Media</h2>
+        <h2>Recent Posts</h2>
       </div>
       {posts.map((post, index) => (
         <div key={post.id} className='post-element'>

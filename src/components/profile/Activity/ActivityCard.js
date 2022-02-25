@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Time from "./UpdateTime";
-import Comments from "./Comments";
+import Comments from "../../Comment/Comment";
 import LikeButton from "./Hearted";
 import CommentEditor from "./commentEditor";
 import { Image, Button, Popover, Card } from "antd";
@@ -61,10 +61,12 @@ function ActivityCard({
   const CommentsLoader = () => {
     return (
       <div>
-        <CommentEditor id={id} />
-        {comments.map((comment) => (
-          <Comments key={comment.id} comment={comment} id={id} />
-        ))}
+        {loggedIn && <CommentEditor id={id} />}
+        <div className='activity-comment-list'>
+          {comments.map((comment) => (
+            <Comments key={comment.id} post={post} comment={comment} id={id} />
+          ))}
+        </div>
       </div>
     );
   };
@@ -76,10 +78,10 @@ function ActivityCard({
           <Image src={avatars} alt={users || usersName} className='activityAvatar' />
         </div>
         <div className='userName'>
-          <h3>{users || usersName}</h3>
-          <h6 className='date'>
+          <div style={{ fontSize: "16px" }}>{users || usersName}</div>
+          <div style={{ fontSize: "12px", paddingTop: "9px" }} className='date'>
             Posted <Time date={date} />
-          </h6>
+          </div>
         </div>
       </div>
 
