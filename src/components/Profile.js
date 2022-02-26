@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import dateFormat from "dateformat";
@@ -7,6 +7,7 @@ import dateFormat from "dateformat";
 //Redux
 import { useDispatch, useSelector } from "react-redux";
 import getProfile from "../services/getProfile";
+import { addFriend, removeFriend } from "../services/user";
 
 //Components
 import Activity from "./profile/Activity/Activity";
@@ -16,19 +17,25 @@ import Favored from "./profile/Favored/Favored";
 import Friends from "./profile/Friends/Friends";
 
 //Ant Design
-import { Tabs, Image, Typography } from "antd";
+import { Tabs, Image, Typography, Button } from "antd";
 import {
   CoffeeOutlined,
   SolutionOutlined,
   TeamOutlined,
   HeartOutlined,
   SettingOutlined,
+  UserAddOutlined,
+  LoadingOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 const { Title } = Typography;
 
 function Profile() {
+  const [friendIcon, setFriendIcon] = useState(<UserAddOutlined />);
+  const [friendButton, setFriendButton] = useState("button");
+
   //Using navigate to redirect to home page after successfully login
   const navigate = useNavigate();
 
@@ -53,6 +60,25 @@ function Profile() {
     return <Image width={200} src={profile.avatar} alt={profile.name || profile.username} />;
   };
 
+  //Add / Remove current profile user as friend
+  const handleFriend = () => {
+    setFriendIcon(<LoadingOutlined />);
+    dispatch(addFriend(profile));
+    setTimeout(() => {
+      setFriendIcon(<CheckCircleOutlined />);
+      setFriendButton("status");
+    }, 1000);
+  };
+
+  const handleUnFriend = () => {
+    setFriendIcon(<LoadingOutlined />);
+    dispatch(removeFriend(profile));
+    setTimeout(() => {
+      setFriendIcon(<UserAddOutlined />);
+      setFriendButton("button");
+    }, 1000);
+  };
+
   return (
     <div className='profile'>
       <div className='profile-head' style={{ backgroundImage: `url(${profile.cover})` }}></div>
@@ -65,6 +91,33 @@ function Profile() {
             <Title level={3}>{profile.name || profile.username}</Title>
             <div className='profile-joined'>Member since {dateFormat(profile.date, "yyyy")}</div>
           </div>
+          {loggedIn && profile.id !== user.id && (
+            <div>
+              {profile.friends.includes(user.id) || friendButton === "status" ? (
+                <Button
+                  type='primary'
+                  ghost
+                  shape='round'
+                  icon={friendIcon}
+                  className='profile-add-friend'
+                  onClick={() => handleUnFriend()}
+                  title='Click to unfriend this user'
+                >
+                  My Friend
+                </Button>
+              ) : (
+                <Button
+                  type='primary'
+                  shape='round'
+                  icon={friendIcon}
+                  className='profile-add-friend'
+                  onClick={() => handleFriend()}
+                >
+                  Add Friend
+                </Button>
+              )}
+            </div>
+          )}
         </div>
         <div className='profile-panel-right'>
           <div className='profile-stat-box'>

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dislikePost } from "../../../services/like.js";
 import { Image, Modal } from "antd";
 import { Icon } from "@iconify/react";
@@ -14,6 +14,8 @@ const timeAgo = new TimeAgo("en-US");
 const { confirm } = Modal;
 
 function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
+  const { profile, loggedIn, user: currentUser } = useSelector((state) => state.userDuck);
+
   const { content, user, likes, date } = post;
   const dispatch = useDispatch();
   const dislike = () => {
@@ -47,31 +49,34 @@ function FavoredCard({ post, changeBackground, changeBack, forceUpdate }) {
         <div className='post-date'>{timeAgo.format(date)}</div>
       </div>
       <div className='post-body'>
-        <span
-          className='post-heart'
-          style={{
-            float: "right",
-            marginLeft: "5px",
-            fontSize: "18px",
-            cursor: "pointer",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          title='Click to remove from favored posts'
-        >
-          <Icon
-            icon='ant-design:heart-filled'
-            likes={likes}
-            color='pink'
-            inline={true}
-            onMouseEnter={changeBackground}
-            onMouseLeave={changeBack}
-            onClick={showDeleteConfirm}
-          />
-          <span style={{ fontSize: "14px", display: "block" }}>{post.likes}</span>
-        </span>
+        {loggedIn && profile.id === currentUser.id && (
+          <span
+            className='post-heart'
+            style={{
+              float: "right",
+              marginLeft: "5px",
+              fontSize: "18px",
+              cursor: "pointer",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            title='Click to remove from favored posts'
+          >
+            <Icon
+              icon='ant-design:heart-filled'
+              likes={likes}
+              color='pink'
+              inline={true}
+              onMouseEnter={changeBackground}
+              onMouseLeave={changeBack}
+              onClick={showDeleteConfirm}
+            />
+            <span style={{ fontSize: "14px", display: "block" }}>{post.likes}</span>
+          </span>
+        )}
+
         <ReadMoreReact
           text={content}
           min={80}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import getPosts from "../services/getPosts";
@@ -6,6 +6,10 @@ import { Row, Col, Card, Radio } from "antd";
 import Post from "./Post/Post";
 import MembersWidget from "./widgets/MembersWidget";
 import PhotoWidget from "./widgets/PhotosWidget";
+
+import InfiniteScroll from "react-infinite-scroll-component";
+
+const perPage = 3;
 
 function Home() {
   //Redux functions
@@ -15,10 +19,34 @@ function Home() {
   //Local states
   const [filter, setFilter] = useState("?_sort=date&_order=desc");
 
+  //Infinite Scroll
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(0);
+  const [more, setMore] = useState(true);
+
+  const fetchMoreData = useCallback(() => {
+    if (items.length >= posts.length) {
+      setMore(false);
+      return;
+    }
+    setPage(page + 1);
+    setTimeout(() => {
+      let nextItems = [...items, ...posts.slice(page * perPage, (page + 1) * perPage)];
+      setItems(nextItems);
+    }, 1000);
+  }, [posts, items, page]);
+
   //Fetch user object by profile user id
   useEffect(() => {
     dispatch(getPosts(filter));
+    setMore(true);
   }, [dispatch, filter]);
+
+  //Set items after first loading of posts
+  useEffect(() => {
+    setItems(posts.slice(0, perPage));
+    setPage(1);
+  }, [posts]);
 
   return (
     <div className='home'>
@@ -43,15 +71,27 @@ function Home() {
               </Col>
             </Row>
           </Card>
-          {posts.map((post) => (
-            <Card
-              key={post.id}
-              className='post'
-              style={{ backgroundColor: "#fafafa", marginTop: "20px" }}
-            >
-              <Post post={post} />
-            </Card>
-          ))}
+          <InfiniteScroll
+            dataLength={items.length}
+            next={fetchMoreData}
+            hasMore={more}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            {items.map((post) => (
+              <Card
+                key={post.id}
+                className='post'
+                style={{ backgroundColor: "#fafafa", marginTop: "20px" }}
+              >
+                <Post post={post} />
+              </Card>
+            ))}
+          </InfiniteScroll>
         </Col>
         <Col flex='0 1 400px' style={{ padding: "20px 20px 0 0" }}>
           <MembersWidget />

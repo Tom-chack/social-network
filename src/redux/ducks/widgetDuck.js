@@ -1,8 +1,8 @@
 import { userSchema } from "../../helpers/schemas";
 
 // Action Types
-const LOAD_USERS = "users/LOAD_USERS";
-const USERS_ERROR = "user/USER_ERROR";
+const LOAD_USERS = "widget/LOAD_USERS";
+const USERS_ERROR = "widget/USER_ERROR";
 
 // Actions
 export const loadUsers = (payload) => ({ type: LOAD_USERS, payload });

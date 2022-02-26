@@ -5,5 +5,4 @@ export const menus = [
   { label: "Login", path: "/login", login: false, logout: true },
   { label: "Register", path: "/register", login: false, logout: true },
   { label: "Logout", path: "/logout", login: true, logout: false },
-  { label: "Test", path: "/test", login: true, logout: true },
 ];

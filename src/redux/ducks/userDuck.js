@@ -70,16 +70,51 @@ const userDuck = (state = initialState, { type, payload }) => {
         errorsUser: "",
       };
     case USER_UPDATE:
-      return {
-        ...state,
-        user: payload,
-        users: state.users.map((user) => {
-          if (user.id === payload.id) user = { ...user, ...payload };
-          return user;
-        }),
-        profile: { ...state.profile, ...payload },
-        errorsUser: "",
-      };
+      // Update current logged-in user if the user is on his/her profile page
+      if (payload.id === state.user.id && payload.id === state.profile?.id) {
+        return {
+          ...state,
+          user: { ...state.user, ...payload, avatar: "", cover: "" },
+          users: state.users.map((user) => {
+            if (user.id === payload.id) user = { ...user, ...payload };
+            return user;
+          }),
+          profile: { ...state.profile, ...payload },
+          errorsUser: "",
+        };
+      } // Update current logged-in user if the user is not on his/her profile page
+      else if (payload.id === state.user.id && payload.id !== state.profile?.id) {
+        return {
+          ...state,
+          user: { ...state.user, ...payload, avatar: "", cover: "" },
+          users: state.users.map((user) => {
+            if (user.id === payload.id) user = { ...user, ...payload };
+            return user;
+          }),
+          errorsUser: "",
+        };
+      } // Update user and his/her profile page, this user is not the current logged-in user
+      else if (payload.id !== state.user?.id && payload.id === state.profile?.id) {
+        return {
+          ...state,
+          users: state.users.map((user) => {
+            if (user.id === payload.id) user = { ...user, ...payload };
+            return user;
+          }),
+          profile: { ...state.profile, ...payload },
+          errorsUser: "",
+        };
+      } // Update user in other cases
+      else {
+        return {
+          ...state,
+          users: state.users.map((user) => {
+            if (user.id === payload.id) user = { ...user, ...payload };
+            return user;
+          }),
+          errorsUser: "",
+        };
+      }
     case USER_LOGOUT:
       localStorage.clear("_user");
       return {

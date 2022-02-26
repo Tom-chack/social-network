@@ -62,11 +62,13 @@ function ActivityCard({
     return (
       <div>
         {loggedIn && <CommentEditor id={id} />}
-        <div className='activity-comment-list'>
-          {comments.map((comment) => (
-            <Comments key={comment.id} post={post} comment={comment} id={id} />
-          ))}
-        </div>
+        {comments.length > 0 && (
+          <div className='activity-comment-list'>
+            {comments.map((comment) => (
+              <Comments key={comment.id} post={post} comment={comment} id={id} />
+            ))}
+          </div>
+        )}
       </div>
     );
   };

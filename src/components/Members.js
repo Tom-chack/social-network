@@ -20,7 +20,7 @@ function Members() {
 
   //Pagination
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 4;
+  const usersPerPage = 5;
   const pagesVisited = pageNumber * usersPerPage;
 
   const displayUsers = filteredUsers.slice(pagesVisited, pagesVisited + usersPerPage);
@@ -132,7 +132,7 @@ function Members() {
               ))
             )}
 
-            {filteredUsers.length <= 4 ? null : (
+            {filteredUsers.length <= 5 ? null : (
               <ReactPaginate
                 previousLabel={"<"}
                 nextLabel={">"}

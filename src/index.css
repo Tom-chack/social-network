@@ -11,11 +11,11 @@
 .headLeft{
   width: 20%;
   min-width: 200px;
-  text-align: right;
+  text-align: center;
   padding-right: 5%;
 }
 .headRight{
-  width: 44%;
+  width: 27%;
   min-width: 600px;
 }
 
@@ -122,6 +122,11 @@
   text-transform: uppercase;
   margin: 10px 10px 10px 0;
 }
+
+.profile-add-friend{
+     margin: 20px 10px 10px 20px;
+}
+
 /* Mobile */
 @media screen and (max-width: 1400px) {
   .ant-layout-content{
@@ -136,6 +141,7 @@
 @media screen and (max-width: 800px) {
   .headRight{
     min-width:auto;
+    width: 44%;
   }
 }
 /*Activity design*/

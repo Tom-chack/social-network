@@ -1,15 +1,15 @@
 .friends{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
 }
 .ant-card.ant-card-bordered.friend-card{
-  width: 25%;
-  margin: 2%;
+  width: 31%;
+  margin: 1%;
   height: 200px;
-  min-width: 300px;
+  min-width: 270px;
 }
 .ant-card.ant-card-bordered.friend-card .ant-card-body{
   padding:0;

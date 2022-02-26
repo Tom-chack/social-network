@@ -7,7 +7,6 @@ const LikeButton = ({ post, liked }) => {
   const { user: currentUser, loggedIn } = useSelector((state) => state.userDuck);
   const handleLike = (e) => {
     dispatch(likePost(post));
-    console.log("likeeddddd", post);
     e.target.style.fill = "red";
   };
   const handleDislike = (e) => {
