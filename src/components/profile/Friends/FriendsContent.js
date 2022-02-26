@@ -10,8 +10,8 @@ function FriendsContent() {
   const { profile } = useSelector((state) => state.userDuck);
   const [value, setValue] = useState("");
   const { users } = useSelector((state) => state.userDuck);
-  const countToBeLoaded = 6;
-  const [loadFriends, setLoadFriends] = useState(6);
+  const countToBeLoaded = 4;
+  const [loadFriends, setLoadFriends] = useState(4);
 
   //fetching users
   useEffect(() => {
