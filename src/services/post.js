@@ -1,4 +1,5 @@
 import api from "../helpers/api";
+import { userUpdate } from "../redux/ducks/userDuck";
 import { postAdd, postUpdate, postDelete, postError } from "../redux/ducks/postDuck";
 import { postSchema } from "../helpers/schemas";
 import getUser from "./getUser";
@@ -17,6 +18,7 @@ export const addPost = (data) => async (dispatch, getState) => {
     });
 
     let postData = await postRes.json();
+
     if (data?.image) {
       dispatch(postAdd({ ...postData, user: currentUser, image: data.image }));
       let image = { id: postData.id, postid: postData.id, url: data.image };
@@ -28,6 +30,15 @@ export const addPost = (data) => async (dispatch, getState) => {
     } else {
       dispatch(postAdd({ ...postData, user: currentUser }));
     }
+
+    await fetch(`${api}/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ posts: currentUser.posts + 1 }),
+    });
+    dispatch(userUpdate({ id: currentUser.id, posts: currentUser.posts + 1 }));
   } catch (e) {
     dispatch(postError(e.message));
   }
@@ -107,7 +118,18 @@ export const deletePost = (post) => async (dispatch) => {
           });
         }
       }
+      // Update posts count
+      let currentUser = await getUser(post.userid);
+      await fetch(`${api}/users/${post.userid}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ posts: currentUser.posts - 1 }),
+      });
+
       dispatch(postDelete(id));
+      dispatch(userUpdate({ id: currentUser.id, posts: currentUser.posts - 1 }));
     } catch (err) {
       dispatch(postError(err.message));
     }
