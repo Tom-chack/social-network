@@ -129,6 +129,9 @@
      border-bottom: 1px solid #efefef;
      margin: 20px 10px;
 }
+.menu-profile{
+     margin-left: 33%;
+}
 /* Mobile */
 @media screen and (max-width: 1400px) {
   .ant-layout-content{
@@ -145,6 +148,9 @@
     min-width:auto;
     width: 44%;
   }
+  .menu-profile{
+     margin-left: auto;
+   }
 }
 /*Activity design*/
 .activityMain {
