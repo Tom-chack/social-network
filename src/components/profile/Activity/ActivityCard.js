@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Time from "./UpdateTime";
 import Comments from "../../Comment/Comment";
-import LikeButton from "./Hearted";
+import LikeButton from "./Like";
 import CommentEditor from "./commentEditor";
 import { Image, Button, Popover, Card } from "antd";
 import { FaRegCommentDots } from "react-icons/fa";

@@ -53,8 +53,9 @@ function FriendsContent() {
 
   //loading more friends when clicking to show more button
   const handleBtn = () => {
-    if (loadFriends >= filteredFriends.length) console.log(loadFriends);
-    setLoadFriends(loadFriends + countToBeLoaded);
+    if (loadFriends <= filteredFriends.length) {
+      setLoadFriends(loadFriends + countToBeLoaded);
+    }
   };
 
   return (
@@ -102,8 +103,10 @@ function FriendsContent() {
         <Button
           className={value ? "hidden" : "show-more"}
           key='btn'
-          style={{ margin: "0 10px" }}
+          style={{ margin: "0px auto", display: "block" }}
           onClick={handleBtn}
+          type='primary'
+          size='large'
         >
           Load more
         </Button>

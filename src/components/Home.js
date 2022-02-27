@@ -9,7 +9,7 @@ import PhotoWidget from "./widgets/PhotosWidget";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const perPage = 3;
+const perPage = 10;
 
 function Home() {
   //Redux functions

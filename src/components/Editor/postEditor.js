@@ -29,9 +29,9 @@ function PostEditor({ post = {}, editorId = "post-editor", cancel = null, button
   const onSubmit = (data) => {
     if (post?.id) {
       if (image) {
-        dispatch(updatePost({ ...post, ...data, image }));
+        dispatch(updatePost({ ...post, ...data, date: Date.now(), image }));
       } else {
-        dispatch(updatePost({ ...post, ...data }));
+        dispatch(updatePost({ ...post, ...data, date: Date.now() }));
       }
       if (cancel !== null) cancel();
     } else {

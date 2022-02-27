@@ -314,7 +314,7 @@
 }
 .ant-tabs-tabpane-active .loadMore {
      display: flex;
-     width: 720px;
+     width: 100%;
      justify-content: space-around;
 }
 .ant-tabs-tabpane-active .loadMore button {
