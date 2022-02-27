@@ -11,54 +11,51 @@ const PhotoWidget = () => {
 
   //Some states for random images
   const [imagesData, setImagesData] = useState([]);
-  const imagesLength = images.length;
+  const [imagesId, setImagesId] = useState([])
+
 
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
 
-  //Function for getting random images
-  const randomImages = useCallback(() => {
-    let randomNumbers = [];
-    let number;
-    if (imagesLength <= 9) {
-      return images;
-    } else {
-      for (let i = 0; i < imagesLength; i++) {
-        if (randomNumbers.length < 9) {
-          number = Math.floor(Math.random() * imagesLength);
-          if (!randomNumbers.includes(number)) {
-            randomNumbers.push(number);
-          } else {
-            continue;
-          }
-        } else {
-          break;
-        }
-      }
-    }
-    return randomNumbers;
-  }, [images, imagesLength]);
 
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+}
+
+
+  const getImagesId = useCallback (() =>{
+    setImagesId(shuffle(images.map(image=>image.id)).slice(0,9))
+  },[images])
+
+
+  
+  useEffect(()=>{
+    getImagesId()
+  }, [images, getImagesId])
+
+  
   const getRandomImages = useCallback(() => {
     let arr = [];
-    if (randomImages().length === images.length) {
-      return randomImages();
-    } else {
-      randomImages().forEach((item) => {
+      imagesId.forEach((item) => {
         images.forEach((image) => {
           if (image.id === item) {
             arr.push(image);
           }
         });
       });
-    }
     return arr;
-  }, [images, randomImages]);
+  }, [images, imagesId]);
+  
 
-  useEffect(() => {
-    setImagesData(getRandomImages());
-  }, [images, getRandomImages]);
+  useEffect(()=>{
+    setImagesData(getRandomImages())
+  }, [images, getRandomImages])
+
 
   return (
     <Card className='widget' style={{ backgroundColor: "#fafafa" }}>
