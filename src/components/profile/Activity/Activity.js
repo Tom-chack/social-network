@@ -24,7 +24,9 @@ function Activity() {
       console.log("no posts found");
     }
   }, [dispatch, profile]);
-  useEffect(() => setData(posts), [posts]);
+
+  useEffect(() => setData(posts), [posts, profile]);
+
   const loadMoreItems = () => {
     setVisible((previtem) => previtem + 5);
   };

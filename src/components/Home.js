@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import getPosts from "../services/getPosts";
-import { Row, Col, Card, Radio } from "antd";
+import { Row, Col, Card, Radio, Skeleton } from "antd";
 import Post from "./Post/Post";
 import MembersWidget from "./widgets/MembersWidget";
 import PhotoWidget from "./widgets/PhotosWidget";
@@ -33,7 +33,7 @@ function Home() {
     setTimeout(() => {
       let nextItems = [...items, ...posts.slice(page * perPage, (page + 1) * perPage)];
       setItems(nextItems);
-    }, 1000);
+    }, 2000);
   }, [posts, items, page]);
 
   //Fetch user object by profile user id
@@ -47,6 +47,22 @@ function Home() {
     setItems(posts.slice(0, perPage));
     setPage(1);
   }, [posts]);
+
+  //Skeleton
+
+  const SkeletonComponent = () => {
+    return (
+      <>
+        <Skeleton active avatar paragraph={{ rows: 4 }}></Skeleton>
+        <div className='s-sep'></div>
+        <Skeleton active avatar paragraph={{ rows: 4 }}></Skeleton>
+        <div className='s-sep'></div>
+        <Skeleton active avatar paragraph={{ rows: 4 }}></Skeleton>
+        <div className='s-sep'></div>
+        <Skeleton active avatar paragraph={{ rows: 4 }}></Skeleton>
+      </>
+    );
+  };
 
   return (
     <div className='home'>
@@ -75,7 +91,7 @@ function Home() {
             dataLength={items.length}
             next={fetchMoreData}
             hasMore={more}
-            loader={<h4>Loading...</h4>}
+            loader={<SkeletonComponent />}
             endMessage={
               <p style={{ textAlign: "center" }}>
                 <b>Yay! You have seen it all</b>

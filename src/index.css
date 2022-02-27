@@ -122,11 +122,13 @@
   text-transform: uppercase;
   margin: 10px 10px 10px 0;
 }
-
 .profile-add-friend{
      margin: 20px 10px 10px 20px;
 }
-
+.s-sep{
+     border-bottom: 1px solid #efefef;
+     margin: 20px 10px;
+}
 /* Mobile */
 @media screen and (max-width: 1400px) {
   .ant-layout-content{

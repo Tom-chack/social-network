@@ -1,6 +1,6 @@
 .friends{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
