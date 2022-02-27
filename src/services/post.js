@@ -53,7 +53,7 @@ export const updatePost = (data) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...data, image: "" }),
+        body: JSON.stringify({ ...data, image: "", user: {}, comments: [] }),
       });
       let postData = await postRes.json();
 

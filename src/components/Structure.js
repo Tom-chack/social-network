@@ -10,7 +10,9 @@ function Structure() {
       <Header>
         <div className='headLeft'>
           <span className='xLogo'>
-            <span style={{ color: "#b5dbf2" }}>REACT</span> / FUNS
+            <a href='/'>
+              <span style={{ color: "#b5dbf2" }}>REACT</span> / FUNS
+            </a>
           </span>
         </div>
         <div className='headRight'>
