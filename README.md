@@ -5,4 +5,4 @@
 4. Run json-server on 3001 port: `json-server --watch db.json --port 3001`
 5. Run the Social Network app: `npm start`
 6. Call http://localhost:3000/ 
-7. Login with Username: `Tom` / Pass: `1234` or register a new user 
+7. Login with Username: `Tom` / Pass: `123456` or register a new user 
